@@ -197,6 +197,24 @@ function loadProfile() {
     loadCheckboxes('.question-section:nth-of-type(6) .question-item:nth-of-type(3) input[type="checkbox"]', profile.sockPrefs || []);
     loadCheckboxes('.urgent-needs input[type="checkbox"]', profile.urgentNeeds || []);
     
+    // Load interest preferences
+    setSelectValue('reading-interest', profile.readingInterest);
+    setInputValue('book-details', profile.bookDetails);
+    setInputValue('sports-details', profile.sportsDetails);
+    setInputValue('creative-details', profile.creativeDetails);
+    setInputValue('tech-details', profile.techDetails);
+    setInputValue('toy-details', profile.toyDetails);
+    setInputValue('relationship-needs', profile.relationshipNeeds);
+    
+    // Load interest checkboxes
+    loadCheckboxes('.interest-category:nth-of-type(1) .checkbox-group input[type="checkbox"]', profile.bookTypes || []);
+    loadCheckboxes('.sports-activities input[type="checkbox"]', profile.sportsActivities || []);
+    loadCheckboxes('.interest-category:nth-of-type(3) .checkbox-group input[type="checkbox"]', profile.creativeActivities || []);
+    loadCheckboxes('.interest-category:nth-of-type(4) .checkbox-group input[type="checkbox"]', profile.techInterests || []);
+    loadCheckboxes('.interest-category:nth-of-type(5) .checkbox-group input[type="checkbox"]', profile.toyGames || []);
+    loadCheckboxes('.interest-category:nth-of-type(6) .question-item:nth-of-type(1) .checkbox-group input[type="checkbox"]', profile.oneOnOneWith || []);
+    loadCheckboxes('.interest-category:nth-of-type(6) .question-item:nth-of-type(2) .checkbox-group input[type="checkbox"]', profile.oneOnOneActivities || []);
+    
     // Load text areas
     const textareas = document.querySelectorAll('.extra-info textarea');
     textareas.forEach((textarea, index) => {
@@ -283,9 +301,30 @@ function saveProfile() {
     profile.urgentNeeds = Array.from(document.querySelectorAll('.urgent-needs input[type="checkbox"]:checked'))
         .map(cb => cb.value);
     
-    // Save other preferences
-    profile.toyPreference = document.getElementById('toy-preference').value;
-    profile.subjectPreference = document.getElementById('subject-preference').value;
+    // Save interest preferences
+    profile.readingInterest = document.getElementById('reading-interest').value;
+    profile.bookDetails = document.getElementById('book-details').value;
+    profile.sportsDetails = document.getElementById('sports-details').value;
+    profile.creativeDetails = document.getElementById('creative-details').value;
+    profile.techDetails = document.getElementById('tech-details').value;
+    profile.toyDetails = document.getElementById('toy-details').value;
+    profile.relationshipNeeds = document.getElementById('relationship-needs').value;
+    
+    // Save interest checkboxes
+    profile.bookTypes = Array.from(document.querySelectorAll('.interest-category:nth-of-type(1) .checkbox-group input[type="checkbox"]:checked'))
+        .map(cb => cb.value);
+    profile.sportsActivities = Array.from(document.querySelectorAll('.sports-activities input[type="checkbox"]:checked'))
+        .map(cb => cb.value);
+    profile.creativeActivities = Array.from(document.querySelectorAll('.interest-category:nth-of-type(3) .checkbox-group input[type="checkbox"]:checked'))
+        .map(cb => cb.value);
+    profile.techInterests = Array.from(document.querySelectorAll('.interest-category:nth-of-type(4) .checkbox-group input[type="checkbox"]:checked'))
+        .map(cb => cb.value);
+    profile.toyGames = Array.from(document.querySelectorAll('.interest-category:nth-of-type(5) .checkbox-group input[type="checkbox"]:checked'))
+        .map(cb => cb.value);
+    profile.oneOnOneWith = Array.from(document.querySelectorAll('.interest-category:nth-of-type(6) .question-item:nth-of-type(1) .checkbox-group input[type="checkbox"]:checked'))
+        .map(cb => cb.value);
+    profile.oneOnOneActivities = Array.from(document.querySelectorAll('.interest-category:nth-of-type(6) .question-item:nth-of-type(2) .checkbox-group input[type="checkbox"]:checked'))
+        .map(cb => cb.value);
     
     // Save extra info from textareas
     const textareas = document.querySelectorAll('.extra-info textarea');
@@ -391,10 +430,44 @@ function displayAdultView() {
             ` : ''}
             
             <div class="kid-info">
-                <h4>🎯 Interests</h4>
-                <p><strong>Favorite toys:</strong> ${profile.toyPreference || 'Not set'}</p>
-                <p><strong>Favorite subject:</strong> ${profile.subjectPreference || 'Not set'}</p>
+                <h4>📚 Reading & Books</h4>
+                <p><strong>Reading level:</strong> ${profile.readingInterest || 'Not set'}</p>
+                ${(profile.bookTypes || []).length > 0 ? `<p><strong>Book types:</strong> ${profile.bookTypes.join(', ')}</p>` : ''}
+                ${profile.bookDetails ? `<p><strong>Details:</strong> "${profile.bookDetails}"</p>` : ''}
             </div>
+            
+            <div class="kid-info">
+                <h4>🏃 Sports & Activities</h4>
+                ${(profile.sportsActivities || []).length > 0 ? `<p><strong>Interested in:</strong> ${profile.sportsActivities.join(', ')}</p>` : '<p>Not specified</p>'}
+                ${profile.sportsDetails ? `<p><strong>Details:</strong> "${profile.sportsDetails}"</p>` : ''}
+            </div>
+            
+            <div class="kid-info">
+                <h4>🎨 Creative & Artistic</h4>
+                ${(profile.creativeActivities || []).length > 0 ? `<p><strong>Activities:</strong> ${profile.creativeActivities.join(', ')}</p>` : '<p>Not specified</p>'}
+                ${profile.creativeDetails ? `<p><strong>Details:</strong> "${profile.creativeDetails}"</p>` : ''}
+            </div>
+            
+            <div class="kid-info">
+                <h4>💻 Technology & Gaming</h4>
+                ${(profile.techInterests || []).length > 0 ? `<p><strong>Interests:</strong> ${profile.techInterests.join(', ')}</p>` : '<p>Not specified</p>'}
+                ${profile.techDetails ? `<p><strong>Details:</strong> "${profile.techDetails}"</p>` : ''}
+            </div>
+            
+            <div class="kid-info">
+                <h4>🧸 Toys & Games</h4>
+                ${(profile.toyGames || []).length > 0 ? `<p><strong>Still enjoys:</strong> ${profile.toyGames.join(', ')}</p>` : '<p>Not specified</p>'}
+                ${profile.toyDetails ? `<p><strong>Details:</strong> "${profile.toyDetails}"</p>` : ''}
+            </div>
+            
+            ${((profile.oneOnOneWith || []).length > 0 || (profile.oneOnOneActivities || []).length > 0 || profile.relationshipNeeds) ? `
+            <div class="kid-info special-needs-display">
+                <h4>💝 One-on-One Time & Relationship Needs</h4>
+                ${(profile.oneOnOneWith || []).length > 0 ? `<p><strong>Wants time with:</strong> ${profile.oneOnOneWith.join(', ')}</p>` : ''}
+                ${(profile.oneOnOneActivities || []).length > 0 ? `<p><strong>Activities:</strong> ${profile.oneOnOneActivities.join(', ')}</p>` : ''}
+                ${profile.relationshipNeeds ? `<p><strong>What they're missing:</strong> "${profile.relationshipNeeds}"</p>` : ''}
+            </div>
+            ` : ''}
             
             ${profile.extraInfo0 ? `<div class="kid-info"><h4>💡 Additional Info</h4><p style="font-style: italic;">"${profile.extraInfo0}"</p></div>` : ''}
         `;

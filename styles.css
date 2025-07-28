@@ -550,6 +550,71 @@ body {
     font-weight: bold;
 }
 
+/* Interest Categories */
+.interest-category {
+    background: #f8fafc;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    border-left: 4px solid #3b82f6;
+}
+
+.interest-category h4 {
+    color: #1e40af;
+    font-size: 1.4em;
+    margin-bottom: 20px;
+    text-align: center;
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.special-category {
+    background: #fef7ff;
+    border-left-color: #a855f7;
+}
+
+.special-category h4 {
+    color: #7c3aed;
+    background: #faf5ff;
+}
+
+.sports-activities {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.sports-activities label {
+    display: flex;
+    align-items: center;
+    font-size: 1em;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    border: 1px solid #e5e7eb;
+}
+
+.sports-activities label:hover {
+    background-color: #f0f9ff;
+    border-color: #3b82f6;
+}
+
+/* Special needs display in adult view */
+.special-needs-display {
+    background: #fef7ff !important;
+    border: 2px solid #d8b4fe !important;
+    border-radius: 10px !important;
+}
+
+.special-needs-display h4 {
+    color: #7c3aed !important;
+    font-weight: bold;
+}
+
 /* Save Section */
 .save-section {
     text-align: center;

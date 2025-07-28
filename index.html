@@ -663,43 +663,211 @@
                     <section class="question-section">
                         <h3>🎯 What I Love</h3>
                         
-                        <div class="question-item">
-                            <label class="main-question">What kind of toys/games do you like?</label>
-                            <select id="toy-preference" class="main-answer">
-                                <option value="">Choose your favorite</option>
-                                <option value="building">Building (Lego, blocks)</option>
-                                <option value="dolls">Dolls/Action figures</option>
-                                <option value="art">Art supplies</option>
-                                <option value="sports">Sports equipment</option>
-                                <option value="books">Books</option>
-                                <option value="puzzles">Puzzles</option>
-                                <option value="video-games">Video games</option>
-                                <option value="outdoor">Outdoor toys</option>
-                                <option value="science">Science kits</option>
-                            </select>
-                            <div class="extra-info">
-                                <label>Tell us more:</label>
-                                <textarea placeholder="Like: I love Pokemon cards and building spaceships with Lego..."></textarea>
+                        <!-- Books & Reading -->
+                        <div class="interest-category">
+                            <h4>📚 Books & Reading</h4>
+                            
+                            <div class="question-item">
+                                <label class="main-question">Do you like to read?</label>
+                                <select id="reading-interest" class="main-answer">
+                                    <option value="">How do you feel about reading?</option>
+                                    <option value="love">I LOVE reading! 📖</option>
+                                    <option value="like">I like reading</option>
+                                    <option value="okay">Reading is okay</option>
+                                    <option value="struggle">I struggle with reading</option>
+                                    <option value="dislike">I don't like reading</option>
+                                </select>
+                            </div>
+                            
+                            <div class="question-item">
+                                <label class="main-question">What types of books do you like? (Check all that apply)</label>
+                                <div class="checkbox-group">
+                                    <label><input type="checkbox" value="picture-books"> Picture books</label>
+                                    <label><input type="checkbox" value="chapter-books"> Chapter books</label>
+                                    <label><input type="checkbox" value="graphic-novels"> Graphic novels/Comics</label>
+                                    <label><input type="checkbox" value="manga"> Manga</label>
+                                    <label><input type="checkbox" value="mystery"> Mystery books</label>
+                                    <label><input type="checkbox" value="fantasy"> Fantasy/Magic</label>
+                                    <label><input type="checkbox" value="sci-fi"> Science fiction</label>
+                                    <label><input type="checkbox" value="adventure"> Adventure stories</label>
+                                    <label><input type="checkbox" value="romance"> Romance</label>
+                                    <label><input type="checkbox" value="horror"> Scary/Horror</label>
+                                    <label><input type="checkbox" value="non-fiction"> Non-fiction/Facts</label>
+                                    <label><input type="checkbox" value="biography"> Biographies</label>
+                                    <label><input type="checkbox" value="poetry"> Poetry</label>
+                                    <label><input type="checkbox" value="joke-books"> Joke books</label>
+                                </div>
+                            </div>
+                            
+                            <div class="question-item">
+                                <div class="extra-info">
+                                    <label>Favorite authors, series, or specific books:</label>
+                                    <textarea id="book-details" placeholder="Like: I love Harry Potter series, Dog Man books, or anything by Dav Pilkey. I like books with short chapters and lots of pictures..."></textarea>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="question-item">
-                            <label class="main-question">What's your favorite subject or activity?</label>
-                            <select id="subject-preference" class="main-answer">
-                                <option value="">Pick one</option>
-                                <option value="math">Math</option>
-                                <option value="reading">Reading</option>
-                                <option value="science">Science</option>
-                                <option value="art">Art</option>
-                                <option value="music">Music</option>
-                                <option value="sports">Sports</option>
-                                <option value="cooking">Cooking</option>
-                                <option value="animals">Animals</option>
-                                <option value="technology">Technology</option>
-                            </select>
-                            <div class="extra-info">
-                                <label>More details:</label>
-                                <textarea placeholder="Like: I love reading mystery books and drawing dragons..."></textarea>
+                        <!-- Sports & Physical Activities -->
+                        <div class="interest-category">
+                            <h4>🏃 Sports & Physical Activities</h4>
+                            
+                            <div class="question-item">
+                                <label class="main-question">What sports/activities are you interested in? (Check all that apply)</label>
+                                <div class="checkbox-group sports-activities">
+                                    <label><input type="checkbox" value="soccer"> ⚽ Soccer</label>
+                                    <label><input type="checkbox" value="basketball"> 🏀 Basketball</label>
+                                    <label><input type="checkbox" value="baseball"> ⚾ Baseball</label>
+                                    <label><input type="checkbox" value="football"> 🏈 Football</label>
+                                    <label><input type="checkbox" value="tennis"> 🎾 Tennis</label>
+                                    <label><input type="checkbox" value="swimming"> 🏊 Swimming</label>
+                                    <label><input type="checkbox" value="gymnastics"> 🤸 Gymnastics</label>
+                                    <label><input type="checkbox" value="dance"> 💃 Dance</label>
+                                    <label><input type="checkbox" value="martial-arts"> 🥋 Martial arts</label>
+                                    <label><input type="checkbox" value="track-field"> 🏃 Track & Field</label>
+                                    <label><input type="checkbox" value="volleyball"> 🏐 Volleyball</label>
+                                    <label><input type="checkbox" value="cheerleading"> 📣 Cheerleading</label>
+                                    <label><input type="checkbox" value="weight-training"> 💪 Weight training/Gym</label>
+                                    <label><input type="checkbox" value="yoga"> 🧘 Yoga</label>
+                                    <label><input type="checkbox" value="running"> 🏃 Running/Jogging</label>
+                                    <label><input type="checkbox" value="biking"> 🚴 Biking</label>
+                                    <label><input type="checkbox" value="skateboarding"> 🛹 Skateboarding</label>
+                                    <label><input type="checkbox" value="climbing"> 🧗 Rock climbing</label>
+                                    <label><input type="checkbox" value="hiking"> 🥾 Hiking</label>
+                                    <label><input type="checkbox" value="not-sporty"> I'm not really into sports</label>
+                                </div>
+                            </div>
+                            
+                            <div class="question-item">
+                                <div class="extra-info">
+                                    <label>More about your sports/activity interests:</label>
+                                    <textarea id="sports-details" placeholder="Like: I love lifting weights and want to get stronger. I play on the school soccer team. I want to try rock climbing..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Creative & Artistic -->
+                        <div class="interest-category">
+                            <h4>🎨 Creative & Artistic</h4>
+                            
+                            <div class="question-item">
+                                <label class="main-question">What creative activities do you enjoy? (Check all that apply)</label>
+                                <div class="checkbox-group">
+                                    <label><input type="checkbox" value="drawing"> ✏️ Drawing</label>
+                                    <label><input type="checkbox" value="painting"> 🎨 Painting</label>
+                                    <label><input type="checkbox" value="crafts"> ✂️ Crafts/DIY projects</label>
+                                    <label><input type="checkbox" value="sewing"> 🧵 Sewing</label>
+                                    <label><input type="checkbox" value="photography"> 📸 Photography</label>
+                                    <label><input type="checkbox" value="music-instruments"> 🎵 Playing instruments</label>
+                                    <label><input type="checkbox" value="singing"> 🎤 Singing</label>
+                                    <label><input type="checkbox" value="writing"> ✍️ Writing stories</label>
+                                    <label><input type="checkbox" value="poetry-writing"> 📝 Writing poetry</label>
+                                    <label><input type="checkbox" value="jewelry-making"> 💍 Jewelry making</label>
+                                    <label><input type="checkbox" value="woodworking"> 🪵 Woodworking</label>
+                                    <label><input type="checkbox" value="pottery"> 🏺 Pottery</label>
+                                </div>
+                            </div>
+                            
+                            <div class="question-item">
+                                <div class="extra-info">
+                                    <label>Creative details:</label>
+                                    <textarea id="creative-details" placeholder="Like: I love drawing anime characters. I play piano and want to learn guitar. I make friendship bracelets..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Technology & Gaming -->
+                        <div class="interest-category">
+                            <h4>💻 Technology & Gaming</h4>
+                            
+                            <div class="question-item">
+                                <label class="main-question">Technology interests: (Check all that apply)</label>
+                                <div class="checkbox-group">
+                                    <label><input type="checkbox" value="video-games"> 🎮 Video games</label>
+                                    <label><input type="checkbox" value="mobile-games"> 📱 Mobile games</label>
+                                    <label><input type="checkbox" value="coding"> 💻 Coding/Programming</label>
+                                    <label><input type="checkbox" value="robotics"> 🤖 Robotics</label>
+                                    <label><input type="checkbox" value="youtube"> 📺 Watching YouTube</label>
+                                    <label><input type="checkbox" value="social-media"> 📲 Social media</label>
+                                    <label><input type="checkbox" value="tech-gadgets"> 🔧 Tech gadgets</label>
+                                    <label><input type="checkbox" value="not-techy"> I'm not really into technology</label>
+                                </div>
+                            </div>
+                            
+                            <div class="question-item">
+                                <div class="extra-info">
+                                    <label>Tech details:</label>
+                                    <textarea id="tech-details" placeholder="Like: I love Minecraft and Roblox. I want to learn how to make apps. I watch gaming videos on YouTube..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Toys & Games -->
+                        <div class="interest-category">
+                            <h4>🧸 Toys & Games</h4>
+                            
+                            <div class="question-item">
+                                <label class="main-question">What toys/games do you still enjoy? (Check all that apply)</label>
+                                <div class="checkbox-group">
+                                    <label><input type="checkbox" value="legos"> 🧱 Legos/Building blocks</label>
+                                    <label><input type="checkbox" value="dolls"> 👗 Dolls</label>
+                                    <label><input type="checkbox" value="action-figures"> 🦸 Action figures</label>
+                                    <label><input type="checkbox" value="puzzles"> 🧩 Puzzles</label>
+                                    <label><input type="checkbox" value="board-games"> 🎲 Board games</label>
+                                    <label><input type="checkbox" value="card-games"> 🃏 Card games</label>
+                                    <label><input type="checkbox" value="collectibles"> 💎 Collectibles (cards, figures)</label>
+                                    <label><input type="checkbox" value="science-kits"> 🔬 Science kits</label>
+                                    <label><input type="checkbox" value="outdoor-toys"> 🏖️ Outdoor toys</label>
+                                    <label><input type="checkbox" value="stuffed-animals"> 🧸 Stuffed animals</label>
+                                    <label><input type="checkbox" value="too-old"> I'm too old for most toys</label>
+                                </div>
+                            </div>
+                            
+                            <div class="question-item">
+                                <div class="extra-info">
+                                    <label>Toy details:</label>
+                                    <textarea id="toy-details" placeholder="Like: I collect Pokemon cards. I love building complicated Lego sets. I still sleep with my teddy bear..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- One-on-One Time & Relationships -->
+                        <div class="interest-category special-category">
+                            <h4>💝 One-on-One Time & Special Relationships</h4>
+                            
+                            <div class="question-item">
+                                <label class="main-question">I would love more one-on-one time with:</label>
+                                <div class="checkbox-group">
+                                    <label><input type="checkbox" value="mom"> 👩 Mom</label>
+                                    <label><input type="checkbox" value="dad"> 👨 Dad</label>
+                                    <label><input type="checkbox" value="grandma"> 👵 Grandma</label>
+                                    <label><input type="checkbox" value="grandpa"> 👴 Grandpa</label>
+                                    <label><input type="checkbox" value="siblings"> 👶 Specific siblings</label>
+                                    <label><input type="checkbox" value="aunts-uncles"> 👨‍👩‍👧‍👦 Aunts/Uncles</label>
+                                    <label><input type="checkbox" value="friends"> 👫 Friends</label>
+                                    <label><input type="checkbox" value="alone-time"> 🧘 I need more alone time</label>
+                                </div>
+                            </div>
+                            
+                            <div class="question-item">
+                                <label class="main-question">For one-on-one time, I'd love to:</label>
+                                <div class="checkbox-group">
+                                    <label><input type="checkbox" value="talk-share"> 💬 Just talk and share</label>
+                                    <label><input type="checkbox" value="go-places"> 🚗 Go places together</label>
+                                    <label><input type="checkbox" value="cook-together"> 👨‍🍳 Cook/bake together</label>
+                                    <label><input type="checkbox" value="crafts-together"> 🎨 Do crafts/projects together</label>
+                                    <label><input type="checkbox" value="play-games"> 🎮 Play games together</label>
+                                    <label><input type="checkbox" value="outdoor-activities"> 🌳 Do outdoor activities</label>
+                                    <label><input type="checkbox" value="shopping"> 🛍️ Go shopping</label>
+                                    <label><input type="checkbox" value="learn-together"> 📚 Learn something new together</label>
+                                    <label><input type="checkbox" value="help-with-interests"> 🎯 Get help with my interests/hobbies</label>
+                                </div>
+                            </div>
+                            
+                            <div class="question-item">
+                                <div class="extra-info">
+                                    <label>Tell us more about what you're missing or need:</label>
+                                    <textarea id="relationship-needs" placeholder="Like: I feel lost in our big family sometimes. I want to spend time with dad working on cars. I'd love to have grandma teach me to sew. I need help with my art but everyone's always busy..."></textarea>
+                                </div>
                             </div>
                         </div>
                     </section>
