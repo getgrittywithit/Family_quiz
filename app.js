@@ -178,9 +178,24 @@ function loadProfile() {
     setSelectValue('toy-preference', profile.toyPreference);
     setSelectValue('subject-preference', profile.subjectPreference);
     
-    // Load checkboxes
+    // Load style preferences
+    setSelectValue('style-preference', profile.stylePreference);
+    setSelectValue('shoe-closure', profile.shoeClosure);
+    setInputValue('shoe-extra-notes', profile.shoeExtraNotes);
+    setInputValue('needs-explanation', profile.needsExplanation);
+    
+    // Load checkboxes for textures and preferences
     loadCheckboxes('.question-item:nth-of-type(2) input[type="checkbox"]', profile.dislikedTextures || []);
-    loadCheckboxes('.question-item:nth-of-type(3) input[type="checkbox"]', profile.favoriteColors || []);
+    loadCheckboxes('.question-item:nth-of-type(3) input[type="checkbox"]', profile.likedTextures || []);
+    loadCheckboxes('.question-item:nth-of-type(5) input[type="checkbox"]', profile.clothingDetails || []);
+    loadCheckboxes('.question-item:nth-of-type(6) input[type="checkbox"]', profile.favoriteColors || []);
+    
+    // Load shoe, undergarment, and needs checkboxes
+    loadCheckboxes('.shoe-types input[type="checkbox"]', profile.shoeTypes || []);
+    loadCheckboxes('.question-section:nth-of-type(6) .question-item:nth-of-type(1) input[type="checkbox"]', profile.underwearPrefs || []);
+    loadCheckboxes('.question-section:nth-of-type(6) .question-item:nth-of-type(2) input[type="checkbox"]', profile.braPrefs || []);
+    loadCheckboxes('.question-section:nth-of-type(6) .question-item:nth-of-type(3) input[type="checkbox"]', profile.sockPrefs || []);
+    loadCheckboxes('.urgent-needs input[type="checkbox"]', profile.urgentNeeds || []);
     
     // Load text areas
     const textareas = document.querySelectorAll('.extra-info textarea');
@@ -235,18 +250,42 @@ function saveProfile() {
         .map(cb => cb.value);
     profile.hatExtraNotes = document.getElementById('hat-extra-notes').value;
     
-    // Save preferences
+    // Save clothing preferences
     profile.pantsPreference = document.getElementById('pants-preference').value;
-    profile.toyPreference = document.getElementById('toy-preference').value;
-    profile.subjectPreference = document.getElementById('subject-preference').value;
+    profile.stylePreference = document.getElementById('style-preference').value;
+    profile.shoeClosure = document.getElementById('shoe-closure').value;
+    profile.shoeExtraNotes = document.getElementById('shoe-extra-notes').value;
+    profile.needsExplanation = document.getElementById('needs-explanation').value;
     
-    // Save disliked textures
+    // Save texture and style preferences
     profile.dislikedTextures = Array.from(document.querySelectorAll('.question-item:nth-of-type(2) input[type="checkbox"]:checked'))
         .map(cb => cb.value);
-    
-    // Save favorite colors
-    profile.favoriteColors = Array.from(document.querySelectorAll('.question-item:nth-of-type(3) input[type="checkbox"]:checked'))
+    profile.likedTextures = Array.from(document.querySelectorAll('.question-item:nth-of-type(3) input[type="checkbox"]:checked'))
         .map(cb => cb.value);
+    profile.clothingDetails = Array.from(document.querySelectorAll('.question-item:nth-of-type(5) input[type="checkbox"]:checked'))
+        .map(cb => cb.value);
+    profile.favoriteColors = Array.from(document.querySelectorAll('.question-item:nth-of-type(6) input[type="checkbox"]:checked'))
+        .map(cb => cb.value);
+        
+    // Save shoe preferences
+    profile.shoeTypes = Array.from(document.querySelectorAll('.shoe-types input[type="checkbox"]:checked'))
+        .map(cb => cb.value);
+        
+    // Save undergarment preferences
+    profile.underwearPrefs = Array.from(document.querySelectorAll('.question-section:nth-of-type(6) .question-item:nth-of-type(1) input[type="checkbox"]:checked'))
+        .map(cb => cb.value);
+    profile.braPrefs = Array.from(document.querySelectorAll('.question-section:nth-of-type(6) .question-item:nth-of-type(2) input[type="checkbox"]:checked'))
+        .map(cb => cb.value);
+    profile.sockPrefs = Array.from(document.querySelectorAll('.question-section:nth-of-type(6) .question-item:nth-of-type(3) input[type="checkbox"]:checked'))
+        .map(cb => cb.value);
+        
+    // Save urgent needs
+    profile.urgentNeeds = Array.from(document.querySelectorAll('.urgent-needs input[type="checkbox"]:checked'))
+        .map(cb => cb.value);
+    
+    // Save other preferences
+    profile.toyPreference = document.getElementById('toy-preference').value;
+    profile.subjectPreference = document.getElementById('subject-preference').value;
     
     // Save extra info from textareas
     const textareas = document.querySelectorAll('.extra-info textarea');
@@ -322,9 +361,34 @@ function displayAdultView() {
             <div class="kid-info">
                 <h4>👕 Clothing Preferences</h4>
                 <p><strong>Preferred pants:</strong> ${profile.pantsPreference || 'Not set'}</p>
+                <p><strong>Style:</strong> ${profile.stylePreference || 'Not set'}</p>
                 <p><strong>Dislikes:</strong> ${(profile.dislikedTextures || []).join(', ') || 'None specified'}</p>
+                <p><strong>Loves:</strong> ${(profile.likedTextures || []).join(', ') || 'Not set'}</p>
+                <p><strong>Special details:</strong> ${(profile.clothingDetails || []).join(', ') || 'Not set'}</p>
                 <p><strong>Favorite colors:</strong> ${(profile.favoriteColors || []).join(', ') || 'Not set'}</p>
             </div>
+            
+            <div class="kid-info">
+                <h4>👟 Shoe Preferences</h4>
+                <p><strong>Shoe types:</strong> ${(profile.shoeTypes || []).join(', ') || 'Not set'}</p>
+                <p><strong>Closure preference:</strong> ${profile.shoeClosure || 'Not set'}</p>
+                ${profile.shoeExtraNotes ? `<p><strong>Notes:</strong> "${profile.shoeExtraNotes}"</p>` : ''}
+            </div>
+            
+            <div class="kid-info">
+                <h4>🩱 Undergarments</h4>
+                ${(profile.underwearPrefs || []).length > 0 ? `<p><strong>Underwear:</strong> ${profile.underwearPrefs.join(', ')}</p>` : ''}
+                ${(profile.braPrefs || []).length > 0 ? `<p><strong>Bras/Tops:</strong> ${profile.braPrefs.join(', ')}</p>` : ''}
+                ${(profile.sockPrefs || []).length > 0 ? `<p><strong>Socks:</strong> ${profile.sockPrefs.join(', ')}</p>` : ''}
+            </div>
+            
+            ${(profile.urgentNeeds || []).length > 0 ? `
+            <div class="kid-info urgent-needs-display">
+                <h4>🚨 URGENT NEEDS</h4>
+                <p style="color: #dc2626; font-weight: bold;">Needs: ${profile.urgentNeeds.join(', ')}</p>
+                ${profile.needsExplanation ? `<p><strong>Why:</strong> "${profile.needsExplanation}"</p>` : ''}
+            </div>
+            ` : ''}
             
             <div class="kid-info">
                 <h4>🎯 Interests</h4>

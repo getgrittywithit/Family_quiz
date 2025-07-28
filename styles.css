@@ -449,6 +449,107 @@ body {
     background-color: #f3f4f6;
 }
 
+/* Needs Alert Section */
+.needs-alert {
+    background: #fef2f2;
+    border: 2px solid #fca5a5;
+    border-radius: 15px;
+}
+
+.needs-alert h3 {
+    color: #dc2626;
+}
+
+.needs-description {
+    background: #fee2e2;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #7f1d1d;
+}
+
+.needs-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.needs-category {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #fca5a5;
+}
+
+.needs-category h4 {
+    color: #dc2626;
+    margin-bottom: 15px;
+    font-size: 1.1em;
+    border-bottom: 2px solid #fca5a5;
+    padding-bottom: 5px;
+}
+
+.urgent-needs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.urgent-needs label {
+    padding: 8px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.urgent-needs label:hover {
+    background-color: #fef2f2;
+    border-color: #fca5a5;
+}
+
+.urgent-needs input[type="checkbox"]:checked + span {
+    font-weight: bold;
+    color: #dc2626;
+}
+
+/* Shoe and clothing specific styling */
+.shoe-types {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.shoe-types label {
+    display: flex;
+    align-items: center;
+    font-size: 1em;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    border: 1px solid #e5e7eb;
+}
+
+.shoe-types label:hover {
+    background-color: #f3f4f6;
+    border-color: #6b46c1;
+}
+
+/* Urgent needs display in adult view */
+.urgent-needs-display {
+    background: #fef2f2 !important;
+    border: 2px solid #fca5a5 !important;
+    border-radius: 10px !important;
+}
+
+.urgent-needs-display h4 {
+    color: #dc2626 !important;
+    font-weight: bold;
+}
+
 /* Save Section */
 .save-section {
     text-align: center;
