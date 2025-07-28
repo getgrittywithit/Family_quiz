@@ -637,6 +637,71 @@ body {
     border: 2px solid #93c5fd;
 }
 
+/* School Supplies Alert Section */
+.supplies-alert {
+    background: #fefbeb;
+    border: 2px solid #fbbf24;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.supplies-alert h4 {
+    color: #b45309;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.supplies-description {
+    background: #fef3c7;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #92400e;
+    text-align: center;
+}
+
+.supplies-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.supplies-category {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #fbbf24;
+}
+
+.supplies-category h5 {
+    color: #b45309;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    border-bottom: 2px solid #fbbf24;
+    padding-bottom: 5px;
+}
+
+.urgent-supplies {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.urgent-supplies label {
+    padding: 6px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.urgent-supplies label:hover {
+    background-color: #fefbeb;
+    border-color: #fbbf24;
+}
+
 .advocacy-section {
     background: #ecfdf5;
     padding: 20px;

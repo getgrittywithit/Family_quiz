@@ -219,11 +219,13 @@ function loadProfile() {
     setSelectValue('learning-style', profile.learningStyle);
     setInputValue('school-private-notes', profile.schoolPrivateNotes);
     setInputValue('advocacy-help', profile.advocacyHelp);
+    setInputValue('supplies-explanation', profile.suppliesExplanation);
     
     // Load school support checkboxes
     loadCheckboxes('.school-support .question-item:nth-of-type(1) .checkbox-group input[type="checkbox"]', profile.schoolHelpNeeds || []);
     loadCheckboxes('.school-support .question-item:nth-of-type(2) .checkbox-group input[type="checkbox"]', profile.schoolChallenges || []);
     loadCheckboxes('.school-support .question-item:nth-of-type(3) .checkbox-group input[type="checkbox"]', profile.upcomingEvents || []);
+    loadCheckboxes('.urgent-supplies input[type="checkbox"]', profile.suppliesNeeds || []);
     loadCheckboxes('.advocacy-section .question-item:nth-of-type(1) .checkbox-group input[type="checkbox"]', profile.advocacyReadiness || []);
     
     // Load text areas
@@ -341,6 +343,7 @@ function saveProfile() {
     profile.learningStyle = document.getElementById('learning-style').value;
     profile.schoolPrivateNotes = document.getElementById('school-private-notes').value;
     profile.advocacyHelp = document.getElementById('advocacy-help').value;
+    profile.suppliesExplanation = document.getElementById('supplies-explanation').value;
     
     // Save school support checkboxes
     profile.schoolHelpNeeds = Array.from(document.querySelectorAll('.school-support .question-item:nth-of-type(1) .checkbox-group input[type="checkbox"]:checked'))
@@ -348,6 +351,8 @@ function saveProfile() {
     profile.schoolChallenges = Array.from(document.querySelectorAll('.school-support .question-item:nth-of-type(2) .checkbox-group input[type="checkbox"]:checked'))
         .map(cb => cb.value);
     profile.upcomingEvents = Array.from(document.querySelectorAll('.school-support .question-item:nth-of-type(3) .checkbox-group input[type="checkbox"]:checked'))
+        .map(cb => cb.value);
+    profile.suppliesNeeds = Array.from(document.querySelectorAll('.urgent-supplies input[type="checkbox"]:checked'))
         .map(cb => cb.value);
     profile.advocacyReadiness = Array.from(document.querySelectorAll('.advocacy-section .question-item:nth-of-type(1) .checkbox-group input[type="checkbox"]:checked'))
         .map(cb => cb.value);
@@ -495,12 +500,14 @@ function displayAdultView() {
             </div>
             ` : ''}
             
-            ${((profile.schoolHelpNeeds || []).length > 0 || (profile.schoolChallenges || []).length > 0 || profile.schoolPrivateNotes || (profile.upcomingEvents || []).length > 0) ? `
+            ${((profile.schoolHelpNeeds || []).length > 0 || (profile.schoolChallenges || []).length > 0 || profile.schoolPrivateNotes || (profile.upcomingEvents || []).length > 0 || (profile.suppliesNeeds || []).length > 0) ? `
             <div class="kid-info school-support-display">
                 <h4>📚 School Support Needs (PRIVATE - Parents Only)</h4>
                 ${(profile.schoolHelpNeeds || []).length > 0 ? `<p><strong>Help needed with:</strong> ${profile.schoolHelpNeeds.join(', ')}</p>` : ''}
                 ${(profile.schoolChallenges || []).length > 0 ? `<p><strong>Current challenges:</strong> ${profile.schoolChallenges.join(', ')}</p>` : ''}
                 ${(profile.upcomingEvents || []).length > 0 ? `<p><strong>Upcoming events:</strong> ${profile.upcomingEvents.join(', ')}</p>` : ''}
+                ${(profile.suppliesNeeds || []).length > 0 ? `<p><strong>🚨 SUPPLIES NEEDED:</strong> ${profile.suppliesNeeds.join(', ')}</p>` : ''}
+                ${profile.suppliesExplanation ? `<p><strong>Why supplies needed:</strong> "${profile.suppliesExplanation}"</p>` : ''}
                 ${profile.learningStyle ? `<p><strong>Learning style:</strong> ${profile.learningStyle}</p>` : ''}
                 ${(profile.advocacyReadiness || []).length > 0 ? `<p><strong>Self-advocacy readiness:</strong> ${profile.advocacyReadiness.join(', ')}</p>` : ''}
                 ${profile.schoolPrivateNotes ? `<p><strong>Private notes:</strong> "${profile.schoolPrivateNotes}"</p>` : ''}
