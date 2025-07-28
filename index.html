@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Get-to-Know-Me</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <h1>🌟 Family Get-to-Know-Me 🌟</h1>
+            <p>Help your family know you better and find the perfect gifts!</p>
+        </header>
+
+        <div id="app">
+            <!-- Landing Page -->
+            <div id="landing-page" class="page active">
+                <div class="welcome-section">
+                    <h2>Welcome to Our Family Hub!</h2>
+                    <p>Are you a kid updating your profile, or an adult looking for gift ideas?</p>
+                    
+                    <div class="user-type-buttons">
+                        <button class="btn btn-primary" onclick="showKidLogin()">
+                            👦👧 I'm a Kid
+                        </button>
+                        <button class="btn btn-secondary" onclick="showAdultLogin()">
+                            👨👩 I'm an Adult
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kid Login/Selection -->
+            <div id="kid-login" class="page">
+                <h2>Which kid are you?</h2>
+                <div id="kid-profiles" class="profile-grid">
+                    <!-- Kids will be loaded here -->
+                </div>
+                <button class="btn btn-success" onclick="showAddKid()">+ Add New Kid</button>
+                <button class="btn btn-back" onclick="showLanding()">← Back</button>
+            </div>
+
+            <!-- Add New Kid -->
+            <div id="add-kid" class="page">
+                <h2>Create Your Profile</h2>
+                <form id="new-kid-form">
+                    <div class="form-group">
+                        <label>What's your name?</label>
+                        <input type="text" id="kid-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>How old are you?</label>
+                        <select id="kid-age" required>
+                            <option value="">Pick your age</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Pick your favorite color for your profile:</label>
+                        <div class="color-picker">
+                            <input type="radio" name="profile-color" value="blue" id="color-blue">
+                            <label for="color-blue" class="color-option blue"></label>
+                            
+                            <input type="radio" name="profile-color" value="pink" id="color-pink">
+                            <label for="color-pink" class="color-option pink"></label>
+                            
+                            <input type="radio" name="profile-color" value="green" id="color-green">
+                            <label for="color-green" class="color-option green"></label>
+                            
+                            <input type="radio" name="profile-color" value="purple" id="color-purple">
+                            <label for="color-purple" class="color-option purple"></label>
+                            
+                            <input type="radio" name="profile-color" value="orange" id="color-orange">
+                            <label for="color-orange" class="color-option orange"></label>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Create My Profile! 🎉</button>
+                </form>
+                <button class="btn btn-back" onclick="showKidLogin()">← Back</button>
+            </div>
+
+            <!-- Kid Profile/Questionnaire -->
+            <div id="kid-profile" class="page">
+                <div class="profile-header">
+                    <h2 id="current-kid-name">Hello, [Name]!</h2>
+                    <p>Update your info so your family knows what you love!</p>
+                </div>
+
+                <div class="questionnaire">
+                    <!-- Basic Info Section -->
+                    <section class="question-section">
+                        <h3>📏 Size Information</h3>
+                        <div class="size-grid">
+                            <div class="size-item">
+                                <label>Shirt Size:</label>
+                                <select id="shirt-size">
+                                    <option value="">Select size</option>
+                                    <option value="XS">XS</option>
+                                    <option value="S">S</option>
+                                    <option value="M">M</option>
+                                    <option value="L">L</option>
+                                    <option value="XL">XL</option>
+                                    <option value="2T">2T</option>
+                                    <option value="3T">3T</option>
+                                    <option value="4T">4T</option>
+                                    <option value="5T">5T</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="10">10</option>
+                                    <option value="12">12</option>
+                                    <option value="14">14</option>
+                                    <option value="16">16</option>
+                                </select>
+                            </div>
+                            <div class="size-item">
+                                <label>Pants Size:</label>
+                                <select id="pants-size">
+                                    <option value="">Select size</option>
+                                    <option value="XS">XS</option>
+                                    <option value="S">S</option>
+                                    <option value="M">M</option>
+                                    <option value="L">L</option>
+                                    <option value="XL">XL</option>
+                                    <option value="2T">2T</option>
+                                    <option value="3T">3T</option>
+                                    <option value="4T">4T</option>
+                                    <option value="5T">5T</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="10">10</option>
+                                    <option value="12">12</option>
+                                    <option value="14">14</option>
+                                    <option value="16">16</option>
+                                </select>
+                            </div>
+                            <div class="size-item">
+                                <label>Shoe Size:</label>
+                                <select id="shoe-size">
+                                    <option value="">Select size</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                    <option value="13">13</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                </select>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Clothing Preferences -->
+                    <section class="question-section">
+                        <h3>👕 Clothing I Like</h3>
+                        
+                        <div class="question-item">
+                            <label class="main-question">What type of pants do you like best?</label>
+                            <select id="pants-preference" class="main-answer">
+                                <option value="">Choose one</option>
+                                <option value="jeans">Jeans</option>
+                                <option value="leggings">Leggings</option>
+                                <option value="sweatpants">Sweatpants</option>
+                                <option value="shorts">Shorts</option>
+                                <option value="dresses">Dresses/Skirts</option>
+                            </select>
+                            <div class="extra-info">
+                                <label>Tell us more (optional):</label>
+                                <textarea placeholder="Like: I love soft leggings but hate scratchy jeans..."></textarea>
+                            </div>
+                        </div>
+
+                        <div class="question-item">
+                            <label class="main-question">Textures I DON'T like:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="rough"> Rough/scratchy fabric</label>
+                                <label><input type="checkbox" value="tight"> Tight clothes</label>
+                                <label><input type="checkbox" value="tags"> Clothing tags</label>
+                                <label><input type="checkbox" value="wool"> Wool</label>
+                                <label><input type="checkbox" value="polyester"> Polyester</label>
+                            </div>
+                        </div>
+
+                        <div class="question-item">
+                            <label class="main-question">My favorite colors to wear:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="red"> ❤️ Red</label>
+                                <label><input type="checkbox" value="blue"> 💙 Blue</label>
+                                <label><input type="checkbox" value="green"> 💚 Green</label>
+                                <label><input type="checkbox" value="pink"> 🩷 Pink</label>
+                                <label><input type="checkbox" value="purple"> 💜 Purple</label>
+                                <label><input type="checkbox" value="yellow"> 💛 Yellow</label>
+                                <label><input type="checkbox" value="black"> 🖤 Black</label>
+                                <label><input type="checkbox" value="white"> 🤍 White</label>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Interests Section -->
+                    <section class="question-section">
+                        <h3>🎯 What I Love</h3>
+                        
+                        <div class="question-item">
+                            <label class="main-question">What kind of toys/games do you like?</label>
+                            <select id="toy-preference" class="main-answer">
+                                <option value="">Choose your favorite</option>
+                                <option value="building">Building (Lego, blocks)</option>
+                                <option value="dolls">Dolls/Action figures</option>
+                                <option value="art">Art supplies</option>
+                                <option value="sports">Sports equipment</option>
+                                <option value="books">Books</option>
+                                <option value="puzzles">Puzzles</option>
+                                <option value="video-games">Video games</option>
+                                <option value="outdoor">Outdoor toys</option>
+                                <option value="science">Science kits</option>
+                            </select>
+                            <div class="extra-info">
+                                <label>Tell us more:</label>
+                                <textarea placeholder="Like: I love Pokemon cards and building spaceships with Lego..."></textarea>
+                            </div>
+                        </div>
+
+                        <div class="question-item">
+                            <label class="main-question">What's your favorite subject or activity?</label>
+                            <select id="subject-preference" class="main-answer">
+                                <option value="">Pick one</option>
+                                <option value="math">Math</option>
+                                <option value="reading">Reading</option>
+                                <option value="science">Science</option>
+                                <option value="art">Art</option>
+                                <option value="music">Music</option>
+                                <option value="sports">Sports</option>
+                                <option value="cooking">Cooking</option>
+                                <option value="animals">Animals</option>
+                                <option value="technology">Technology</option>
+                            </select>
+                            <div class="extra-info">
+                                <label>More details:</label>
+                                <textarea placeholder="Like: I love reading mystery books and drawing dragons..."></textarea>
+                            </div>
+                        </div>
+                    </section>
+
+                    <div class="save-section">
+                        <button class="btn btn-success btn-large" onclick="saveProfile()">
+                            💾 Save My Profile
+                        </button>
+                        <p class="save-note">You can come back and update this anytime!</p>
+                    </div>
+                </div>
+
+                <button class="btn btn-back" onclick="showKidLogin()">← Back to Kids</button>
+            </div>
+
+            <!-- Adult View -->
+            <div id="adult-view" class="page">
+                <h2>Family Profiles</h2>
+                <div class="adult-actions">
+                    <button class="btn btn-success" onclick="startTrivia()">🎮 Family Trivia Game</button>
+                </div>
+                <div id="adult-profiles" class="profiles-container">
+                    <!-- Kid profiles will be loaded here for adults -->
+                </div>
+                <button class="btn btn-back" onclick="showLanding()">← Back</button>
+            </div>
+
+            <!-- Trivia Game -->
+            <div id="trivia-game" class="page">
+                <div class="trivia-container">
+                    <div class="trivia-header">
+                        <h2>🎮 Family Trivia Game</h2>
+                        <div class="trivia-score">Score: <span id="trivia-score">0</span></div>
+                    </div>
+                    
+                    <div id="trivia-question-container" class="trivia-question">
+                        <div class="question-number">Question <span id="question-number">1</span> of <span id="total-questions">5</span></div>
+                        <h3 id="trivia-question">Loading question...</h3>
+                        <div class="trivia-answers" id="trivia-answers">
+                            <!-- Answer buttons will be generated here -->
+                        </div>
+                    </div>
+                    
+                    <div id="trivia-result" class="trivia-result" style="display: none;">
+                        <div class="result-content">
+                            <h3 id="result-title">Great job!</h3>
+                            <p id="result-text">You scored 4 out of 5!</p>
+                            <div class="result-actions">
+                                <button class="btn btn-primary" onclick="startTrivia()">🔄 Play Again</button>
+                                <button class="btn btn-secondary" onclick="showAdultView()">← Back to Profiles</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Messages/Questions -->
+            <div id="messages" class="page">
+                <h2>Private Questions</h2>
+                <div id="message-thread">
+                    <!-- Messages will be loaded here -->
+                </div>
+                <div class="message-form">
+                    <textarea id="new-message" placeholder="Ask a private question about gift ideas..."></textarea>
+                    <button class="btn btn-primary" onclick="sendMessage()">Send Message</button>
+                </div>
+                <button class="btn btn-back" onclick="showAdultView()">← Back</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
