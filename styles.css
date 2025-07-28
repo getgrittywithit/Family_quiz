@@ -376,6 +376,79 @@ body {
     margin-bottom: 8px;
 }
 
+/* Hat Measurements */
+.hat-measurements {
+    background: #f8fafc;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+    border-left: 4px solid #6b46c1;
+}
+
+.hat-measurements h4 {
+    color: #6b46c1;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+.measurement-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.measurement-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.measurement-item label {
+    font-size: 1em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.measurement-item input,
+.measurement-item select {
+    padding: 10px;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 1em;
+    margin-bottom: 5px;
+}
+
+.measurement-item small {
+    color: #666;
+    font-size: 0.9em;
+    font-style: italic;
+}
+
+/* Hat specific checkbox groups */
+.hat-types,
+.hat-issues {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.hat-types label,
+.hat-issues label {
+    display: flex;
+    align-items: center;
+    font-size: 1em;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.hat-types label:hover,
+.hat-issues label:hover {
+    background-color: #f3f4f6;
+}
+
 /* Save Section */
 .save-section {
     text-align: center;

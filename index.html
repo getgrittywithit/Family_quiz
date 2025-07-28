@@ -293,6 +293,105 @@
                         </div>
                     </section>
 
+                    <!-- Hat Information -->
+                    <section class="question-section">
+                        <h3>👒 Hat Information</h3>
+                        
+                        <div class="question-item">
+                            <label class="main-question">Do you like wearing hats?</label>
+                            <select id="hat-general-preference" class="main-answer">
+                                <option value="">Choose one</option>
+                                <option value="love">I love hats! 😍</option>
+                                <option value="like">I like some hats</option>
+                                <option value="neutral">I don't mind hats</option>
+                                <option value="dislike">I don't really like hats</option>
+                                <option value="hate">I hate wearing hats</option>
+                            </select>
+                        </div>
+
+                        <div class="hat-measurements">
+                            <h4>📏 Head Measurements</h4>
+                            <div class="measurement-grid">
+                                <div class="measurement-item">
+                                    <label>Head Circumference (inches):</label>
+                                    <input type="number" id="head-circumference" step="0.25" min="12" max="28" placeholder="20.5">
+                                    <small>Measure around widest part of head</small>
+                                </div>
+                                <div class="measurement-item">
+                                    <label>Hat Size (if known):</label>
+                                    <select id="hat-size">
+                                        <option value="">Select if known</option>
+                                        <optgroup label="Kids Sizes">
+                                            <option value="Baby (12-14\")">Baby (12-14")</option>
+                                            <option value="Toddler (15-17\")">Toddler (15-17")</option>
+                                            <option value="Child S (18-19\")">Child S (18-19")</option>
+                                            <option value="Child M (19-20\")">Child M (19-20")</option>
+                                            <option value="Child L (20-21\")">Child L (20-21")</option>
+                                        </optgroup>
+                                        <optgroup label="Youth/Adult Sizes">
+                                            <option value="Youth (21-22\")">Youth (21-22")</option>
+                                            <option value="Adult XS (21.5\")">Adult XS (21.5")</option>
+                                            <option value="Adult S (22\")">Adult S (22")</option>
+                                            <option value="Adult M (22.5\")">Adult M (22.5")</option>
+                                            <option value="Adult L (23\")">Adult L (23")</option>
+                                            <option value="Adult XL (23.5\")">Adult XL (23.5")</option>
+                                            <option value="Adult XXL (24+\")">Adult XXL (24+")</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="question-item">
+                            <label class="main-question">What types of hats do you like? (Check all that apply)</label>
+                            <div class="checkbox-group hat-types">
+                                <label><input type="checkbox" value="baseball-caps"> ⚾ Baseball caps</label>
+                                <label><input type="checkbox" value="sun-hats"> ☀️ Sun hats</label>
+                                <label><input type="checkbox" value="winter-hats"> ❄️ Winter hats/beanies</label>
+                                <label><input type="checkbox" value="straw-hats"> 🌾 Straw hats</label>
+                                <label><input type="checkbox" value="bonnets"> 👒 Bonnets</label>
+                                <label><input type="checkbox" value="beret"> 🎨 Berets</label>
+                                <label><input type="checkbox" value="bucket-hats"> 🪣 Bucket hats</label>
+                                <label><input type="checkbox" value="fedora"> 🎩 Fedoras</label>
+                                <label><input type="checkbox" value="cowboy-hats"> 🤠 Cowboy hats</label>
+                                <label><input type="checkbox" value="knit-hats"> 🧶 Knit hats</label>
+                                <label><input type="checkbox" value="trucker-hats"> 🚛 Trucker hats</label>
+                                <label><input type="checkbox" value="visors"> 🧢 Visors</label>
+                            </div>
+                        </div>
+
+                        <div class="question-item">
+                            <label class="main-question">Hat fit preference:</label>
+                            <select id="hat-fit-preference" class="main-answer">
+                                <option value="">How do you like hats to fit?</option>
+                                <option value="tight">Snug/Tight fit</option>
+                                <option value="normal">Normal fit</option>
+                                <option value="loose">Loose fit</option>
+                                <option value="adjustable">Prefer adjustable hats</option>
+                            </select>
+                        </div>
+
+                        <div class="question-item">
+                            <label class="main-question">Hat issues/dislikes (check any that apply):</label>
+                            <div class="checkbox-group hat-issues">
+                                <label><input type="checkbox" value="too-tight"> Hats feel too tight</label>
+                                <label><input type="checkbox" value="slips-off"> Hats slip off my head</label>
+                                <label><input type="checkbox" value="messy-hair"> Don't like how hats mess up my hair</label>
+                                <label><input type="checkbox" value="ears-uncomfortable"> Uncomfortable on ears</label>
+                                <label><input type="checkbox" value="too-warm"> Hats make me too warm</label>
+                                <label><input type="checkbox" value="scratchy"> Don't like scratchy materials</label>
+                                <label><input type="checkbox" value="blocks-vision"> Don't like brims that block vision</label>
+                            </div>
+                        </div>
+
+                        <div class="question-item">
+                            <div class="extra-info">
+                                <label>Additional hat notes:</label>
+                                <textarea id="hat-extra-notes" placeholder="Like: I love my pink baseball cap but only wear winter hats when it's really cold. I don't like hats with strings or ties..."></textarea>
+                            </div>
+                        </div>
+                    </section>
+
                     <!-- Clothing Preferences -->
                     <section class="question-section">
                         <h3>👕 Clothing I Like</h3>

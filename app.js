@@ -164,14 +164,23 @@ function loadProfile() {
     setSelectValue('shoe-size', profile.shoeSize);
     setSelectValue('shoe-width', profile.shoeWidth);
     
+    // Load hat information
+    setSelectValue('hat-general-preference', profile.hatGeneralPreference);
+    setInputValue('head-circumference', profile.headCircumference);
+    setSelectValue('hat-size', profile.hatSize);
+    setSelectValue('hat-fit-preference', profile.hatFitPreference);
+    loadCheckboxes('.hat-types input[type="checkbox"]', profile.hatTypes || []);
+    loadCheckboxes('.hat-issues input[type="checkbox"]', profile.hatIssues || []);
+    setInputValue('hat-extra-notes', profile.hatExtraNotes);
+    
     // Load preferences
     setSelectValue('pants-preference', profile.pantsPreference);
     setSelectValue('toy-preference', profile.toyPreference);
     setSelectValue('subject-preference', profile.subjectPreference);
     
     // Load checkboxes
-    loadCheckboxes('input[type="checkbox"][value]', profile.dislikedTextures || []);
-    loadCheckboxes('input[type="checkbox"][value]', profile.favoriteColors || []);
+    loadCheckboxes('.question-item:nth-of-type(2) input[type="checkbox"]', profile.dislikedTextures || []);
+    loadCheckboxes('.question-item:nth-of-type(3) input[type="checkbox"]', profile.favoriteColors || []);
     
     // Load text areas
     const textareas = document.querySelectorAll('.extra-info textarea');
@@ -185,6 +194,13 @@ function setSelectValue(id, value) {
     const select = document.getElementById(id);
     if (select && value) {
         select.value = value;
+    }
+}
+
+function setInputValue(id, value) {
+    const input = document.getElementById(id);
+    if (input && value) {
+        input.value = value;
     }
 }
 
@@ -207,6 +223,17 @@ function saveProfile() {
     profile.pantsFit = document.getElementById('pants-fit').value;
     profile.shoeSize = document.getElementById('shoe-size').value;
     profile.shoeWidth = document.getElementById('shoe-width').value;
+    
+    // Save hat information
+    profile.hatGeneralPreference = document.getElementById('hat-general-preference').value;
+    profile.headCircumference = document.getElementById('head-circumference').value;
+    profile.hatSize = document.getElementById('hat-size').value;
+    profile.hatFitPreference = document.getElementById('hat-fit-preference').value;
+    profile.hatTypes = Array.from(document.querySelectorAll('.hat-types input[type="checkbox"]:checked'))
+        .map(cb => cb.value);
+    profile.hatIssues = Array.from(document.querySelectorAll('.hat-issues input[type="checkbox"]:checked'))
+        .map(cb => cb.value);
+    profile.hatExtraNotes = document.getElementById('hat-extra-notes').value;
     
     // Save preferences
     profile.pantsPreference = document.getElementById('pants-preference').value;
@@ -279,6 +306,17 @@ function displayAdultView() {
                 <p><strong>Shirt:</strong> ${profile.shirtSize || 'Not set'}${profile.shirtFit ? ` (${profile.shirtFit} fit)` : ''}</p>
                 <p><strong>Pants:</strong> ${profile.pantsSize || 'Not set'}${profile.pantsFit ? ` (${profile.pantsFit} fit)` : ''}</p>
                 <p><strong>Shoes:</strong> ${profile.shoeSize || 'Not set'}${profile.shoeWidth ? ` (${profile.shoeWidth} width)` : ''}</p>
+            </div>
+            
+            <div class="kid-info">
+                <h4>👒 Hat Information</h4>
+                <p><strong>Likes hats:</strong> ${profile.hatGeneralPreference || 'Not set'}</p>
+                ${profile.headCircumference ? `<p><strong>Head circumference:</strong> ${profile.headCircumference}"</p>` : ''}
+                ${profile.hatSize ? `<p><strong>Hat size:</strong> ${profile.hatSize}</p>` : ''}
+                ${profile.hatFitPreference ? `<p><strong>Fit preference:</strong> ${profile.hatFitPreference}</p>` : ''}
+                ${(profile.hatTypes || []).length > 0 ? `<p><strong>Likes:</strong> ${profile.hatTypes.join(', ')}</p>` : ''}
+                ${(profile.hatIssues || []).length > 0 ? `<p><strong>Hat issues:</strong> ${profile.hatIssues.join(', ')}</p>` : ''}
+                ${profile.hatExtraNotes ? `<p><strong>Notes:</strong> "${profile.hatExtraNotes}"</p>` : ''}
             </div>
             
             <div class="kid-info">
