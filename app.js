@@ -2257,9 +2257,18 @@ document.addEventListener('DOMContentLoaded', function() {
 // Profile Tab Management
 function showProfileTab(tabName) {
     console.log('showProfileTab called with:', tabName);
+    
+    // Debug: Check if all tabs exist
+    const allTabs = document.querySelectorAll('.profile-tab-content');
+    console.log('Found tabs:', allTabs.length);
+    allTabs.forEach(tab => {
+        console.log('Tab ID:', tab.id, 'Has content:', tab.innerHTML.length > 50);
+    });
+    
     // Hide all tab contents
     document.querySelectorAll('.profile-tab-content').forEach(tab => {
         tab.classList.remove('active');
+        tab.style.display = 'none'; // Force hide
     });
     
     // Remove active class from all tab buttons
@@ -2271,6 +2280,10 @@ function showProfileTab(tabName) {
     const targetTab = document.getElementById(`tab-${tabName}`);
     if (targetTab) {
         targetTab.classList.add('active');
+        targetTab.style.display = 'block'; // Force show
+        console.log(`Activated tab: tab-${tabName}, content length:`, targetTab.innerHTML.length);
+    } else {
+        console.error(`Tab not found: tab-${tabName}`);
     }
     
     // Add active class to clicked button (if event exists)

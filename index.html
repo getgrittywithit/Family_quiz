@@ -45,12 +45,25 @@
         }
         
         .profile-tab-content {
-            display: none;
+            display: none !important;
             animation: fadeIn 0.3s ease-in;
+            min-height: 200px;
+            padding: 20px 0;
         }
         
         .profile-tab-content.active {
-            display: block;
+            display: block !important;
+        }
+        
+        /* Ensure content inside tabs is visible */
+        .profile-tab-content .question-section {
+            margin-bottom: 30px;
+        }
+        
+        .profile-tab-content h3 {
+            color: #1f2937;
+            margin-bottom: 20px;
+            font-size: 1.5em;
         }
         
         @keyframes fadeIn {
