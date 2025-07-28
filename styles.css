@@ -702,6 +702,550 @@ body {
     border-color: #fbbf24;
 }
 
+/* Wardrobe Management System */
+.wardrobe-management {
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border-left-color: #8b5cf6;
+}
+
+.wardrobe-management h3 {
+    color: #6b46c1;
+    background: linear-gradient(45deg, #8b5cf6, #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Guide Sections */
+.wardrobe-guide,
+.wardrobe-inventory,
+.pairing-guide,
+.laundry-helper,
+.shopping-guide {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    border: 1px solid #e2e8f0;
+}
+
+.wardrobe-guide h4,
+.wardrobe-inventory h4,
+.pairing-guide h4,
+.laundry-helper h4,
+.shopping-guide h4 {
+    color: #6b46c1;
+    font-size: 1.4em;
+    margin-bottom: 15px;
+    text-align: center;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 10px;
+}
+
+.guide-description,
+.inventory-description,
+.pairing-description,
+.laundry-description,
+.shopping-description {
+    text-align: center;
+    color: #64748b;
+    font-style: italic;
+    margin-bottom: 20px;
+    background: #f8fafc;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+/* Quantity Guides */
+.quantity-guides {
+    display: grid;
+    gap: 25px;
+}
+
+.age-group {
+    background: #f8fafc;
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid #e2e8f0;
+}
+
+.age-group h5 {
+    color: #475569;
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    text-align: center;
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.quantity-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.quantity-item {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.quantity-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.15);
+    border-color: #8b5cf6;
+}
+
+.item-name {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #374151;
+    margin-bottom: 8px;
+}
+
+.quantity {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #8b5cf6;
+    background: #f3f4f6;
+    padding: 5px 12px;
+    border-radius: 20px;
+    margin-bottom: 5px;
+}
+
+.quantity-item small {
+    color: #64748b;
+    font-size: 0.9em;
+}
+
+/* Inventory System */
+.inventory-categories {
+    display: grid;
+    gap: 20px;
+}
+
+.inventory-category {
+    background: #f8fafc;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+}
+
+.inventory-category h5 {
+    color: #475569;
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    text-align: center;
+    background: white;
+    padding: 8px;
+    border-radius: 6px;
+}
+
+.inventory-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.inventory-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.inventory-item label {
+    font-size: 1em;
+    font-weight: 600;
+    color: #374151;
+}
+
+.inventory-item input[type="number"] {
+    padding: 8px 12px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1em;
+    text-align: center;
+    transition: border-color 0.3s ease;
+}
+
+.inventory-item input[type="number"]:focus {
+    outline: none;
+    border-color: #8b5cf6;
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+}
+
+.inventory-analysis {
+    background: #fef7ff;
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid #d8b4fe;
+    margin-top: 20px;
+}
+
+.inventory-analysis h5 {
+    color: #7c3aed;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.analysis-feedback {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #d8b4fe;
+    text-align: center;
+    color: #64748b;
+}
+
+/* Pairing Guide */
+.pairing-rules {
+    display: grid;
+    gap: 20px;
+}
+
+.pairing-rule {
+    background: #f8fafc;
+    padding: 20px;
+    border-radius: 12px;
+    border-left: 4px solid #8b5cf6;
+}
+
+.pairing-rule h5 {
+    color: #6b46c1;
+    font-size: 1.2em;
+    margin-bottom: 15px;
+}
+
+.rule-content {
+    display: grid;
+    gap: 15px;
+}
+
+.rule-example,
+.rule-tip,
+.rule-warning {
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.rule-example {
+    background: #f0f9ff;
+    border: 1px solid #bae6fd;
+}
+
+.rule-tip {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+}
+
+.rule-warning {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+}
+
+.rule-example ul,
+.rule-tip ul,
+.rule-warning ul {
+    margin: 10px 0 0 20px;
+}
+
+.rule-example li,
+.rule-tip li,
+.rule-warning li {
+    margin-bottom: 5px;
+}
+
+.outfit-generator {
+    background: #fef7ff;
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid #d8b4fe;
+    margin-top: 20px;
+}
+
+.outfit-generator h5 {
+    color: #7c3aed;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.generated-outfits {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #d8b4fe;
+    text-align: center;
+    color: #64748b;
+}
+
+/* Laundry Helper */
+.laundry-tracker {
+    background: #f8fafc;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 20px;
+}
+
+.laundry-tracker h5 {
+    color: #475569;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.dirty-clothes-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.dirty-category {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+}
+
+.dirty-category h6 {
+    color: #374151;
+    font-size: 1em;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.dirty-items {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.dirty-items label {
+    padding: 6px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+    font-size: 0.95em;
+}
+
+.dirty-items label:hover {
+    background-color: #f8fafc;
+}
+
+.laundry-urgency {
+    background: #fef2f2;
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid #fecaca;
+}
+
+.laundry-urgency h5 {
+    color: #dc2626;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.urgent-laundry {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.urgent-laundry label {
+    padding: 8px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.urgent-laundry label:hover {
+    background-color: #fee2e2;
+    border-color: #fecaca;
+}
+
+.urgency-note {
+    margin-top: 15px;
+}
+
+.urgency-note label {
+    display: block;
+    font-weight: bold;
+    color: #7f1d1d;
+    margin-bottom: 8px;
+}
+
+.urgency-note textarea {
+    width: 100%;
+    height: 80px;
+    padding: 12px;
+    border: 2px solid #fecaca;
+    border-radius: 8px;
+    resize: vertical;
+    font-family: inherit;
+}
+
+.laundry-education {
+    background: #f0fdf4;
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid #bbf7d0;
+}
+
+.laundry-education h5 {
+    color: #15803d;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.laundry-lessons {
+    display: grid;
+    gap: 20px;
+}
+
+.lesson-item {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #bbf7d0;
+}
+
+.lesson-item h6 {
+    color: #15803d;
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+
+.lesson-item ul {
+    margin: 10px 0 0 20px;
+}
+
+.lesson-item li {
+    margin-bottom: 5px;
+    color: #374151;
+}
+
+.help-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.help-options label {
+    padding: 8px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+    border: 1px solid #bbf7d0;
+}
+
+.help-options label:hover {
+    background-color: #f0fdf4;
+}
+
+/* Shopping Guide */
+.shopping-priorities {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.priority-section {
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid;
+}
+
+.priority-section.invest {
+    background: #fef7ff;
+    border-color: #d8b4fe;
+}
+
+.priority-section.save {
+    background: #f0fdf4;
+    border-color: #bbf7d0;
+}
+
+.priority-section h5 {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+.priority-section.invest h5 {
+    color: #7c3aed;
+}
+
+.priority-section.save h5 {
+    color: #15803d;
+}
+
+.priority-items {
+    display: grid;
+    gap: 10px;
+}
+
+.priority-item {
+    background: white;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.priority-section.invest .priority-item {
+    border-color: #d8b4fe;
+}
+
+.priority-section.save .priority-item {
+    border-color: #bbf7d0;
+}
+
+.priority-item .item {
+    font-weight: bold;
+    color: #374151;
+}
+
+.priority-item small {
+    color: #64748b;
+    font-size: 0.9em;
+}
+
+.shopping-tips {
+    background: #f8fafc;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+}
+
+.shopping-tips h5 {
+    color: #475569;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.tip-list {
+    margin: 0 0 0 20px;
+}
+
+.tip-list li {
+    margin-bottom: 10px;
+    color: #374151;
+    line-height: 1.5;
+}
+
 .advocacy-section {
     background: #ecfdf5;
     padding: 20px;

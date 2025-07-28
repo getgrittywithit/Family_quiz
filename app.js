@@ -228,6 +228,29 @@ function loadProfile() {
     loadCheckboxes('.urgent-supplies input[type="checkbox"]', profile.suppliesNeeds || []);
     loadCheckboxes('.advocacy-section .question-item:nth-of-type(1) .checkbox-group input[type="checkbox"]', profile.advocacyReadiness || []);
     
+    // Load wardrobe inventory
+    setInputValue('current-tshirts', profile.currentTshirts);
+    setInputValue('current-longsleeve', profile.currentLongsleeve);
+    setInputValue('current-tanks', profile.currentTanks);
+    setInputValue('current-blouses', profile.currentBlouses);
+    setInputValue('current-jeans', profile.currentJeans);
+    setInputValue('current-leggings', profile.currentLeggings);
+    setInputValue('current-sweatpants', profile.currentSweatpants);
+    setInputValue('current-shorts', profile.currentShorts);
+    setInputValue('current-skirts', profile.currentSkirts);
+    setInputValue('current-casual-dresses', profile.currentCasualDresses);
+    setInputValue('current-fancy-dresses', profile.currentFancyDresses);
+    setInputValue('current-sweaters', profile.currentSweaters);
+    setInputValue('current-hoodies', profile.currentHoodies);
+    
+    // Load laundry tracking
+    loadCheckboxes('.dirty-category:nth-of-type(1) .dirty-items input[type="checkbox"]', profile.dirtyLights || []);
+    loadCheckboxes('.dirty-category:nth-of-type(2) .dirty-items input[type="checkbox"]', profile.dirtyDarks || []);
+    loadCheckboxes('.dirty-category:nth-of-type(3) .dirty-items input[type="checkbox"]', profile.dirtySpecial || []);
+    loadCheckboxes('.urgent-laundry input[type="checkbox"]', profile.urgentLaundry || []);
+    setInputValue('laundry-urgency-note', profile.laundryUrgencyNote);
+    loadCheckboxes('.help-options input[type="checkbox"]', profile.laundryHelp || []);
+    
     // Load text areas
     const textareas = document.querySelectorAll('.extra-info textarea');
     textareas.forEach((textarea, index) => {
@@ -355,6 +378,34 @@ function saveProfile() {
     profile.suppliesNeeds = Array.from(document.querySelectorAll('.urgent-supplies input[type="checkbox"]:checked'))
         .map(cb => cb.value);
     profile.advocacyReadiness = Array.from(document.querySelectorAll('.advocacy-section .question-item:nth-of-type(1) .checkbox-group input[type="checkbox"]:checked'))
+        .map(cb => cb.value);
+    
+    // Save wardrobe inventory
+    profile.currentTshirts = document.getElementById('current-tshirts').value;
+    profile.currentLongsleeve = document.getElementById('current-longsleeve').value;
+    profile.currentTanks = document.getElementById('current-tanks').value;
+    profile.currentBlouses = document.getElementById('current-blouses').value;
+    profile.currentJeans = document.getElementById('current-jeans').value;
+    profile.currentLeggings = document.getElementById('current-leggings').value;
+    profile.currentSweatpants = document.getElementById('current-sweatpants').value;
+    profile.currentShorts = document.getElementById('current-shorts').value;
+    profile.currentSkirts = document.getElementById('current-skirts').value;
+    profile.currentCasualDresses = document.getElementById('current-casual-dresses').value;
+    profile.currentFancyDresses = document.getElementById('current-fancy-dresses').value;
+    profile.currentSweaters = document.getElementById('current-sweaters').value;
+    profile.currentHoodies = document.getElementById('current-hoodies').value;
+    
+    // Save laundry tracking
+    profile.dirtyLights = Array.from(document.querySelectorAll('.dirty-category:nth-of-type(1) .dirty-items input[type="checkbox"]:checked'))
+        .map(cb => cb.value);
+    profile.dirtyDarks = Array.from(document.querySelectorAll('.dirty-category:nth-of-type(2) .dirty-items input[type="checkbox"]:checked'))
+        .map(cb => cb.value);
+    profile.dirtySpecial = Array.from(document.querySelectorAll('.dirty-category:nth-of-type(3) .dirty-items input[type="checkbox"]:checked'))
+        .map(cb => cb.value);
+    profile.urgentLaundry = Array.from(document.querySelectorAll('.urgent-laundry input[type="checkbox"]:checked'))
+        .map(cb => cb.value);
+    profile.laundryUrgencyNote = document.getElementById('laundry-urgency-note').value;
+    profile.laundryHelp = Array.from(document.querySelectorAll('.help-options input[type="checkbox"]:checked'))
         .map(cb => cb.value);
     
     // Save extra info from textareas
@@ -777,3 +828,268 @@ document.addEventListener('click', function(e) {
         }, 150);
     }
 });
+
+// Wardrobe Management Functions
+function analyzeWardrobe() {
+    if (!currentKid) return;
+    
+    const profile = profiles[currentKid.name] || {};
+    const age = currentKid.age;
+    
+    // Get current inventory
+    const inventory = {
+        tshirts: parseInt(profile.currentTshirts || 0),
+        longsleeve: parseInt(profile.currentLongsleeve || 0),
+        tanks: parseInt(profile.currentTanks || 0),
+        blouses: parseInt(profile.currentBlouses || 0),
+        jeans: parseInt(profile.currentJeans || 0),
+        leggings: parseInt(profile.currentLeggings || 0),
+        sweatpants: parseInt(profile.currentSweatpants || 0),
+        shorts: parseInt(profile.currentShorts || 0),
+        skirts: parseInt(profile.currentSkirts || 0),
+        casualDresses: parseInt(profile.currentCasualDresses || 0),
+        fancyDresses: parseInt(profile.currentFancyDresses || 0),
+        sweaters: parseInt(profile.currentSweaters || 0),
+        hoodies: parseInt(profile.currentHoodies || 0)
+    };
+    
+    // Define recommendations based on age
+    let recommendations;
+    if (age <= 5) {
+        recommendations = {
+            tops: 8, bottoms: 6, dresses: 3, layers: 4,
+            ageGroup: "👶 Toddler/Preschool"
+        };
+    } else if (age <= 10) {
+        recommendations = {
+            tops: 9, bottoms: 7, dresses: 4, layers: 5,
+            ageGroup: "🧒 Elementary"
+        };
+    } else {
+        recommendations = {
+            tops: 12, bottoms: 8, dresses: 6, layers: 7,
+            ageGroup: "👦👧 Middle/High School"
+        };
+    }
+    
+    // Calculate totals
+    const totalTops = inventory.tshirts + inventory.longsleeve + inventory.tanks + inventory.blouses;
+    const totalBottoms = inventory.jeans + inventory.leggings + inventory.sweatpants + inventory.shorts + inventory.skirts;
+    const totalDresses = inventory.casualDresses + inventory.fancyDresses;
+    const totalLayers = inventory.sweaters + inventory.hoodies;
+    
+    // Generate feedback
+    let feedback = `<h6>📊 Analysis for ${recommendations.ageGroup}</h6>`;
+    
+    // Analyze each category
+    const categories = [
+        {
+            name: "👕 Tops",
+            current: totalTops,
+            recommended: recommendations.tops,
+            details: `You have ${inventory.tshirts} t-shirts, ${inventory.longsleeve} long-sleeve, ${inventory.tanks} tanks, ${inventory.blouses} nice shirts`
+        },
+        {
+            name: "👖 Bottoms", 
+            current: totalBottoms,
+            recommended: recommendations.bottoms,
+            details: `You have ${inventory.jeans} jeans, ${inventory.leggings} leggings, ${inventory.sweatpants} sweatpants, ${inventory.shorts} shorts, ${inventory.skirts} skirts`
+        },
+        {
+            name: "👗 Dresses",
+            current: totalDresses,
+            recommended: recommendations.dresses,
+            details: `You have ${inventory.casualDresses} casual + ${inventory.fancyDresses} fancy dresses`
+        },
+        {
+            name: "🧥 Layers",
+            current: totalLayers,
+            recommended: recommendations.layers,
+            details: `You have ${inventory.sweaters} sweaters + ${inventory.hoodies} hoodies`
+        }
+    ];
+    
+    categories.forEach(category => {
+        const status = category.current >= category.recommended ? "✅" : "⚠️";
+        const statusText = category.current >= category.recommended ? "Good!" : "Need more";
+        const color = category.current >= category.recommended ? "#059669" : "#dc2626";
+        
+        feedback += `
+        <div style="margin: 10px 0; padding: 10px; border-left: 4px solid ${color}; background: ${category.current >= category.recommended ? '#f0fdf4' : '#fef2f2'};">
+            <strong>${status} ${category.name}</strong>: ${category.current}/${category.recommended} (${statusText})<br>
+            <small style="color: #64748b;">${category.details}</small>
+        </div>`;
+    });
+    
+    // Add shopping suggestions
+    const needsMore = categories.filter(c => c.current < c.recommended);
+    if (needsMore.length > 0) {
+        feedback += `<div style="margin-top: 15px; padding: 15px; background: #fef7ff; border-radius: 8px; border: 1px solid #d8b4fe;">
+            <strong>🛍️ Shopping List:</strong><br>`;
+        needsMore.forEach(category => {
+            const needed = category.recommended - category.current;
+            feedback += `• ${needed} more ${category.name.replace(/👕|👖|👗|🧥/g, '').trim()}<br>`;
+        });
+        feedback += `</div>`;
+    } else {
+        feedback += `<div style="margin-top: 15px; padding: 15px; background: #f0fdf4; border-radius: 8px; border: 1px solid #bbf7d0;">
+            <strong>🎉 Great job!</strong> Your wardrobe looks well-balanced for your age group!
+        </div>`;
+    }
+    
+    document.getElementById('wardrobe-feedback').innerHTML = feedback;
+}
+
+function generateOutfitSuggestions() {
+    if (!currentKid) return;
+    
+    const profile = profiles[currentKid.name] || {};
+    
+    // Get preferences
+    const favoriteColors = profile.favoriteColors || [];
+    const likedTextures = profile.likedTextures || [];
+    const stylePreference = profile.stylePreference || '';
+    const pantsPreference = profile.pantsPreference || '';
+    
+    if (favoriteColors.length === 0 || stylePreference === '') {
+        document.getElementById('outfit-suggestions').innerHTML = 
+            '<p>Complete your clothing preferences above to see personalized outfit suggestions!</p>';
+        return;
+    }
+    
+    // Generate outfit suggestions based on preferences
+    let outfits = [];
+    
+    // Outfit 1: Based on favorite color + neutrals
+    if (favoriteColors.length > 0) {
+        const color = favoriteColors[0];
+        outfits.push({
+            name: `💎 ${color.charAt(0).toUpperCase() + color.slice(1)} & Neutrals`,
+            description: `${color} top + denim ${pantsPreference || 'pants'} + white sneakers`,
+            reason: `Uses your favorite color ${color} as the star with safe neutral denim`
+        });
+    }
+    
+    // Outfit 2: Based on style preference
+    if (stylePreference.includes('comfortable')) {
+        outfits.push({
+            name: `😌 Ultimate Comfort`,
+            description: `Soft ${likedTextures.includes('fleece') ? 'fleece' : 'cotton'} hoodie + ${pantsPreference === 'leggings' ? 'leggings' : 'sweatpants'} + cozy socks`,
+            reason: `Perfect for your comfort-first style preference`
+        });
+    } else if (stylePreference.includes('bold')) {
+        outfits.push({
+            name: `✨ Bold Statement`,
+            description: `Bright patterned top + ${favoriteColors[1] || favoriteColors[0]} cardigan + dark jeans`,
+            reason: `Makes the bold statement you love while staying coordinated`
+        });
+    } else if (stylePreference.includes('simple')) {
+        outfits.push({
+            name: `🤍 Simple & Classic`,
+            description: `White t-shirt + denim jacket + ${pantsPreference || 'jeans'} + white sneakers`,
+            reason: `Clean, simple look that never goes out of style`
+        });
+    }
+    
+    // Outfit 3: Weather-appropriate layering
+    outfits.push({
+        name: `🌤️ Perfect Layers`,
+        description: `Light ${favoriteColors[0] || 'neutral'} t-shirt + cardigan + ${pantsPreference || 'pants'}`,
+        reason: `Smart layering lets you adjust as the day changes temperature`
+    });
+    
+    // Outfit 4: Weekend fun
+    if (favoriteColors.length >= 2) {
+        outfits.push({
+            name: `🎉 Weekend Fun`,
+            description: `${favoriteColors[0]} top + ${favoriteColors[1]} accessories + comfortable ${pantsPreference || 'jeans'}`,
+            reason: `Combines your top two favorite colors for a fun weekend look`
+        });
+    }
+    
+    let html = '<div style="display: grid; gap: 15px;">';
+    outfits.forEach(outfit => {
+        html += `
+        <div style="background: white; padding: 15px; border-radius: 10px; border: 1px solid #e2e8f0; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+            <h6 style="color: #6b46c1; margin-bottom: 8px;">${outfit.name}</h6>
+            <p style="margin-bottom: 8px; font-weight: 600;">${outfit.description}</p>
+            <small style="color: #64748b; font-style: italic;">${outfit.reason}</small>
+        </div>`;
+    });
+    html += '</div>';
+    
+    document.getElementById('outfit-suggestions').innerHTML = html;
+}
+
+// Add event listeners for inventory inputs to trigger analysis
+document.addEventListener('input', function(e) {
+    if (e.target.id && e.target.id.startsWith('current-')) {
+        setTimeout(analyzeWardrobe, 500); // Debounce the analysis
+    }
+});
+
+// Add event listeners for preference changes to trigger outfit suggestions
+document.addEventListener('change', function(e) {
+    if (e.target.id === 'style-preference' || e.target.id === 'pants-preference' || 
+        (e.target.type === 'checkbox' && e.target.value && ['red', 'blue', 'green', 'pink', 'purple', 'yellow', 'black', 'white'].includes(e.target.value))) {
+        setTimeout(generateOutfitSuggestions, 300);
+    }
+});
+
+// Update adult view to include wardrobe management info
+const originalDisplayAdultView = displayAdultView;
+displayAdultView = function() {
+    originalDisplayAdultView();
+    
+    // Add wardrobe information to adult cards
+    const adultCards = document.querySelectorAll('.adult-kid-card');
+    adultCards.forEach((card, index) => {
+        const kid = kids[index];
+        if (!kid) return;
+        
+        const profile = profiles[kid.name] || {};
+        
+        // Add wardrobe summary
+        let wardrobeInfo = '';
+        if (profile.urgentLaundry && profile.urgentLaundry.length > 0) {
+            wardrobeInfo += `
+            <div class="kid-info urgent-needs-display">
+                <h4>🧺 URGENT LAUNDRY NEEDED</h4>
+                <p><strong>Needs clean ASAP:</strong> ${profile.urgentLaundry.join(', ')}</p>
+                ${profile.laundryUrgencyNote ? `<p><strong>Why urgent:</strong> "${profile.laundryUrgencyNote}"</p>` : ''}
+            </div>`;
+        }
+        
+        if (profile.laundryHelp && profile.laundryHelp.length > 0) {
+            wardrobeInfo += `
+            <div class="kid-info">
+                <h4>🏠 Can Help With Laundry</h4>
+                <p><strong>Willing to help:</strong> ${profile.laundryHelp.join(', ')}</p>
+            </div>`;
+        }
+        
+        // Add dirty clothes tracking
+        const dirtyClothes = [];
+        if (profile.dirtyLights && profile.dirtyLights.length > 0) {
+            dirtyClothes.push(`Lights: ${profile.dirtyLights.join(', ')}`);
+        }
+        if (profile.dirtyDarks && profile.dirtyDarks.length > 0) {
+            dirtyClothes.push(`Darks: ${profile.dirtyDarks.join(', ')}`);
+        }
+        if (profile.dirtySpecial && profile.dirtySpecial.length > 0) {
+            dirtyClothes.push(`Special care: ${profile.dirtySpecial.join(', ')}`);
+        }
+        
+        if (dirtyClothes.length > 0) {
+            wardrobeInfo += `
+            <div class="kid-info">
+                <h4>🧺 Dirty Clothes Status</h4>
+                <p>${dirtyClothes.join(' | ')}</p>
+            </div>`;
+        }
+        
+        if (wardrobeInfo) {
+            card.insertAdjacentHTML('beforeend', wardrobeInfo);
+        }
+    });
+};

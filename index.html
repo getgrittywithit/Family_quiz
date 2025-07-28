@@ -495,6 +495,429 @@
                         </div>
                     </section>
 
+                    <!-- Wardrobe Builder & Management System -->
+                    <section class="question-section wardrobe-management">
+                        <h3>👗 My Wardrobe Builder - Let's Make Getting Dressed Easy!</h3>
+                        
+                        <!-- Recommended Quantities Guide -->
+                        <div class="wardrobe-guide">
+                            <h4>📊 How Many of Each Should I Have?</h4>
+                            <p class="guide-description">Based on your age and how often we do laundry, here's what works best for most kids:</p>
+                            
+                            <div class="quantity-guides">
+                                <div class="age-group">
+                                    <h5>👶 Ages 2-5 (Toddler/Preschool)</h5>
+                                    <div class="quantity-grid">
+                                        <div class="quantity-item">
+                                            <span class="item-name">👕 T-shirts/Tops</span>
+                                            <span class="quantity">6-8 pieces</span>
+                                            <small>Mix of short & long sleeve</small>
+                                        </div>
+                                        <div class="quantity-item">
+                                            <span class="item-name">👖 Pants/Bottoms</span>
+                                            <span class="quantity">5-6 pieces</span>
+                                            <small>Leggings, jeans, shorts</small>
+                                        </div>
+                                        <div class="quantity-item">
+                                            <span class="item-name">👗 Dresses</span>
+                                            <span class="quantity">2-3 pieces</span>
+                                            <small>Play dresses + 1 fancy</small>
+                                        </div>
+                                        <div class="quantity-item">
+                                            <span class="item-name">🧥 Sweaters/Hoodies</span>
+                                            <span class="quantity">3-4 pieces</span>
+                                            <small>Light & heavy options</small>
+                                        </div>
+                                        <div class="quantity-item">
+                                            <span class="item-name">👙 Underwear</span>
+                                            <span class="quantity">8-10 pieces</span>
+                                            <small>Potty training extras</small>
+                                        </div>
+                                        <div class="quantity-item">
+                                            <span class="item-name">🧦 Socks</span>
+                                            <span class="quantity">8-10 pairs</span>
+                                            <small>Lost sock insurance!</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="age-group">
+                                    <h5>🧒 Ages 6-10 (Elementary)</h5>
+                                    <div class="quantity-grid">
+                                        <div class="quantity-item">
+                                            <span class="item-name">👕 T-shirts/Tops</span>
+                                            <span class="quantity">7-9 pieces</span>
+                                            <small>School & weekend mix</small>
+                                        </div>
+                                        <div class="quantity-item">
+                                            <span class="item-name">👖 Pants/Bottoms</span>
+                                            <span class="quantity">6-7 pieces</span>
+                                            <small>Include dress code items</small>
+                                        </div>
+                                        <div class="quantity-item">
+                                            <span class="item-name">👗 Dresses</span>
+                                            <span class="quantity">3-4 pieces</span>
+                                            <small>Casual + special occasion</small>
+                                        </div>
+                                        <div class="quantity-item">
+                                            <span class="item-name">🧥 Layers</span>
+                                            <span class="quantity">4-5 pieces</span>
+                                            <small>Cardigans, hoodies, jackets</small>
+                                        </div>
+                                        <div class="quantity-item">
+                                            <span class="item-name">👙 Underwear</span>
+                                            <span class="quantity">10-12 pieces</span>
+                                            <small>Week+ worth</small>
+                                        </div>
+                                        <div class="quantity-item">
+                                            <span class="item-name">🧦 Socks</span>
+                                            <span class="quantity">10-12 pairs</span>
+                                            <small>Mix of styles</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="age-group">
+                                    <h5>👦👧 Ages 11+ (Middle/High School)</h5>
+                                    <div class="quantity-grid">
+                                        <div class="quantity-item">
+                                            <span class="item-name">👕 Tops</span>
+                                            <span class="quantity">8-12 pieces</span>
+                                            <small>More style choices</small>
+                                        </div>
+                                        <div class="quantity-item">
+                                            <span class="item-name">👖 Bottoms</span>
+                                            <span class="quantity">6-8 pieces</span>
+                                            <small>Variety for self-expression</small>
+                                        </div>
+                                        <div class="quantity-item">
+                                            <span class="item-name">👗 Dresses</span>
+                                            <span class="quantity">4-6 pieces</span>
+                                            <small>Casual to dressy range</small>
+                                        </div>
+                                        <div class="quantity-item">
+                                            <span class="item-name">🧥 Layers</span>
+                                            <span class="quantity">5-7 pieces</span>
+                                            <small>Style & weather options</small>
+                                        </div>
+                                        <div class="quantity-item">
+                                            <span class="item-name">👙 Underwear</span>
+                                            <span class="quantity">12-14 pieces</span>
+                                            <small>Independence buffer</small>
+                                        </div>
+                                        <div class="quantity-item">
+                                            <span class="item-name">🧦 Socks</span>
+                                            <span class="quantity">12-15 pairs</span>
+                                            <small>Include specialty socks</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Current Wardrobe Inventory -->
+                        <div class="wardrobe-inventory">
+                            <h4>📝 What's Currently in My Closet?</h4>
+                            <p class="inventory-description">Help us track what you already have so we know what you might need:</p>
+                            
+                            <div class="inventory-categories">
+                                <div class="inventory-category">
+                                    <h5>👕 Tops I Currently Own</h5>
+                                    <div class="inventory-grid">
+                                        <div class="inventory-item">
+                                            <label>Short-sleeve shirts/t-shirts:</label>
+                                            <input type="number" id="current-tshirts" min="0" max="20" placeholder="0">
+                                        </div>
+                                        <div class="inventory-item">
+                                            <label>Long-sleeve shirts:</label>
+                                            <input type="number" id="current-longsleeve" min="0" max="20" placeholder="0">
+                                        </div>
+                                        <div class="inventory-item">
+                                            <label>Tank tops/sleeveless:</label>
+                                            <input type="number" id="current-tanks" min="0" max="15" placeholder="0">
+                                        </div>
+                                        <div class="inventory-item">
+                                            <label>Blouses/nice shirts:</label>
+                                            <input type="number" id="current-blouses" min="0" max="10" placeholder="0">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="inventory-category">
+                                    <h5>👖 Bottoms I Currently Own</h5>
+                                    <div class="inventory-grid">
+                                        <div class="inventory-item">
+                                            <label>Jeans:</label>
+                                            <input type="number" id="current-jeans" min="0" max="10" placeholder="0">
+                                        </div>
+                                        <div class="inventory-item">
+                                            <label>Leggings:</label>
+                                            <input type="number" id="current-leggings" min="0" max="15" placeholder="0">
+                                        </div>
+                                        <div class="inventory-item">
+                                            <label>Sweatpants/joggers:</label>
+                                            <input type="number" id="current-sweatpants" min="0" max="10" placeholder="0">
+                                        </div>
+                                        <div class="inventory-item">
+                                            <label>Shorts:</label>
+                                            <input type="number" id="current-shorts" min="0" max="10" placeholder="0">
+                                        </div>
+                                        <div class="inventory-item">
+                                            <label>Skirts:</label>
+                                            <input type="number" id="current-skirts" min="0" max="8" placeholder="0">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="inventory-category">
+                                    <h5>👗 Dresses & Layers</h5>
+                                    <div class="inventory-grid">
+                                        <div class="inventory-item">
+                                            <label>Casual dresses:</label>
+                                            <input type="number" id="current-casual-dresses" min="0" max="10" placeholder="0">
+                                        </div>
+                                        <div class="inventory-item">
+                                            <label>Fancy/dressy dresses:</label>
+                                            <input type="number" id="current-fancy-dresses" min="0" max="5" placeholder="0">
+                                        </div>
+                                        <div class="inventory-item">
+                                            <label>Sweaters/cardigans:</label>
+                                            <input type="number" id="current-sweaters" min="0" max="8" placeholder="0">
+                                        </div>
+                                        <div class="inventory-item">
+                                            <label>Hoodies/sweatshirts:</label>
+                                            <input type="number" id="current-hoodies" min="0" max="8" placeholder="0">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="inventory-analysis">
+                                <h5>📊 My Wardrobe Analysis</h5>
+                                <div id="wardrobe-feedback" class="analysis-feedback">
+                                    <p>Fill in your current inventory above to see personalized recommendations!</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Outfit Pairing Guide -->
+                        <div class="pairing-guide">
+                            <h4>🎨 Mix & Match Magic - Create Amazing Outfits!</h4>
+                            <p class="pairing-description">Learn to create multiple outfits from fewer pieces using these simple rules:</p>
+                            
+                            <div class="pairing-rules">
+                                <div class="pairing-rule">
+                                    <h5>🌈 Color Mixing Rules</h5>
+                                    <div class="rule-content">
+                                        <div class="rule-example">
+                                            <strong>Safe Combinations:</strong>
+                                            <ul>
+                                                <li>Any color + neutral (white, black, gray, denim)</li>
+                                                <li>Two colors that are next to each other (blue + green, red + orange)</li>
+                                                <li>Opposite colors for bold looks (red + green, blue + orange)</li>
+                                            </ul>
+                                        </div>
+                                        <div class="rule-tip">
+                                            <strong>Pro Tip:</strong> Start with one colorful piece, then add neutrals!
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="pairing-rule">
+                                    <h5>🔀 Pattern Mixing Magic</h5>
+                                    <div class="rule-content">
+                                        <div class="rule-example">
+                                            <strong>Easy Pattern Combos:</strong>
+                                            <ul>
+                                                <li>Small pattern (polka dots) + solid color</li>
+                                                <li>Stripes + solid that matches one stripe color</li>
+                                                <li>Two patterns that share the same color</li>
+                                            </ul>
+                                        </div>
+                                        <div class="rule-warning">
+                                            <strong>Avoid:</strong> Two big, busy patterns together (like big flowers + big stripes)
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="pairing-rule">
+                                    <h5>🧥 Layering Like a Pro</h5>
+                                    <div class="rule-content">
+                                        <div class="rule-example">
+                                            <strong>Layer Smart:</strong>
+                                            <ul>
+                                                <li>Thin under thick (t-shirt under sweater)</li>
+                                                <li>Light colors under dark (white tee under dark cardigan)</li>
+                                                <li>Different textures (smooth under chunky knit)</li>
+                                            </ul>
+                                        </div>
+                                        <div class="rule-tip">
+                                            <strong>Weather Hack:</strong> Layers let you adjust as the day changes!
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="outfit-generator">
+                                <h5>🎲 Outfit Generator</h5>
+                                <p>Based on your preferences, here are some outfit ideas:</p>
+                                <div class="generated-outfits" id="outfit-suggestions">
+                                    <p>Complete your clothing preferences above to see personalized outfit suggestions!</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Laundry Helper System -->
+                        <div class="laundry-helper">
+                            <h4>🧺 Laundry Helper - Make Mom's Life Easier!</h4>
+                            <p class="laundry-description">Help keep track of dirty clothes and learn to help with laundry:</p>
+                            
+                            <div class="laundry-tracker">
+                                <h5>👕 What's in My Dirty Clothes Basket?</h5>
+                                <div class="dirty-clothes-categories">
+                                    <div class="dirty-category">
+                                        <h6>🟡 Lights/Colors (can wash together)</h6>
+                                        <div class="checkbox-group dirty-items">
+                                            <label><input type="checkbox" value="light-shirts"> Light colored shirts</label>
+                                            <label><input type="checkbox" value="light-pants"> Light pants/shorts</label>
+                                            <label><input type="checkbox" value="colored-items"> Bright colored clothes</label>
+                                            <label><input type="checkbox" value="light-socks"> White/light socks</label>
+                                            <label><input type="checkbox" value="light-underwear"> Light underwear</label>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="dirty-category">
+                                        <h6>⚫ Darks (wash separately)</h6>
+                                        <div class="checkbox-group dirty-items">
+                                            <label><input type="checkbox" value="dark-shirts"> Dark shirts</label>
+                                            <label><input type="checkbox" value="jeans"> Jeans</label>
+                                            <label><input type="checkbox" value="dark-pants"> Dark pants</label>
+                                            <label><input type="checkbox" value="dark-socks"> Dark socks</label>
+                                            <label><input type="checkbox" value="dark-sweaters"> Dark sweaters/hoodies</label>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="dirty-category">
+                                        <h6>🌟 Special Care (delicate/hand wash)</h6>
+                                        <div class="checkbox-group dirty-items">
+                                            <label><input type="checkbox" value="delicate-dresses"> Nice dresses</label>
+                                            <label><input type="checkbox" value="sweaters"> Wool sweaters</label>
+                                            <label><input type="checkbox" value="special-items"> Clothes with sequins/lace</label>
+                                            <label><input type="checkbox" value="sports-gear"> Sports uniforms</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="laundry-urgency">
+                                    <h5>🚨 I Need These Clean ASAP!</h5>
+                                    <div class="checkbox-group urgent-laundry">
+                                        <label><input type="checkbox" value="school-uniform"> School uniform pieces</label>
+                                        <label><input type="checkbox" value="favorite-outfit"> My favorite outfit</label>
+                                        <label><input type="checkbox" value="sports-practice"> Sports practice clothes</label>
+                                        <label><input type="checkbox" value="special-event"> Clothes for special event</label>
+                                        <label><input type="checkbox" value="pajamas"> Pajamas (running low!)</label>
+                                        <label><input type="checkbox" value="underwear-socks"> Underwear/socks (almost out!)</label>
+                                    </div>
+                                    <div class="urgency-note">
+                                        <label>Why do you need these clean urgently?</label>
+                                        <textarea id="laundry-urgency-note" placeholder="Like: I have picture day tomorrow and need my blue dress, or I'm out of clean socks for school..."></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="laundry-education">
+                                <h5>📚 Laundry Learning Corner</h5>
+                                <div class="laundry-lessons">
+                                    <div class="lesson-item">
+                                        <h6>🔍 Reading Care Labels</h6>
+                                        <p>Look for these symbols on your clothes tags:</p>
+                                        <ul>
+                                            <li>🌡️ <strong>Cold water:</strong> Dots or temperature numbers</li>
+                                            <li>🧺 <strong>Machine wash:</strong> Tub symbol</li>
+                                            <li>👔 <strong>Hang dry:</strong> Square with lines</li>
+                                            <li>⚠️ <strong>Dry clean only:</strong> Circle symbol</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="lesson-item">
+                                        <h6>🏠 Ways I Can Help</h6>
+                                        <div class="checkbox-group help-options">
+                                            <label><input type="checkbox" value="sort-colors"> Sort clothes by color</label>
+                                            <label><input type="checkbox" value="empty-pockets"> Check pockets for tissues/coins</label>
+                                            <label><input type="checkbox" value="match-socks"> Match socks after washing</label>
+                                            <label><input type="checkbox" value="fold-simple"> Fold simple items (towels, t-shirts)</label>
+                                            <label><input type="checkbox" value="put-away"> Put my clean clothes away</label>
+                                            <label><input type="checkbox" value="hang-up"> Hang up dresses/nice clothes</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Shopping Guide -->
+                        <div class="shopping-guide">
+                            <h4>🛍️ Smart Shopping Guide - Quality Over Quantity</h4>
+                            <p class="shopping-description">Learn what to invest in vs. what to skip for a budget-friendly wardrobe:</p>
+                            
+                            <div class="shopping-priorities">
+                                <div class="priority-section invest">
+                                    <h5>💎 Worth Spending More On</h5>
+                                    <div class="priority-items">
+                                        <div class="priority-item">
+                                            <span class="item">🧥 Jackets & Coats</span>
+                                            <small>You wear them often, they need to last</small>
+                                        </div>
+                                        <div class="priority-item">
+                                            <span class="item">👟 Shoes</span>
+                                            <small>Good support for growing feet</small>
+                                        </div>
+                                        <div class="priority-item">
+                                            <span class="item">👖 Jeans</span>
+                                            <small>High-quality denim lasts longer</small>
+                                        </div>
+                                        <div class="priority-item">
+                                            <span class="item">🧦 Socks & Underwear</span>
+                                            <small>Comfort matters for daily wear</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="priority-section save">
+                                    <h5>💰 Okay to Buy Cheaper</h5>
+                                    <div class="priority-items">
+                                        <div class="priority-item">
+                                            <span class="item">👕 Basic T-shirts</span>
+                                            <small>You'll outgrow them quickly</small>
+                                        </div>
+                                        <div class="priority-item">
+                                            <span class="item">🩳 Shorts (summer)</span>
+                                            <small>Seasonal wear, shorter use</small>
+                                        </div>
+                                        <div class="priority-item">
+                                            <span class="item">👗 Trendy Pieces</span>
+                                            <small>Styles change, kids grow</small>
+                                        </div>
+                                        <div class="priority-item">
+                                            <span class="item">🎽 Play Clothes</span>
+                                            <small>Will get messy anyway!</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="shopping-tips">
+                                <h5>🧠 Smart Shopping Tips</h5>
+                                <ul class="tip-list">
+                                    <li><strong>Buy Versatile:</strong> Choose pieces that work for multiple occasions</li>
+                                    <li><strong>Neutral Base:</strong> Build around colors that match everything</li>
+                                    <li><strong>Size Up Sometimes:</strong> For coats and pajamas, a little bigger is okay</li>
+                                    <li><strong>Quality Check:</strong> Feel the fabric, check seams and zippers</li>
+                                    <li><strong>Think Seasons:</strong> Buy clothes at the start of their season</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
                     <!-- Shoe Styles & Preferences -->
                     <section class="question-section">
                         <h3>👟 Shoe Styles & Preferences</h3>
