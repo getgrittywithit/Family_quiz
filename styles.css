@@ -615,6 +615,59 @@ body {
     font-weight: bold;
 }
 
+/* School Support Section */
+.school-support {
+    background: #f0f9ff;
+    border-left-color: #0ea5e9;
+}
+
+.school-support h3 {
+    color: #0c4a6e;
+    background: #e0f2fe;
+}
+
+.support-description {
+    background: #dbeafe;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #1e40af;
+    text-align: center;
+    border: 2px solid #93c5fd;
+}
+
+.advocacy-section {
+    background: #ecfdf5;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    border: 2px solid #86efac;
+}
+
+.advocacy-section h4 {
+    color: #15803d;
+    font-size: 1.3em;
+    margin-bottom: 15px;
+    text-align: center;
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* School support display in adult view */
+.school-support-display {
+    background: #f0f9ff !important;
+    border: 2px solid #93c5fd !important;
+    border-radius: 10px !important;
+}
+
+.school-support-display h4 {
+    color: #0c4a6e !important;
+    font-weight: bold;
+}
+
 /* Save Section */
 .save-section {
     text-align: center;
