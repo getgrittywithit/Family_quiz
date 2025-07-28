@@ -27,6 +27,9 @@
                         <button class="btn btn-secondary" onclick="showAdultLogin()">
                             👨👩 I'm an Adult
                         </button>
+                        <button class="btn btn-success" onclick="showAdminDashboard()">
+                            ⚙️ Admin Hub
+                        </button>
                     </div>
                 </div>
             </div>
@@ -1501,6 +1504,513 @@
                     <!-- Kid profiles will be loaded here for adults -->
                 </div>
                 <button class="btn btn-back" onclick="showLanding()">← Back</button>
+            </div>
+
+            <!-- Admin Dashboard -->
+            <div id="admin-dashboard" class="page">
+                <div class="admin-header">
+                    <h2>⚙️ Family Admin Hub</h2>
+                    <p>Manage your family's profiles, photo galleries, and preferences all in one place</p>
+                </div>
+
+                <!-- Admin Navigation Sidebar -->
+                <div class="admin-layout">
+                    <div class="admin-sidebar">
+                        <h3>📋 Quick Access</h3>
+                        <div class="admin-nav">
+                            <button class="admin-nav-btn active" onclick="showAdminSection('overview')">
+                                🏠 Family Overview
+                            </button>
+                            <button class="admin-nav-btn" onclick="showAdminSection('wardrobe')">
+                                👗 Wardrobe Manager
+                            </button>
+                            <button class="admin-nav-btn" onclick="showAdminSection('photos')">
+                                📸 Photo Gallery
+                            </button>
+                            <button class="admin-nav-btn" onclick="showAdminSection('gifts')">
+                                🎁 Gift Ideas Hub
+                            </button>
+                            <button class="admin-nav-btn" onclick="showAdminSection('communication')">
+                                💬 Family Messages
+                            </button>
+                            <button class="admin-nav-btn" onclick="showAdminSection('ai-assistant')">
+                                🤖 AI Bedroom Pal
+                            </button>
+                            <button class="admin-nav-btn" onclick="showAdminSection('settings')">
+                                ⚙️ Settings
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="admin-content">
+                        <!-- Family Overview Section -->
+                        <div id="admin-overview" class="admin-section active">
+                            <h3>🏠 Family Overview Dashboard</h3>
+                            
+                            <div class="overview-stats">
+                                <div class="stat-card">
+                                    <h4>👥 Family Members</h4>
+                                    <div class="stat-number" id="total-kids">6</div>
+                                    <small>Active profiles</small>
+                                </div>
+                                <div class="stat-card">
+                                    <h4>🧺 Urgent Laundry</h4>
+                                    <div class="stat-number urgent" id="urgent-laundry-count">3</div>
+                                    <small>Items need cleaning</small>
+                                </div>
+                                <div class="stat-card">
+                                    <h4>🛍️ Shopping Needs</h4>
+                                    <div class="stat-number warning" id="shopping-needs-count">12</div>
+                                    <small>Items to buy</small>
+                                </div>
+                                <div class="stat-card">
+                                    <h4>🎁 Gift Ideas</h4>
+                                    <div class="stat-number success" id="gift-ideas-count">45</div>
+                                    <small>Saved suggestions</small>
+                                </div>
+                            </div>
+
+                            <div class="quick-actions">
+                                <h4>🚀 Quick Actions</h4>
+                                <div class="action-grid">
+                                    <button class="action-btn" onclick="generateShoppingList()">
+                                        🛒 Generate Shopping List
+                                    </button>
+                                    <button class="action-btn" onclick="checkLaundryStatus()">
+                                        🧺 Check Laundry Status
+                                    </button>
+                                    <button class="action-btn" onclick="exportGiftIdeas()">
+                                        📋 Export Gift Ideas
+                                    </button>
+                                    <button class="action-btn" onclick="sendFamilyUpdate()">
+                                        📱 Send Family Update
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="recent-activity">
+                                <h4>📈 Recent Activity</h4>
+                                <div id="activity-feed" class="activity-list">
+                                    <div class="activity-item">
+                                        <span class="activity-icon">👕</span>
+                                        <div class="activity-content">
+                                            <strong>Emma</strong> added 3 new wardrobe items
+                                            <small>2 hours ago</small>
+                                        </div>
+                                    </div>
+                                    <div class="activity-item">
+                                        <span class="activity-icon">🎁</span>
+                                        <div class="activity-content">
+                                            <strong>Grandma</strong> sent a gift idea for Jake
+                                            <small>4 hours ago</small>
+                                        </div>
+                                    </div>
+                                    <div class="activity-item">
+                                        <span class="activity-icon">🧺</span>
+                                        <div class="activity-content">
+                                            <strong>Mia</strong> marked uniform as urgent laundry
+                                            <small>6 hours ago</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Wardrobe Manager Section -->
+                        <div id="admin-wardrobe" class="admin-section">
+                            <h3>👗 Wardrobe Manager</h3>
+                            
+                            <div class="wardrobe-overview">
+                                <div class="wardrobe-categories">
+                                    <div class="category-section">
+                                        <h4>📊 Wardrobe Status by Child</h4>
+                                        <div id="wardrobe-summary" class="wardrobe-grid">
+                                            <!-- Will be populated by JavaScript -->
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="category-section">
+                                        <h4>🛍️ Consolidated Shopping List</h4>
+                                        <div class="shopping-categories">
+                                            <div class="shopping-category">
+                                                <h5>🚨 Urgent Needs</h5>
+                                                <div id="urgent-shopping-list" class="shopping-items">
+                                                    <!-- Populated by JavaScript -->
+                                                </div>
+                                            </div>
+                                            <div class="shopping-category">
+                                                <h5>⭐ Recommended Purchases</h5>
+                                                <div id="recommended-shopping-list" class="shopping-items">
+                                                    <!-- Populated by JavaScript -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="closet-photos">
+                                    <h4>📸 Visual Closet Inventory</h4>
+                                    <div class="photo-upload-section">
+                                        <p>Upload photos of each child's closet to help gift-buyers see what they already have:</p>
+                                        <div class="upload-grid">
+                                            <div class="upload-zone" onclick="uploadClosetPhoto('general')">
+                                                <div class="upload-icon">📷</div>
+                                                <p>Upload Closet Photo</p>
+                                                <small>Drag & drop or click to select</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div id="closet-gallery" class="photo-gallery">
+                                        <!-- Photos will be displayed here -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Photo Gallery Section -->
+                        <div id="admin-photos" class="admin-section">
+                            <h3>📸 Family Photo Gallery</h3>
+                            
+                            <div class="photo-categories">
+                                <div class="category-tabs">
+                                    <button class="tab-btn active" onclick="showPhotoCategory('closets')">👗 Closets</button>
+                                    <button class="tab-btn" onclick="showPhotoCategory('gifts')">🎁 Gift Ideas</button>
+                                    <button class="tab-btn" onclick="showPhotoCategory('damaged')">🔧 Damaged Items</button>
+                                    <button class="tab-btn" onclick="showPhotoCategory('favorites')">⭐ Favorites</button>
+                                    <button class="tab-btn" onclick="showPhotoCategory('wishlist')">💝 Wishlist</button>
+                                </div>
+
+                                <div class="photo-upload">
+                                    <h4>📱 Quick Photo Upload</h4>
+                                    <div class="upload-options">
+                                        <div class="upload-method" onclick="capturePhoto()">
+                                            <span class="method-icon">📸</span>
+                                            <div class="method-info">
+                                                <strong>Take Photo</strong>
+                                                <small>Use camera to capture item</small>
+                                            </div>
+                                        </div>
+                                        <div class="upload-method" onclick="selectPhoto()">
+                                            <span class="method-icon">🖼️</span>
+                                            <div class="method-info">
+                                                <strong>Choose from Library</strong>
+                                                <small>Select existing photos</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="photo-details">
+                                        <label>Which child is this for?</label>
+                                        <select id="photo-child-select" class="form-input">
+                                            <option value="">Select child...</option>
+                                            <!-- Will be populated by JavaScript -->
+                                        </select>
+                                        
+                                        <label>Photo category:</label>
+                                        <select id="photo-category-select" class="form-input">
+                                            <option value="closet">👗 Closet item</option>
+                                            <option value="gift-idea">🎁 Gift idea</option>
+                                            <option value="damaged">🔧 Damaged item</option>
+                                            <option value="favorite">⭐ Favorite item</option>
+                                            <option value="wishlist">💝 Wishlist item</option>
+                                        </select>
+                                        
+                                        <label>Notes (optional):</label>
+                                        <textarea id="photo-notes" placeholder="Add any notes about this item..."></textarea>
+                                    </div>
+                                </div>
+
+                                <div id="photo-gallery-content" class="photo-display">
+                                    <!-- Photos will be displayed here based on selected category -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Gift Ideas Hub Section -->
+                        <div id="admin-gifts" class="admin-section">
+                            <h3>🎁 Gift Ideas Hub</h3>
+                            
+                            <div class="gift-management">
+                                <div class="gift-features">
+                                    <div class="feature-section">
+                                        <h4>👵 Grandparent Direct Line</h4>
+                                        <p>Allow grandparents and family to send gift ideas directly to kids, bypassing mom as middleman:</p>
+                                        
+                                        <div class="direct-message-system">
+                                            <div class="message-example">
+                                                <div class="message sender-grandma">
+                                                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMjAiIGZpbGw9IiNGQ0E1QTUiLz4KPHRLEHU+8J+RtTwvdGV4dD4KPC9zdmc+" alt="Grandma" class="message-avatar"/>
+                                                    <div class="message-content">
+                                                        <strong>Grandma to Emma:</strong><br>
+                                                        "Found this cute sweater at the store! Think you'd like it?" 
+                                                        <div class="message-photo">📸 [Sweater Photo]</div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="message sender-kid">
+                                                    <div class="message-content">
+                                                        <strong>Emma:</strong><br>
+                                                        "OMG yes! I love the sparkles! 💖"
+                                                    </div>
+                                                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMjAiIGZpbGw9IiNEQ0ZDRTciLz4KPHRLEHU+8J+RpzwvdGV4dD4KPC9zdmc+" alt="Emma" class="message-avatar"/>
+                                                </div>
+                                            </div>
+                                            
+                                            <button class="btn btn-success" onclick="setupDirectMessaging()">
+                                                🔗 Set Up Direct Messaging
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="feature-section">
+                                        <h4>🤖 AI Gift Assistant</h4>
+                                        <p>Get smart gift suggestions based on each child's preferences, age, and interests:</p>
+                                        
+                                        <div class="ai-suggestions">
+                                            <div class="suggestion-card">
+                                                <h5>For Emma (Age 8)</h5>
+                                                <div class="suggestion-items">
+                                                    <div class="suggestion-item">
+                                                        <span class="item-icon">🎨</span>
+                                                        <div class="item-details">
+                                                            <strong>Art Supply Set</strong>
+                                                            <small>Loves creative activities + pink colors</small>
+                                                        </div>
+                                                        <div class="confidence">95%</div>
+                                                    </div>
+                                                    <div class="suggestion-item">
+                                                        <span class="item-icon">📚</span>
+                                                        <div class="item-details">
+                                                            <strong>Graphic Novel Series</strong>
+                                                            <small>Enjoys adventure books + visual stories</small>
+                                                        </div>
+                                                        <div class="confidence">88%</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <button class="btn btn-primary" onclick="generateAIGiftIdeas()">
+                                                ✨ Generate More AI Suggestions
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="gift-tracking">
+                                    <h4>📋 Gift Tracking System</h4>
+                                    <div class="tracking-table">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>Child</th>
+                                                    <th>Gift Ideas</th>
+                                                    <th>From</th>
+                                                    <th>Status</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="gift-tracking-table">
+                                                <!-- Will be populated by JavaScript -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Family Messages Section -->
+                        <div id="admin-communication" class="admin-section">
+                            <h3>💬 Family Communication Hub</h3>
+                            
+                            <div class="communication-features">
+                                <div class="message-categories">
+                                    <div class="message-category">
+                                        <h4>🎁 Gift Coordination</h4>
+                                        <p>Messages between family members about gift ideas</p>
+                                        <div class="message-count">12 new</div>
+                                    </div>
+                                    
+                                    <div class="message-category">
+                                        <h4>🔧 Item Care Requests</h4>
+                                        <p>Kids reporting damaged items or care needs</p>
+                                        <div class="message-count urgent">3 urgent</div>
+                                    </div>
+                                    
+                                    <div class="message-category">
+                                        <h4>🛍️ Shopping Requests</h4>
+                                        <p>Kids requesting new items or replacements</p>
+                                        <div class="message-count">8 new</div>
+                                    </div>
+                                </div>
+
+                                <div class="message-thread">
+                                    <h4>Recent Messages</h4>
+                                    <div id="message-thread-display" class="message-list">
+                                        <!-- Messages will be displayed here -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- AI Bedroom Pal Section -->
+                        <div id="admin-ai-assistant" class="admin-section">
+                            <h3>🤖 AI Bedroom Pal Assistant</h3>
+                            
+                            <div class="ai-pal-setup">
+                                <div class="pal-intro">
+                                    <h4>Meet Your Family's AI Helper! 🌟</h4>
+                                    <p>Create a friendly AI assistant that helps bridge technology and family connection. Your "Bedroom Pal" will:</p>
+                                    
+                                    <div class="pal-features">
+                                        <div class="feature-highlight">
+                                            <span class="feature-icon">💬</span>
+                                            <div class="feature-text">
+                                                <strong>Chat with Kids</strong>
+                                                <small>Help them express preferences and needs</small>
+                                            </div>
+                                        </div>
+                                        <div class="feature-highlight">
+                                            <span class="feature-icon">🎨</span>
+                                            <div class="feature-text">
+                                                <strong>Visual Preferences</strong>
+                                                <small>Show photos and get like/don't like responses</small>
+                                            </div>
+                                        </div>
+                                        <div class="feature-highlight">
+                                            <span class="feature-icon">🎁</span>
+                                            <div class="feature-text">
+                                                <strong>Gift Suggestions</strong>
+                                                <small>Smart recommendations based on interests</small>
+                                            </div>
+                                        </div>
+                                        <div class="feature-highlight">
+                                            <span class="feature-icon">👔</span>
+                                            <div class="feature-text">
+                                                <strong>Outfit Helper</strong>
+                                                <small>Daily outfit suggestions and style guidance</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="pal-personality">
+                                    <h4>🎭 Customize Your Pal's Personality</h4>
+                                    <div class="personality-options">
+                                        <div class="personality-card" onclick="selectPersonality('cheerful')">
+                                            <div class="personality-icon">😊</div>
+                                            <h5>Cheerful Buddy</h5>
+                                            <p>Upbeat, encouraging, uses lots of emojis</p>
+                                        </div>
+                                        <div class="personality-card" onclick="selectPersonality('wise')">
+                                            <div class="personality-icon">🦉</div>
+                                            <h5>Wise Friend</h5>
+                                            <p>Thoughtful, gives good advice, asks questions</p>
+                                        </div>
+                                        <div class="personality-card" onclick="selectPersonality('playful')">
+                                            <div class="personality-icon">🎮</div>
+                                            <h5>Playful Pal</h5>
+                                            <p>Fun, makes games of tasks, loves jokes</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="pal-demo">
+                                    <h4>💬 Try a Conversation</h4>
+                                    <div class="chat-demo">
+                                        <div class="demo-message ai">
+                                            <div class="message-avatar">🤖</div>
+                                            <div class="message-text">
+                                                Hi Emma! I see you uploaded a photo of that damaged sweater. Would you like me to help you tell mom about it, or would you prefer to handle it yourself? 😊
+                                            </div>
+                                        </div>
+                                        <div class="demo-message user">
+                                            <div class="message-text">
+                                                Can you help me tell her? I don't want her to think I was careless 😔
+                                            </div>
+                                            <div class="message-avatar">👧</div>
+                                        </div>
+                                        <div class="demo-message ai">
+                                            <div class="message-avatar">🤖</div>
+                                            <div class="message-text">
+                                                Of course! I'll help you write a nice message explaining it was an accident. Everyone makes mistakes, and mom will understand! 💕 Want me to send it to her now?
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <button class="btn btn-primary" onclick="activateAIPal()">
+                                        🚀 Activate AI Bedroom Pal
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Settings Section -->
+                        <div id="admin-settings" class="admin-section">
+                            <h3>⚙️ Family Settings</h3>
+                            
+                            <div class="settings-categories">
+                                <div class="setting-group">
+                                    <h4>👥 Family Members</h4>
+                                    <div class="family-list">
+                                        <!-- Will be populated by JavaScript -->
+                                    </div>
+                                    <button class="btn btn-success" onclick="addFamilyMember()">+ Add Family Member</button>
+                                </div>
+
+                                <div class="setting-group">
+                                    <h4>📱 Notifications</h4>
+                                    <div class="notification-settings">
+                                        <label class="setting-toggle">
+                                            <input type="checkbox" checked> Gift idea notifications
+                                        </label>
+                                        <label class="setting-toggle">
+                                            <input type="checkbox" checked> Urgent laundry alerts
+                                        </label>
+                                        <label class="setting-toggle">
+                                            <input type="checkbox"> Daily outfit suggestions
+                                        </label>
+                                        <label class="setting-toggle">
+                                            <input type="checkbox" checked> Shopping list updates
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="setting-group">
+                                    <h4>🔒 Privacy Settings</h4>
+                                    <div class="privacy-settings">
+                                        <label class="setting-toggle">
+                                            <input type="checkbox" checked> Allow grandparents direct messaging
+                                        </label>
+                                        <label class="setting-toggle">
+                                            <input type="checkbox"> Share photos with extended family
+                                        </label>
+                                        <label class="setting-toggle">
+                                            <input type="checkbox" checked> AI assistant can access preferences
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="setting-group">
+                                    <h4>📊 Data & Backup</h4>
+                                    <div class="data-settings">
+                                        <button class="btn btn-secondary" onclick="exportFamilyData()">
+                                            📥 Export All Data
+                                        </button>
+                                        <button class="btn btn-secondary" onclick="backupPhotos()">
+                                            🖼️ Backup Photos
+                                        </button>
+                                        <button class="btn btn-warning" onclick="resetAllData()">
+                                            🔄 Reset All Data
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn btn-back" onclick="showLanding()">← Back to Home</button>
             </div>
 
             <!-- Trivia Game -->

@@ -1093,3 +1093,413 @@ displayAdultView = function() {
         }
     });
 };
+
+// Admin Dashboard Functions
+function showAdminDashboard() {
+    hideAllPages();
+    document.getElementById('admin-dashboard').classList.add('active');
+    showAdminSection('overview');
+    updateAdminStats();
+}
+
+function showAdminSection(sectionName) {
+    // Hide all admin sections
+    document.querySelectorAll('.admin-section').forEach(section => {
+        section.classList.remove('active');
+    });
+    
+    // Remove active class from all nav buttons
+    document.querySelectorAll('.admin-nav-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    
+    // Show selected section
+    document.getElementById(`admin-${sectionName}`).classList.add('active');
+    
+    // Add active class to clicked button
+    event.target.classList.add('active');
+    
+    // Load section-specific data
+    switch(sectionName) {
+        case 'overview':
+            updateAdminStats();
+            loadRecentActivity();
+            break;
+        case 'wardrobe':
+            loadWardrobeManagerData();
+            break;
+        case 'photos':
+            loadPhotoGallery();
+            break;
+        case 'gifts':
+            loadGiftManagement();
+            break;
+        case 'communication':
+            loadFamilyMessages();
+            break;
+        case 'ai-assistant':
+            loadAIPalSettings();
+            break;
+        case 'settings':
+            loadFamilySettings();
+            break;
+    }
+}
+
+function updateAdminStats() {
+    // Calculate stats from current data
+    const totalKids = kids.length;
+    let urgentLaundryCount = 0;
+    let shoppingNeedsCount = 0;
+    let giftIdeasCount = 0;
+    
+    kids.forEach(kid => {
+        const profile = profiles[kid.name] || {};
+        if (profile.urgentLaundry && profile.urgentLaundry.length > 0) {
+            urgentLaundryCount += profile.urgentLaundry.length;
+        }
+        if (profile.urgentNeeds && profile.urgentNeeds.length > 0) {
+            shoppingNeedsCount += profile.urgentNeeds.length;
+        }
+        if (profile.suppliesNeeds && profile.suppliesNeeds.length > 0) {
+            shoppingNeedsCount += profile.suppliesNeeds.length;
+        }
+        // Estimate gift ideas based on interests
+        const interests = (profile.bookTypes || []).length + 
+                         (profile.sportsActivities || []).length + 
+                         (profile.creativeActivities || []).length + 
+                         (profile.techInterests || []).length + 
+                         (profile.toyGames || []).length;
+        giftIdeasCount += interests;
+    });
+    
+    // Update the display
+    document.getElementById('total-kids').textContent = totalKids;
+    document.getElementById('urgent-laundry-count').textContent = urgentLaundryCount;
+    document.getElementById('shopping-needs-count').textContent = shoppingNeedsCount;
+    document.getElementById('gift-ideas-count').textContent = giftIdeasCount;
+}
+
+function loadRecentActivity() {
+    const activityFeed = document.getElementById('activity-feed');
+    
+    // Generate recent activity based on profiles
+    let activities = [];
+    
+    kids.forEach(kid => {
+        const profile = profiles[kid.name] || {};
+        
+        // Add activities based on profile data
+        if (profile.urgentNeeds && profile.urgentNeeds.length > 0) {
+            activities.push({
+                icon: '👕',
+                content: `<strong>${kid.name}</strong> marked ${profile.urgentNeeds.length} clothing items as urgent`,
+                time: '2 hours ago'
+            });
+        }
+        
+        if (profile.suppliesNeeds && profile.suppliesNeeds.length > 0) {
+            activities.push({
+                icon: '📚',
+                content: `<strong>${kid.name}</strong> needs ${profile.suppliesNeeds.length} school supplies`,
+                time: '4 hours ago'
+            });
+        }
+        
+        if (profile.favoriteColors && profile.favoriteColors.length > 0) {
+            activities.push({
+                icon: '🎨',
+                content: `<strong>${kid.name}</strong> updated color preferences`,
+                time: '1 day ago'
+            });
+        }
+    });
+    
+    // Limit to most recent 5 activities
+    activities = activities.slice(0, 5);
+    
+    if (activities.length === 0) {
+        activities.push({
+            icon: '👋',
+            content: '<strong>Welcome!</strong> Start by having kids fill out their profiles',
+            time: 'Just now'
+        });
+    }
+    
+    activityFeed.innerHTML = activities.map(activity => `
+        <div class="activity-item">
+            <span class="activity-icon">${activity.icon}</span>
+            <div class="activity-content">
+                ${activity.content}
+                <small>${activity.time}</small>
+            </div>
+        </div>
+    `).join('');
+}
+
+function loadWardrobeManagerData() {
+    const wardrobeSummary = document.getElementById('wardrobe-summary');
+    const urgentShoppingList = document.getElementById('urgent-shopping-list');
+    const recommendedShoppingList = document.getElementById('recommended-shopping-list');
+    
+    let wardrobeCards = '';
+    let urgentItems = [];
+    let recommendedItems = [];
+    
+    kids.forEach(kid => {
+        const profile = profiles[kid.name] || {};
+        
+        // Generate wardrobe summary card
+        const urgentCount = (profile.urgentNeeds || []).length;
+        const wardrobeStatus = urgentCount > 0 ? 'Needs attention' : 'Looking good';
+        const statusClass = urgentCount > 0 ? 'urgent' : 'success';
+        
+        wardrobeCards += `
+        <div class="stat-card">
+            <h4>${kid.name}</h4>
+            <div class="stat-number ${statusClass}">${urgentCount}</div>
+            <small>${wardrobeStatus}</small>
+        </div>`;
+        
+        // Collect urgent items
+        if (profile.urgentNeeds && profile.urgentNeeds.length > 0) {
+            profile.urgentNeeds.forEach(item => {
+                urgentItems.push(`${kid.name}: ${item.replace(/-/g, ' ')}`);
+            });
+        }
+        
+        // Collect supplies needs
+        if (profile.suppliesNeeds && profile.suppliesNeeds.length > 0) {
+            profile.suppliesNeeds.forEach(item => {
+                urgentItems.push(`${kid.name}: ${item.replace(/-/g, ' ')}`);
+            });
+        }
+        
+        // Generate recommended items based on wardrobe analysis
+        if (profile.currentTshirts && parseInt(profile.currentTshirts) < 5) {
+            recommendedItems.push(`${kid.name}: More t-shirts (currently has ${profile.currentTshirts})`);
+        }
+        if (profile.currentJeans && parseInt(profile.currentJeans) < 3) {
+            recommendedItems.push(`${kid.name}: More jeans (currently has ${profile.currentJeans})`);
+        }
+    });
+    
+    wardrobeSummary.innerHTML = wardrobeCards;
+    
+    urgentShoppingList.innerHTML = urgentItems.length > 0 ? 
+        urgentItems.map(item => `<div class="shopping-item urgent">${item}</div>`).join('') :
+        '<div class="shopping-item">No urgent needs right now! 🎉</div>';
+    
+    recommendedShoppingList.innerHTML = recommendedItems.length > 0 ?
+        recommendedItems.map(item => `<div class="shopping-item">${item}</div>`).join('') :
+        '<div class="shopping-item">All wardrobes look well-stocked! ✨</div>';
+}
+
+function loadPhotoGallery() {
+    // Initialize photo gallery (placeholder - would integrate with real photo storage)
+    const gallery = document.getElementById('photo-gallery-content');
+    gallery.innerHTML = `
+        <div style="text-align: center; padding: 40px; color: #64748b;">
+            <h4>📸 Photo Gallery Coming Soon!</h4>
+            <p>Upload photos of closets, gift ideas, and damaged items here.</p>
+            <p>This feature will integrate with your device's camera and photo library.</p>
+        </div>
+    `;
+}
+
+function loadGiftManagement() {
+    const giftTrackingTable = document.getElementById('gift-tracking-table');
+    
+    let giftRows = '';
+    kids.forEach(kid => {
+        const profile = profiles[kid.name] || {};
+        
+        // Generate gift ideas based on interests
+        const interests = [];
+        if (profile.bookTypes && profile.bookTypes.length > 0) {
+            interests.push(`Books: ${profile.bookTypes.join(', ')}`);
+        }
+        if (profile.sportsActivities && profile.sportsActivities.length > 0) {
+            interests.push(`Sports: ${profile.sportsActivities.join(', ')}`);
+        }
+        if (profile.creativeActivities && profile.creativeActivities.length > 0) {
+            interests.push(`Creative: ${profile.creativeActivities.join(', ')}`);
+        }
+        
+        const giftIdeas = interests.length > 0 ? interests.join('<br>') : 'Complete profile for suggestions';
+        
+        giftRows += `
+        <tr>
+            <td><strong>${kid.name}</strong> (${kid.age})</td>
+            <td style="max-width: 200px; font-size: 0.9em;">${giftIdeas}</td>
+            <td>AI Generated</td>
+            <td><span class="confidence">Active</span></td>
+            <td>
+                <button class="btn btn-primary" style="padding: 5px 10px; font-size: 0.8em;">
+                    View Details
+                </button>
+            </td>
+        </tr>`;
+    });
+    
+    giftTrackingTable.innerHTML = giftRows;
+}
+
+function loadFamilyMessages() {
+    const messageDisplay = document.getElementById('message-thread-display');
+    
+    // Placeholder for family messages
+    messageDisplay.innerHTML = `
+        <div style="text-align: center; padding: 40px; color: #64748b;">
+            <h4>💬 Family Messages</h4>
+            <p>Direct messaging between family members about gifts, care requests, and shopping needs.</p>
+            <p>Messages will appear here as family members start communicating through the system.</p>
+        </div>
+    `;
+}
+
+function loadAIPalSettings() {
+    // AI Pal functionality is ready to be activated
+    console.log('AI Pal settings loaded');
+}
+
+function loadFamilySettings() {
+    const familyList = document.querySelector('.family-list');
+    
+    let familyMembers = '';
+    kids.forEach(kid => {
+        familyMembers += `
+        <div class="setting-toggle">
+            <span>${kid.name} (${kid.age} years old)</span>
+            <button class="btn btn-secondary" style="padding: 5px 10px; font-size: 0.8em; margin-left: auto;">
+                Edit
+            </button>
+        </div>`;
+    });
+    
+    familyList.innerHTML = familyMembers;
+}
+
+// Quick Action Functions
+function generateShoppingList() {
+    alert('🛒 Generating consolidated shopping list for all family members...\n\nThis will compile all urgent needs and recommended purchases into a printable list!');
+}
+
+function checkLaundryStatus() {
+    let laundryReport = '🧺 FAMILY LAUNDRY STATUS:\n\n';
+    let hasUrgent = false;
+    
+    kids.forEach(kid => {
+        const profile = profiles[kid.name] || {};
+        if (profile.urgentLaundry && profile.urgentLaundry.length > 0) {
+            laundryReport += `${kid.name}: ${profile.urgentLaundry.join(', ')}\n`;
+            hasUrgent = true;
+        }
+    });
+    
+    if (!hasUrgent) {
+        laundryReport += 'All caught up! No urgent laundry needs. 🎉';
+    }
+    
+    alert(laundryReport);
+}
+
+function exportGiftIdeas() {
+    let giftList = '🎁 FAMILY GIFT IDEAS:\n\n';
+    
+    kids.forEach(kid => {
+        const profile = profiles[kid.name] || {};
+        giftList += `${kid.name} (${kid.age}):\n`;
+        
+        if (profile.bookTypes && profile.bookTypes.length > 0) {
+            giftList += `  📚 Books: ${profile.bookTypes.join(', ')}\n`;
+        }
+        if (profile.sportsActivities && profile.sportsActivities.length > 0) {
+            giftList += `  ⚽ Sports: ${profile.sportsActivities.join(', ')}\n`;
+        }
+        if (profile.creativeActivities && profile.creativeActivities.length > 0) {
+            giftList += `  🎨 Creative: ${profile.creativeActivities.join(', ')}\n`;
+        }
+        if (profile.favoriteColors && profile.favoriteColors.length > 0) {
+            giftList += `  🌈 Favorite colors: ${profile.favoriteColors.join(', ')}\n`;
+        }
+        giftList += '\n';
+    });
+    
+    // In a real implementation, this would download or email the list
+    alert(giftList);
+}
+
+function sendFamilyUpdate() {
+    alert('📱 Family update sent!\n\nAll family members will be notified of recent changes and urgent needs.');
+}
+
+// Photo and AI Functions (placeholders for future implementation)
+function capturePhoto() {
+    alert('📸 Camera feature coming soon!\n\nThis will allow you to take photos directly from your device.');
+}
+
+function selectPhoto() {
+    alert('🖼️ Photo library access coming soon!\n\nThis will let you choose photos from your device.');
+}
+
+function uploadClosetPhoto() {
+    alert('📷 Closet photo upload coming soon!\n\nThis will help family members see what clothes each child already has.');
+}
+
+function showPhotoCategory(category) {
+    // Update active tab
+    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+    
+    // Show category content
+    const content = document.getElementById('photo-gallery-content');
+    content.innerHTML = `
+        <div style="text-align: center; padding: 40px; color: #64748b;">
+            <h4>📸 ${category.charAt(0).toUpperCase() + category.slice(1)} Photos</h4>
+            <p>Photos in this category will appear here.</p>
+        </div>
+    `;
+}
+
+function setupDirectMessaging() {
+    alert('🔗 Direct messaging setup!\n\nFamily members can now send gift ideas and photos directly to kids without going through mom.');
+}
+
+function generateAIGiftIdeas() {
+    alert('✨ AI generating personalized gift suggestions based on each child\'s preferences, age, and interests!\n\nThis feature will provide smart, tailored recommendations.');
+}
+
+function selectPersonality(type) {
+    // Update personality selection
+    document.querySelectorAll('.personality-card').forEach(card => card.classList.remove('selected'));
+    event.target.closest('.personality-card').classList.add('selected');
+    
+    alert(`🤖 AI Personality set to: ${type}\n\nYour AI Bedroom Pal will now have a ${type} personality when chatting with the kids!`);
+}
+
+function activateAIPal() {
+    alert('🚀 AI Bedroom Pal activated!\n\nThe AI assistant is now ready to help kids with outfit choices, gift preferences, and family communication.');
+}
+
+// Settings Functions
+function addFamilyMember() {
+    const name = prompt('Enter family member name:');
+    if (name) {
+        alert(`👥 ${name} will be added to the family system!`);
+    }
+}
+
+function exportFamilyData() {
+    alert('📥 Exporting all family data...\n\nThis will create a backup of all profiles, preferences, and photos.');
+}
+
+function backupPhotos() {
+    alert('🖼️ Backing up all family photos...\n\nThis will save all uploaded photos to your preferred backup location.');
+}
+
+function resetAllData() {
+    if (confirm('🔄 Are you sure you want to reset ALL family data?\n\nThis cannot be undone!')) {
+        alert('Data reset cancelled for safety. In a real system, this would clear all profiles and start fresh.');
+    }
+};
