@@ -74,20 +74,41 @@
                     <div class="form-group">
                         <label>Pick your favorite color for your profile:</label>
                         <div class="color-picker">
-                            <input type="radio" name="profile-color" value="blue" id="color-blue">
-                            <label for="color-blue" class="color-option blue"></label>
+                            <input type="radio" name="profile-color" value="bright-blue" id="color-bright-blue">
+                            <label for="color-bright-blue" class="color-option bright-blue" title="Bright Blue"></label>
                             
-                            <input type="radio" name="profile-color" value="pink" id="color-pink">
-                            <label for="color-pink" class="color-option pink"></label>
+                            <input type="radio" name="profile-color" value="hot-pink" id="color-hot-pink">
+                            <label for="color-hot-pink" class="color-option hot-pink" title="Hot Pink"></label>
                             
-                            <input type="radio" name="profile-color" value="green" id="color-green">
-                            <label for="color-green" class="color-option green"></label>
+                            <input type="radio" name="profile-color" value="emerald-green" id="color-emerald-green">
+                            <label for="color-emerald-green" class="color-option emerald-green" title="Emerald Green"></label>
                             
-                            <input type="radio" name="profile-color" value="purple" id="color-purple">
-                            <label for="color-purple" class="color-option purple"></label>
+                            <input type="radio" name="profile-color" value="royal-purple" id="color-royal-purple">
+                            <label for="color-royal-purple" class="color-option royal-purple" title="Royal Purple"></label>
                             
-                            <input type="radio" name="profile-color" value="orange" id="color-orange">
-                            <label for="color-orange" class="color-option orange"></label>
+                            <input type="radio" name="profile-color" value="sunset-orange" id="color-sunset-orange">
+                            <label for="color-sunset-orange" class="color-option sunset-orange" title="Sunset Orange"></label>
+                            
+                            <input type="radio" name="profile-color" value="sunshine-yellow" id="color-sunshine-yellow">
+                            <label for="color-sunshine-yellow" class="color-option sunshine-yellow" title="Sunshine Yellow"></label>
+                            
+                            <input type="radio" name="profile-color" value="coral-red" id="color-coral-red">
+                            <label for="color-coral-red" class="color-option coral-red" title="Coral Red"></label>
+                            
+                            <input type="radio" name="profile-color" value="ocean-teal" id="color-ocean-teal">
+                            <label for="color-ocean-teal" class="color-option ocean-teal" title="Ocean Teal"></label>
+                            
+                            <input type="radio" name="profile-color" value="lavender" id="color-lavender">
+                            <label for="color-lavender" class="color-option lavender" title="Lavender"></label>
+                            
+                            <input type="radio" name="profile-color" value="mint-green" id="color-mint-green">
+                            <label for="color-mint-green" class="color-option mint-green" title="Mint Green"></label>
+                            
+                            <input type="radio" name="profile-color" value="rose-gold" id="color-rose-gold">
+                            <label for="color-rose-gold" class="color-option rose-gold" title="Rose Gold"></label>
+                            
+                            <input type="radio" name="profile-color" value="navy-blue" id="color-navy-blue">
+                            <label for="color-navy-blue" class="color-option navy-blue" title="Navy Blue"></label>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Create My Profile! 🎉</button>
@@ -111,63 +132,162 @@
                                 <label>Shirt Size:</label>
                                 <select id="shirt-size">
                                     <option value="">Select size</option>
-                                    <option value="XS">XS</option>
-                                    <option value="S">S</option>
-                                    <option value="M">M</option>
-                                    <option value="L">L</option>
-                                    <option value="XL">XL</option>
-                                    <option value="2T">2T</option>
-                                    <option value="3T">3T</option>
-                                    <option value="4T">4T</option>
-                                    <option value="5T">5T</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="10">10</option>
-                                    <option value="12">12</option>
-                                    <option value="14">14</option>
-                                    <option value="16">16</option>
+                                    <optgroup label="Toddler Sizes">
+                                        <option value="2T">2T</option>
+                                        <option value="3T">3T</option>
+                                        <option value="4T">4T</option>
+                                        <option value="5T">5T</option>
+                                    </optgroup>
+                                    <optgroup label="Kids Sizes">
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="6X">6X</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="10">10</option>
+                                        <option value="12">12</option>
+                                        <option value="14">14</option>
+                                        <option value="16">16</option>
+                                        <option value="18">18</option>
+                                        <option value="20">20</option>
+                                    </optgroup>
+                                    <optgroup label="Youth/Adult Sizes">
+                                        <option value="Youth XS">Youth XS</option>
+                                        <option value="Youth S">Youth S</option>
+                                        <option value="Youth M">Youth M</option>
+                                        <option value="Youth L">Youth L</option>
+                                        <option value="Youth XL">Youth XL</option>
+                                        <option value="Adult XS">Adult XS</option>
+                                        <option value="Adult S">Adult S</option>
+                                        <option value="Adult M">Adult M</option>
+                                        <option value="Adult L">Adult L</option>
+                                        <option value="Adult XL">Adult XL</option>
+                                        <option value="Adult XXL">Adult XXL</option>
+                                        <option value="Adult XXXL">Adult XXXL</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                            <div class="size-item">
+                                <label>Shirt Fit Preference:</label>
+                                <select id="shirt-fit">
+                                    <option value="">How do you like shirts to fit?</option>
+                                    <option value="tight">Tight/Fitted</option>
+                                    <option value="normal">Normal fit</option>
+                                    <option value="loose">Loose/Baggy</option>
+                                    <option value="oversized">Oversized</option>
                                 </select>
                             </div>
                             <div class="size-item">
                                 <label>Pants Size:</label>
                                 <select id="pants-size">
                                     <option value="">Select size</option>
-                                    <option value="XS">XS</option>
-                                    <option value="S">S</option>
-                                    <option value="M">M</option>
-                                    <option value="L">L</option>
-                                    <option value="XL">XL</option>
-                                    <option value="2T">2T</option>
-                                    <option value="3T">3T</option>
-                                    <option value="4T">4T</option>
-                                    <option value="5T">5T</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="10">10</option>
-                                    <option value="12">12</option>
-                                    <option value="14">14</option>
-                                    <option value="16">16</option>
+                                    <optgroup label="Toddler Sizes">
+                                        <option value="2T">2T</option>
+                                        <option value="3T">3T</option>
+                                        <option value="4T">4T</option>
+                                        <option value="5T">5T</option>
+                                    </optgroup>
+                                    <optgroup label="Kids Sizes">
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="6X">6X</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="10">10</option>
+                                        <option value="12">12</option>
+                                        <option value="14">14</option>
+                                        <option value="16">16</option>
+                                        <option value="18">18</option>
+                                        <option value="20">20</option>
+                                    </optgroup>
+                                    <optgroup label="Youth/Adult Sizes">
+                                        <option value="Youth XS">Youth XS</option>
+                                        <option value="Youth S">Youth S</option>
+                                        <option value="Youth M">Youth M</option>
+                                        <option value="Youth L">Youth L</option>
+                                        <option value="Youth XL">Youth XL</option>
+                                        <option value="Adult XS">Adult XS</option>
+                                        <option value="Adult S">Adult S</option>
+                                        <option value="Adult M">Adult M</option>
+                                        <option value="Adult L">Adult L</option>
+                                        <option value="Adult XL">Adult XL</option>
+                                        <option value="Adult XXL">Adult XXL</option>
+                                        <option value="Adult XXXL">Adult XXXL</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                            <div class="size-item">
+                                <label>Pants Fit Preference:</label>
+                                <select id="pants-fit">
+                                    <option value="">How do you like pants to fit?</option>
+                                    <option value="tight">Tight/Skinny</option>
+                                    <option value="normal">Normal fit</option>
+                                    <option value="loose">Loose/Relaxed</option>
+                                    <option value="baggy">Baggy</option>
                                 </select>
                             </div>
                             <div class="size-item">
                                 <label>Shoe Size:</label>
                                 <select id="shoe-size">
                                     <option value="">Select size</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
-                                    <option value="11">11</option>
-                                    <option value="12">12</option>
-                                    <option value="13">13</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
+                                    <optgroup label="Toddler Sizes">
+                                        <option value="4T">4 (Toddler)</option>
+                                        <option value="5T">5 (Toddler)</option>
+                                        <option value="6T">6 (Toddler)</option>
+                                        <option value="7T">7 (Toddler)</option>
+                                        <option value="8T">8 (Toddler)</option>
+                                        <option value="9T">9 (Toddler)</option>
+                                        <option value="10T">10 (Toddler)</option>
+                                    </optgroup>
+                                    <optgroup label="Kids Sizes">
+                                        <option value="10.5">10.5</option>
+                                        <option value="11">11</option>
+                                        <option value="11.5">11.5</option>
+                                        <option value="12">12</option>
+                                        <option value="12.5">12.5</option>
+                                        <option value="13">13</option>
+                                        <option value="13.5">13.5</option>
+                                        <option value="1">1</option>
+                                        <option value="1.5">1.5</option>
+                                        <option value="2">2</option>
+                                        <option value="2.5">2.5</option>
+                                        <option value="3">3</option>
+                                        <option value="3.5">3.5</option>
+                                        <option value="4">4</option>
+                                        <option value="4.5">4.5</option>
+                                        <option value="5">5</option>
+                                        <option value="5.5">5.5</option>
+                                        <option value="6">6</option>
+                                        <option value="6.5">6.5</option>
+                                        <option value="7">7</option>
+                                    </optgroup>
+                                    <optgroup label="Adult Sizes">
+                                        <option value="7.5">7.5</option>
+                                        <option value="8">8</option>
+                                        <option value="8.5">8.5</option>
+                                        <option value="9">9</option>
+                                        <option value="9.5">9.5</option>
+                                        <option value="10">10</option>
+                                        <option value="10.5">10.5</option>
+                                        <option value="11">11</option>
+                                        <option value="11.5">11.5</option>
+                                        <option value="12">12</option>
+                                        <option value="12.5">12.5</option>
+                                        <option value="13">13</option>
+                                        <option value="14">14</option>
+                                        <option value="15">15</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                            <div class="size-item">
+                                <label>Shoe Width (if needed):</label>
+                                <select id="shoe-width">
+                                    <option value="">Normal width</option>
+                                    <option value="narrow">Narrow</option>
+                                    <option value="wide">Wide</option>
+                                    <option value="extra-wide">Extra Wide</option>
                                 </select>
                             </div>
                         </div>

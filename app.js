@@ -3,10 +3,30 @@ let currentKid = null;
 let kids = JSON.parse(localStorage.getItem('familyKids')) || [];
 let messages = JSON.parse(localStorage.getItem('familyMessages')) || {};
 
+// Color migration for existing profiles
+function migrateColors() {
+    const colorMapping = {
+        'blue': 'bright-blue',
+        'pink': 'hot-pink',
+        'green': 'emerald-green',
+        'purple': 'royal-purple',
+        'orange': 'sunset-orange'
+    };
+    
+    kids.forEach(kid => {
+        if (colorMapping[kid.color]) {
+            kid.color = colorMapping[kid.color];
+        }
+    });
+    
+    saveKids();
+}
+
 // Initialize app
 document.addEventListener('DOMContentLoaded', function() {
-    showLanding();
     loadKids();
+    migrateColors();
+    showLanding();
 });
 
 // Navigation functions
@@ -73,7 +93,7 @@ function createKid() {
         id: Date.now().toString(),
         name: formData.get('kid-name') || document.getElementById('kid-name').value,
         age: document.getElementById('kid-age').value,
-        color: document.querySelector('input[name="profile-color"]:checked')?.value || 'blue',
+        color: document.querySelector('input[name="profile-color"]:checked')?.value || 'bright-blue',
         profile: {},
         lastUpdated: new Date().toISOString()
     };
@@ -138,8 +158,11 @@ function loadProfile() {
     
     // Load sizes
     setSelectValue('shirt-size', profile.shirtSize);
+    setSelectValue('shirt-fit', profile.shirtFit);
     setSelectValue('pants-size', profile.pantsSize);
+    setSelectValue('pants-fit', profile.pantsFit);
     setSelectValue('shoe-size', profile.shoeSize);
+    setSelectValue('shoe-width', profile.shoeWidth);
     
     // Load preferences
     setSelectValue('pants-preference', profile.pantsPreference);
@@ -179,8 +202,11 @@ function saveProfile() {
     
     // Save sizes
     profile.shirtSize = document.getElementById('shirt-size').value;
+    profile.shirtFit = document.getElementById('shirt-fit').value;
     profile.pantsSize = document.getElementById('pants-size').value;
+    profile.pantsFit = document.getElementById('pants-fit').value;
     profile.shoeSize = document.getElementById('shoe-size').value;
+    profile.shoeWidth = document.getElementById('shoe-width').value;
     
     // Save preferences
     profile.pantsPreference = document.getElementById('pants-preference').value;
@@ -250,9 +276,9 @@ function displayAdultView() {
             
             <div class="kid-info">
                 <h4>🧥 Clothing Sizes</h4>
-                <p><strong>Shirt:</strong> ${profile.shirtSize || 'Not set'}</p>
-                <p><strong>Pants:</strong> ${profile.pantsSize || 'Not set'}</p>
-                <p><strong>Shoes:</strong> ${profile.shoeSize || 'Not set'}</p>
+                <p><strong>Shirt:</strong> ${profile.shirtSize || 'Not set'}${profile.shirtFit ? ` (${profile.shirtFit} fit)` : ''}</p>
+                <p><strong>Pants:</strong> ${profile.pantsSize || 'Not set'}${profile.pantsFit ? ` (${profile.pantsFit} fit)` : ''}</p>
+                <p><strong>Shoes:</strong> ${profile.shoeSize || 'Not set'}${profile.shoeWidth ? ` (${profile.shoeWidth} width)` : ''}</p>
             </div>
             
             <div class="kid-info">

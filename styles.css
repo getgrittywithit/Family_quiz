@@ -146,11 +146,18 @@ body {
     box-shadow: 0 15px 35px rgba(0,0,0,0.1);
 }
 
-.kid-card.blue { border-color: #3b82f6; }
-.kid-card.pink { border-color: #ec4899; }
-.kid-card.green { border-color: #10b981; }
-.kid-card.purple { border-color: #8b5cf6; }
-.kid-card.orange { border-color: #f59e0b; }
+.kid-card.bright-blue { border-color: #3b82f6; }
+.kid-card.hot-pink { border-color: #ec4899; }
+.kid-card.emerald-green { border-color: #10b981; }
+.kid-card.royal-purple { border-color: #8b5cf6; }
+.kid-card.sunset-orange { border-color: #f59e0b; }
+.kid-card.sunshine-yellow { border-color: #eab308; }
+.kid-card.coral-red { border-color: #ef4444; }
+.kid-card.ocean-teal { border-color: #14b8a6; }
+.kid-card.lavender { border-color: #a855f7; }
+.kid-card.mint-green { border-color: #22c55e; }
+.kid-card.rose-gold { border-color: #f472b6; }
+.kid-card.navy-blue { border-color: #1e40af; }
 
 .kid-avatar {
     width: 80px;
@@ -163,11 +170,18 @@ body {
     font-size: 3em;
 }
 
-.kid-avatar.blue { background: linear-gradient(45deg, #3b82f6, #60a5fa); }
-.kid-avatar.pink { background: linear-gradient(45deg, #ec4899, #f472b6); }
-.kid-avatar.green { background: linear-gradient(45deg, #10b981, #34d399); }
-.kid-avatar.purple { background: linear-gradient(45deg, #8b5cf6, #a78bfa); }
-.kid-avatar.orange { background: linear-gradient(45deg, #f59e0b, #fbbf24); }
+.kid-avatar.bright-blue { background: linear-gradient(45deg, #3b82f6, #60a5fa); }
+.kid-avatar.hot-pink { background: linear-gradient(45deg, #ec4899, #f472b6); }
+.kid-avatar.emerald-green { background: linear-gradient(45deg, #10b981, #34d399); }
+.kid-avatar.royal-purple { background: linear-gradient(45deg, #8b5cf6, #a78bfa); }
+.kid-avatar.sunset-orange { background: linear-gradient(45deg, #f59e0b, #fbbf24); }
+.kid-avatar.sunshine-yellow { background: linear-gradient(45deg, #eab308, #fde047); }
+.kid-avatar.coral-red { background: linear-gradient(45deg, #ef4444, #f87171); }
+.kid-avatar.ocean-teal { background: linear-gradient(45deg, #14b8a6, #5eead4); }
+.kid-avatar.lavender { background: linear-gradient(45deg, #a855f7, #c084fc); }
+.kid-avatar.mint-green { background: linear-gradient(45deg, #22c55e, #4ade80); }
+.kid-avatar.rose-gold { background: linear-gradient(45deg, #f472b6, #fb7185); }
+.kid-avatar.navy-blue { background: linear-gradient(45deg, #1e40af, #3b82f6); }
 
 .kid-name {
     font-size: 1.3em;
@@ -215,10 +229,11 @@ body {
 
 /* Color Picker */
 .color-picker {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
     gap: 15px;
-    flex-wrap: wrap;
-    justify-content: center;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .color-picker input[type="radio"] {
@@ -243,11 +258,18 @@ body {
     transform: scale(1.2);
 }
 
-.color-option.blue { background: #3b82f6; }
-.color-option.pink { background: #ec4899; }
-.color-option.green { background: #10b981; }
-.color-option.purple { background: #8b5cf6; }
-.color-option.orange { background: #f59e0b; }
+.color-option.bright-blue { background: #3b82f6; }
+.color-option.hot-pink { background: #ec4899; }
+.color-option.emerald-green { background: #10b981; }
+.color-option.royal-purple { background: #8b5cf6; }
+.color-option.sunset-orange { background: #f59e0b; }
+.color-option.sunshine-yellow { background: #eab308; }
+.color-option.coral-red { background: #ef4444; }
+.color-option.ocean-teal { background: #14b8a6; }
+.color-option.lavender { background: #a855f7; }
+.color-option.mint-green { background: #22c55e; }
+.color-option.rose-gold { background: #f472b6; }
+.color-option.navy-blue { background: #1e40af; }
 
 /* Questionnaire */
 .questionnaire {
@@ -343,7 +365,7 @@ body {
 /* Size Grid */
 .size-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
 }
 
