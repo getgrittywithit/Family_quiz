@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Page</title>
+    <style>
+        .page { display: none; }
+        .page.active { display: block; }
+        .profile-tab-content { display: none; }
+        .profile-tab-content.active { display: block; }
+        .tab-btn { padding: 10px; margin: 5px; background: #f0f0f0; border: 1px solid #ccc; cursor: pointer; }
+        .tab-btn.active { background: #007bff; color: white; }
+    </style>
+</head>
+<body>
+    <h1>Test Functions</h1>
+    
+    <button onclick="testShowAdminDashboard()">Test Admin Dashboard</button>
+    <button onclick="testShowProfileTab()">Test Profile Tab</button>
+    
+    <div id="admin-dashboard" class="page">
+        <h2>Admin Dashboard</h2>
+        <div id="admin-overview" class="admin-section active">Overview Section</div>
+    </div>
+    
+    <div class="profile-tabs">
+        <button class="tab-btn active" onclick="showProfileTab('basics')">Basics</button>
+        <button class="tab-btn" onclick="showProfileTab('clothing')">Clothing</button>
+    </div>
+    
+    <div id="tab-basics" class="profile-tab-content active">Basics Content</div>
+    <div id="tab-clothing" class="profile-tab-content">Clothing Content</div>
+
+    <script>
+        // Simplified functions for testing
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+                console.log('Showing page:', pageId);
+            } else {
+                console.error('Page not found:', pageId);
+            }
+        }
+        
+        function showProfileTab(tabName) {
+            console.log('showProfileTab called with:', tabName);
+            
+            // Hide all tab contents
+            document.querySelectorAll('.profile-tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Remove active class from all tab buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected tab content
+            const targetTab = document.getElementById(`tab-${tabName}`);
+            if (targetTab) {
+                targetTab.classList.add('active');
+                console.log('Activated tab:', tabName);
+            } else {
+                console.error('Tab not found:', `tab-${tabName}`);
+            }
+            
+            // Add active class to clicked button
+            if (typeof event !== 'undefined' && event.target) {
+                event.target.classList.add('active');
+            }
+        }
+        
+        function testShowAdminDashboard() {
+            console.log('Testing admin dashboard...');
+            showPage('admin-dashboard');
+        }
+        
+        function testShowProfileTab() {
+            console.log('Testing profile tab...');
+            showProfileTab('clothing');
+        }
+    </script>
+</body>
+</html>

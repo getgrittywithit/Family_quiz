@@ -5,6 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Family Get-to-Know-Me</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Fallback CSS for tabs in case external CSS doesn't load */
+        .profile-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 20px 0;
+            padding: 0 10px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .tab-btn {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-bottom: none;
+            border-radius: 12px 12px 0 0;
+            padding: 12px 16px;
+            font-size: 0.9em;
+            font-weight: 600;
+            color: #64748b;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            top: 2px;
+        }
+        
+        .tab-btn:hover {
+            background: #f1f5f9;
+            color: #3b82f6;
+            transform: translateY(-2px);
+        }
+        
+        .tab-btn.active {
+            background: white;
+            color: #3b82f6;
+            border-color: #3b82f6;
+            box-shadow: 0 -2px 8px rgba(59, 130, 246, 0.1);
+        }
+        
+        .profile-tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease-in;
+        }
+        
+        .profile-tab-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
 <body>
     <div class="app-container">
@@ -125,10 +178,34 @@
                     <h2 id="current-kid-name">Hello, [Name]!</h2>
                     <p>Update your info so your family knows what you love!</p>
                 </div>
+                
+                <!-- Profile Tabs Navigation -->
+                <div class="profile-tabs">
+                    <button class="tab-btn active" onclick="showProfileTab('basics')">
+                        📏 Sizes & Basics
+                    </button>
+                    <button class="tab-btn" onclick="showProfileTab('clothing')">
+                        👕 Clothing Style
+                    </button>
+                    <button class="tab-btn" onclick="showProfileTab('interests')">
+                        🎯 Interests & Fun
+                    </button>
+                    <button class="tab-btn" onclick="showProfileTab('school')">
+                        📚 School & Learning
+                    </button>
+                    <button class="tab-btn" onclick="showProfileTab('wardrobe')">
+                        👔 Wardrobe Manager
+                    </button>
+                    <button class="tab-btn" onclick="showProfileTab('care')">
+                        🎮 Personal Care
+                    </button>
+                </div>
 
                 <div class="questionnaire">
-                    <!-- Basic Info Section -->
-                    <section class="question-section">
+                    <!-- BASICS TAB -->
+                    <div class="profile-tab-content active" id="tab-basics">
+                        <!-- Basic Info Section -->
+                        <section class="question-section">
                         <h3>📏 Size Information</h3>
                         <div class="size-grid">
                             <div class="size-item">
@@ -394,7 +471,10 @@
                             </div>
                         </div>
                     </section>
-
+                    </div> <!-- End Basics Tab -->
+                    
+                    <!-- CLOTHING TAB -->
+                    <div class="profile-tab-content" id="tab-clothing">
                     <!-- Clothing Preferences -->
                     <section class="question-section">
                         <h3>👕 Clothing I Like</h3>
@@ -497,7 +577,9 @@
                             </div>
                         </div>
                     </section>
-
+                    
+                    <!-- WARDROBE TAB -->
+                    <div class="profile-tab-content" id="tab-wardrobe">
                     <!-- Wardrobe Builder & Management System -->
                     <section class="question-section wardrobe-management">
                         <h3>👗 My Wardrobe Builder - Let's Make Getting Dressed Easy!</h3>
@@ -1084,7 +1166,10 @@
                             </div>
                         </div>
                     </section>
-
+                    </div> <!-- End Wardrobe Tab -->
+                    
+                    <!-- INTERESTS TAB -->
+                    <div class="profile-tab-content" id="tab-interests">
                     <!-- Interests Section -->
                     <section class="question-section">
                         <h3>🎯 What I Love</h3>
@@ -1302,7 +1387,10 @@
                             </div>
                         </div>
                     </section>
-
+                    </div> <!-- End Interests Tab -->
+                    
+                    <!-- SCHOOL TAB -->
+                    <div class="profile-tab-content" id="tab-school">
                     <!-- School Support Needs -->
                     <section class="question-section school-support">
                         <h3>📚 School Support & Advocacy</h3>
@@ -1482,7 +1570,460 @@
                             </div>
                         </div>
                     </section>
+                    </div> <!-- End School Tab -->
+                    
+                    <!-- PERSONAL CARE TAB -->
+                    <div class="profile-tab-content" id="tab-care">
+                    <!-- Personal Care Level-Up System -->
+                    <section class="question-section personal-care-system">
+                        <h3>🎮 Personal Care Level-Up System</h3>
+                        <p class="system-intro">Level up your personal care skills! Earn badges, unlock new levels, and celebrate your hygiene victories! 🌟</p>
+                        
+                        <!-- Current Level Display -->
+                        <div class="level-display">
+                            <div class="current-level">
+                                <div class="level-badge" id="current-level-badge">
+                                    <span class="level-number" id="level-number">1</span>
+                                    <span class="level-name" id="level-name">Fresh Start</span>
+                                </div>
+                                <div class="level-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" id="level-progress" style="width: 0%"></div>
+                                    </div>
+                                    <span class="progress-text" id="progress-text">0 / 5 daily tasks completed</span>
+                                </div>
+                            </div>
+                            
+                            <div class="level-benefits">
+                                <h4>🎁 Current Level Benefits:</h4>
+                                <div id="level-benefits-list" class="benefits-list">
+                                    <div class="benefit">✨ Basic hygiene tracker</div>
+                                    <div class="benefit">🏆 Daily achievement badges</div>
+                                </div>
+                            </div>
+                        </div>
 
+                        <!-- Age-Appropriate Care Levels -->
+                        <div class="care-levels">
+                            <h4>🎯 Your Personal Care Journey</h4>
+                            
+                            <!-- Ages 4-7: Basic Hygiene Heroes -->
+                            <div class="age-level" data-age-min="4" data-age-max="7">
+                                <h5>🦷 Level 1-3: Basic Hygiene Heroes (Ages 4-7)</h5>
+                                <div class="level-details">
+                                    <div class="level-tier">
+                                        <h6>🌟 Level 1: Fresh Start</h6>
+                                        <div class="tier-tasks">
+                                            <div class="task-category">
+                                                <strong>Daily Missions:</strong>
+                                                <div class="task-list">
+                                                    <label class="task-item">
+                                                        <input type="checkbox" class="care-task" data-task="brush-teeth-morning">
+                                                        <span class="task-icon">🦷</span>
+                                                        <span class="task-text">Brush teeth in the morning</span>
+                                                        <span class="task-points">+10 XP</span>
+                                                    </label>
+                                                    <label class="task-item">
+                                                        <input type="checkbox" class="care-task" data-task="wash-hands">
+                                                        <span class="task-icon">🧼</span>
+                                                        <span class="task-text">Wash hands after potty</span>
+                                                        <span class="task-points">+5 XP</span>
+                                                    </label>
+                                                    <label class="task-item">
+                                                        <input type="checkbox" class="care-task" data-task="bath-time">
+                                                        <span class="task-icon">🛁</span>
+                                                        <span class="task-text">Take a bath/shower (with help)</span>
+                                                        <span class="task-points">+15 XP</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="level-rewards">
+                                            <strong>🏆 Unlock at Level 1:</strong> Fun toothbrush timer, Bath time playlist
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="level-tier">
+                                        <h6>⭐ Level 2: Cleanliness Captain</h6>
+                                        <div class="tier-tasks">
+                                            <div class="task-list">
+                                                <label class="task-item">
+                                                    <input type="checkbox" class="care-task" data-task="brush-teeth-night">
+                                                    <span class="task-icon">🌙</span>
+                                                    <span class="task-text">Brush teeth before bed</span>
+                                                    <span class="task-points">+10 XP</span>
+                                                </label>
+                                                <label class="task-item">
+                                                    <input type="checkbox" class="care-task" data-task="wash-face">
+                                                    <span class="task-icon">💧</span>
+                                                    <span class="task-text">Wash face and hands</span>
+                                                    <span class="task-points">+8 XP</span>
+                                                </label>
+                                                <label class="task-item">
+                                                    <input type="checkbox" class="care-task" data-task="clean-clothes">
+                                                    <span class="task-icon">👕</span>
+                                                    <span class="task-text">Put on clean clothes</span>
+                                                    <span class="task-points">+5 XP</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="level-rewards">
+                                            <strong>🏆 Unlock at Level 2:</strong> Special soap, Fun washcloths, Hygiene sticker chart
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Ages 8-11: Independence Champions -->
+                            <div class="age-level" data-age-min="8" data-age-max="11">
+                                <h5>🚀 Level 4-6: Independence Champions (Ages 8-11)</h5>
+                                <div class="level-details">
+                                    <div class="level-tier">
+                                        <h6>🎯 Level 4: Solo Shower Star</h6>
+                                        <div class="tier-tasks">
+                                            <div class="task-list">
+                                                <label class="task-item">
+                                                    <input type="checkbox" class="care-task" data-task="independent-shower">
+                                                    <span class="task-icon">🚿</span>
+                                                    <span class="task-text">Take shower independently</span>
+                                                    <span class="task-points">+20 XP</span>
+                                                </label>
+                                                <label class="task-item">
+                                                    <input type="checkbox" class="care-task" data-task="shampoo-hair">
+                                                    <span class="task-icon">🧴</span>
+                                                    <span class="task-text">Wash and condition hair properly</span>
+                                                    <span class="task-points">+15 XP</span>
+                                                </label>
+                                                <label class="task-item">
+                                                    <input type="checkbox" class="care-task" data-task="smell-check">
+                                                    <span class="task-icon">👃</span>
+                                                    <span class="task-text">Do a "smell check" before leaving room</span>
+                                                    <span class="task-points">+10 XP</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="level-rewards">
+                                            <strong>🏆 Unlock at Level 4:</strong> Cool shower timer, Special shampoo, Body wash choices
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="level-tier">
+                                        <h6>🌟 Level 5: Deodorant Detective</h6>
+                                        <div class="tier-tasks">
+                                            <div class="task-list">
+                                                <label class="task-item">
+                                                    <input type="checkbox" class="care-task" data-task="apply-deodorant">
+                                                    <span class="task-icon">🥤</span>
+                                                    <span class="task-text">Apply deodorant daily</span>
+                                                    <span class="task-points">+15 XP</span>
+                                                </label>
+                                                <label class="task-item">
+                                                    <input type="checkbox" class="care-task" data-task="nail-care">
+                                                    <span class="task-icon">💅</span>
+                                                    <span class="task-text">Keep nails clean and trimmed</span>
+                                                    <span class="task-points">+10 XP</span>
+                                                </label>
+                                                <label class="task-item">
+                                                    <input type="checkbox" class="care-task" data-task="oral-care-plus">
+                                                    <span class="task-icon">🪥</span>
+                                                    <span class="task-text">Brush teeth + use mouthwash</span>
+                                                    <span class="task-points">+12 XP</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="level-rewards">
+                                            <strong>🏆 Unlock at Level 5:</strong> Deodorant choices, Electric toothbrush, Nail care kit
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Ages 12+: Puberty Power-Ups -->
+                            <div class="age-level" data-age-min="12" data-age-max="18">
+                                <h5>💪 Level 7+: Puberty Power-Ups (Ages 12+)</h5>
+                                <div class="level-details">
+                                    <div class="level-tier">
+                                        <h6>🔥 Level 7: Puberty Prep</h6>
+                                        <div class="tier-tasks">
+                                            <div class="task-list">
+                                                <label class="task-item">
+                                                    <input type="checkbox" class="care-task" data-task="daily-shower">
+                                                    <span class="task-icon">🚿</span>
+                                                    <span class="task-text">Daily shower (because hormones!)</span>
+                                                    <span class="task-points">+25 XP</span>
+                                                </label>
+                                                <label class="task-item">
+                                                    <input type="checkbox" class="care-task" data-task="face-care">
+                                                    <span class="task-icon">🧴</span>
+                                                    <span class="task-text">Face wash routine for clearer skin</span>
+                                                    <span class="task-points">+20 XP</span>
+                                                </label>
+                                                <label class="task-item">
+                                                    <input type="checkbox" class="care-task" data-task="hair-style">
+                                                    <span class="task-icon">💇</span>
+                                                    <span class="task-text">Style hair (not just wash)</span>
+                                                    <span class="task-points">+15 XP</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="level-rewards">
+                                            <strong>🏆 Unlock at Level 7:</strong> Face wash options, Hair styling products, Acne care kit
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="level-tier">
+                                        <h6>✨ Level 8: Shaving Specialist</h6>
+                                        <div class="tier-tasks">
+                                            <div class="task-list">
+                                                <label class="task-item">
+                                                    <input type="checkbox" class="care-task" data-task="shaving-ready">
+                                                    <span class="task-icon">🪒</span>
+                                                    <span class="task-text">Learn proper shaving technique</span>
+                                                    <span class="task-points">+30 XP</span>
+                                                </label>
+                                                <label class="task-item">
+                                                    <input type="checkbox" class="care-task" data-task="skin-care">
+                                                    <span class="task-icon">🧴</span>
+                                                    <span class="task-text">Basic skincare routine</span>
+                                                    <span class="task-points">+25 XP</span>
+                                                </label>
+                                                <label class="task-item">
+                                                    <input type="checkbox" class="care-task" data-task="body-awareness">
+                                                    <span class="task-icon">🌟</span>
+                                                    <span class="task-text">Body awareness and self-care</span>
+                                                    <span class="task-points">+20 XP</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="level-rewards">
+                                            <strong>🏆 Unlock at Level 8:</strong> First razor kit, Skincare products, Body care essentials
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Smell-Check Helper -->
+                        <div class="smell-check-helper">
+                            <h4>👃 Discrete Smell-Check Helper</h4>
+                            <p class="helper-description">For kids who don't realize they're smelly - gentle, private reminders!</p>
+                            
+                            <div class="smell-check-tools">
+                                <div class="check-method">
+                                    <h5>🤫 The Discrete Check</h5>
+                                    <div class="check-steps">
+                                        <div class="check-step">
+                                            <span class="step-number">1</span>
+                                            <span class="step-text">Sniff your shirt - does it smell fresh?</span>
+                                        </div>
+                                        <div class="check-step">
+                                            <span class="step-number">2</span>
+                                            <span class="step-text">Check your armpits - any strong smells?</span>
+                                        </div>
+                                        <div class="check-step">
+                                            <span class="step-number">3</span>
+                                            <span class="step-text">Hair check - does it feel clean and smell good?</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="smell-emergency">
+                                    <h5>🚨 Quick Fresh-Up Kit</h5>
+                                    <div class="emergency-supplies">
+                                        <div class="supply-item">
+                                            <span class="supply-icon">🧼</span>
+                                            <span class="supply-text">Keep travel deodorant in backpack</span>
+                                        </div>
+                                        <div class="supply-item">
+                                            <span class="supply-icon">👕</span>
+                                            <span class="supply-text">Emergency clean shirt at school</span>
+                                        </div>
+                                        <div class="supply-item">
+                                            <span class="supply-icon">🍃</span>
+                                            <span class="supply-text">Body spray for quick refresh</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="parent-helper">
+                                <h5>👨‍👩‍👧‍👦 Parent Helper Signals</h5>
+                                <div class="signal-options">
+                                    <label class="signal-option">
+                                        <input type="radio" name="parent-signal" value="code-word">
+                                        <span>Secret code word ("Let's check our superhero powers!")</span>
+                                    </label>
+                                    <label class="signal-option">
+                                        <input type="radio" name="parent-signal" value="app-reminder">
+                                        <span>App reminder notification to their device</span>
+                                    </label>
+                                    <label class="signal-option">
+                                        <input type="radio" name="parent-signal" value="bathroom-check">
+                                        <span>Bathroom mirror reminder sticker</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Achievement Badges System -->
+                        <div class="achievement-system">
+                            <h4>🏆 Achievement Badges</h4>
+                            <div class="badge-categories">
+                                <div class="badge-category">
+                                    <h5>🌟 Daily Heroes</h5>
+                                    <div class="badge-grid">
+                                        <div class="badge-item">
+                                            <div class="badge-icon">🦷</div>
+                                            <div class="badge-name">Tooth Fairy Friend</div>
+                                            <div class="badge-desc">Brush twice daily for 7 days</div>
+                                        </div>
+                                        <div class="badge-item">
+                                            <div class="badge-icon">🚿</div>
+                                            <div class="badge-name">Shower Power</div>
+                                            <div class="badge-desc">Daily showers for 1 week</div>
+                                        </div>
+                                        <div class="badge-item">
+                                            <div class="badge-icon">👃</div>
+                                            <div class="badge-name">Fresh Detective</div>
+                                            <div class="badge-desc">Remember smell-checks 5 days</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="badge-category">
+                                    <h5>🎯 Milestone Masters</h5>
+                                    <div class="badge-grid">
+                                        <div class="badge-item">
+                                            <div class="badge-icon">🥤</div>
+                                            <div class="badge-name">Deodorant Champion</div>
+                                            <div class="badge-desc">First month of daily deodorant</div>
+                                        </div>
+                                        <div class="badge-item">
+                                            <div class="badge-icon">🪒</div>
+                                            <div class="badge-name">Shaving Graduate</div>
+                                            <div class="badge-desc">Complete shaving safety course</div>
+                                        </div>
+                                        <div class="badge-item">
+                                            <div class="badge-icon">💪</div>
+                                            <div class="badge-name">Independence Expert</div>
+                                            <div class="badge-desc">30 days of complete self-care</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Supply Tracker -->
+                        <div class="hygiene-supplies">
+                            <h4>🧴 My Hygiene Supply Tracker</h4>
+                            <p class="supply-description">Keep track of what you have and what you need - no more running out!</p>
+                            
+                            <div class="supply-categories">
+                                <div class="supply-category">
+                                    <h5>🦷 Oral Care</h5>
+                                    <div class="supply-items">
+                                        <div class="supply-item">
+                                            <label>Toothbrush condition:</label>
+                                            <select class="supply-status">
+                                                <option value="new">Like new ✨</option>
+                                                <option value="good">Still good 👍</option>
+                                                <option value="replace">Need to replace 🔄</option>
+                                            </select>
+                                        </div>
+                                        <div class="supply-item">
+                                            <label>Toothpaste level:</label>
+                                            <select class="supply-status">
+                                                <option value="full">Full tube 📦</option>
+                                                <option value="half">Half way 📊</option>
+                                                <option value="low">Running low ⚠️</option>
+                                                <option value="empty">Empty! 🚨</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="supply-category">
+                                    <h5>🧼 Body Care</h5>
+                                    <div class="supply-items">
+                                        <div class="supply-item">
+                                            <label>Body wash/soap:</label>
+                                            <select class="supply-status">
+                                                <option value="plenty">Plenty left 📦</option>
+                                                <option value="some">Some left 📊</option>
+                                                <option value="low">Almost empty ⚠️</option>
+                                                <option value="need">Need new one 🚨</option>
+                                            </select>
+                                        </div>
+                                        <div class="supply-item">
+                                            <label>Deodorant:</label>
+                                            <select class="supply-status">
+                                                <option value="new">Brand new 📦</option>
+                                                <option value="good">Working well 👍</option>
+                                                <option value="low">Getting low ⚠️</option>
+                                                <option value="empty">All gone! 🚨</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="supply-category">
+                                    <h5>💇 Hair Care</h5>
+                                    <div class="supply-items">
+                                        <div class="supply-item">
+                                            <label>Shampoo:</label>
+                                            <select class="supply-status">
+                                                <option value="full">Full bottle 📦</option>
+                                                <option value="half">Half full 📊</option>
+                                                <option value="quarter">Quarter left ⚠️</option>
+                                                <option value="empty">Empty! 🚨</option>
+                                            </select>
+                                        </div>
+                                        <div class="supply-item">
+                                            <label>Conditioner:</label>
+                                            <select class="supply-status">
+                                                <option value="full">Plenty 📦</option>
+                                                <option value="some">Some left 📊</option>
+                                                <option value="low">Low ⚠️</option>
+                                                <option value="need">Need more 🚨</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="supply-alerts">
+                                <h5>🚨 Supply Alerts</h5>
+                                <div id="supply-alerts-list" class="alert-list">
+                                    <p>Your supply alerts will appear here when items are running low!</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Celebration Zone -->
+                        <div class="celebration-zone">
+                            <h4>🎉 Celebration Zone</h4>
+                            <div class="celebration-content">
+                                <div class="celebration-message" id="celebration-message">
+                                    <h5>🌟 You're doing amazing!</h5>
+                                    <p>Keep up the great work with your personal care routine. Every day you level up, you're becoming more independent and taking great care of yourself!</p>
+                                </div>
+                                
+                                <div class="next-milestone">
+                                    <h5>🎯 Next Milestone:</h5>
+                                    <div class="milestone-preview" id="next-milestone">
+                                        <div class="milestone-icon">🏆</div>
+                                        <div class="milestone-text">
+                                            <strong>Shower Power Badge</strong><br>
+                                            <small>3 more days of daily showers to unlock!</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    </div> <!-- End Personal Care Tab -->
+                    
+                    <!-- Save Section (outside tabs, always visible) -->
                     <div class="save-section">
                         <button class="btn btn-success btn-large" onclick="saveProfile()">
                             💾 Save My Profile
@@ -2058,5 +2599,37 @@
     </div>
 
     <script src="app.js"></script>
+    <script>
+        // Debug script to test if JavaScript is working
+        console.log('JavaScript is loading...');
+        
+        // Test function
+        function debugTest() {
+            console.log('Debug test function called');
+            alert('JavaScript is working!');
+        }
+        
+        // Add test button for debugging
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded');
+            
+            // Test if elements exist
+            const adminBtn = document.querySelector('[onclick="showAdminDashboard()"]');
+            console.log('Admin button found:', adminBtn ? 'Yes' : 'No');
+            
+            const profileTabs = document.querySelector('.profile-tabs');
+            console.log('Profile tabs found:', profileTabs ? 'Yes' : 'No');
+            
+            // Add a debug button to landing page
+            const landing = document.getElementById('landing-page');
+            if (landing) {
+                const debugBtn = document.createElement('button');
+                debugBtn.textContent = '🔧 Debug Test';
+                debugBtn.onclick = debugTest;
+                debugBtn.style.cssText = 'position: fixed; top: 10px; right: 10px; z-index: 9999; background: red; color: white; padding: 10px;';
+                landing.appendChild(debugBtn);
+            }
+        });
+    </script>
 </body>
 </html>
