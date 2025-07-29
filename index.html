@@ -4497,40 +4497,47 @@
             <!-- Admin Dashboard -->
             <div id="admin-dashboard" class="page">
                 <div class="admin-header">
-                    <h2>⚙️ Family Admin Hub</h2>
-                    <p>Manage your family's profiles, photo galleries, and preferences all in one place</p>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                        <div>
+                            <h2>⚙️ Family Admin Hub</h2>
+                            <p>Manage your family's profiles, photo galleries, and preferences all in one place</p>
+                        </div>
+                        <button class="btn btn-back" onclick="showLanding()" style="background: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">
+                            ← Back to Home
+                        </button>
+                    </div>
                 </div>
 
                 <!-- Admin Navigation Sidebar -->
-                <div class="admin-layout">
-                    <div class="admin-sidebar">
+                <div class="admin-layout" style="display: flex; gap: 20px;">
+                    <div class="admin-sidebar" style="min-width: 250px; background: #f8f9fa; padding: 20px; border-radius: 8px;">
                         <h3>📋 Quick Access</h3>
-                        <div class="admin-nav">
-                            <button class="admin-nav-btn active" onclick="showAdminSection('overview')">
+                        <div class="admin-nav" style="display: flex; flex-direction: column; gap: 10px;">
+                            <button class="admin-nav-btn active" onclick="showAdminSection('overview')" style="padding: 12px; border: 1px solid #ddd; background: #007bff; color: white; border-radius: 5px; cursor: pointer; text-align: left; width: 100%;">
                                 🏠 Family Overview
                             </button>
-                            <button class="admin-nav-btn" onclick="showAdminSection('wardrobe')">
+                            <button class="admin-nav-btn" onclick="showAdminSection('wardrobe')" style="padding: 12px; border: 1px solid #ddd; background: white; color: #333; border-radius: 5px; cursor: pointer; text-align: left; width: 100%;">
                                 👗 Wardrobe Manager
                             </button>
-                            <button class="admin-nav-btn" onclick="showAdminSection('photos')">
+                            <button class="admin-nav-btn" onclick="showAdminSection('photos')" style="padding: 12px; border: 1px solid #ddd; background: white; color: #333; border-radius: 5px; cursor: pointer; text-align: left; width: 100%;">
                                 📸 Photo Gallery
                             </button>
-                            <button class="admin-nav-btn" onclick="showAdminSection('gifts')">
+                            <button class="admin-nav-btn" onclick="showAdminSection('gifts')" style="padding: 12px; border: 1px solid #ddd; background: white; color: #333; border-radius: 5px; cursor: pointer; text-align: left; width: 100%;">
                                 🎁 Gift Ideas Hub
                             </button>
-                            <button class="admin-nav-btn" onclick="showAdminSection('communication')">
+                            <button class="admin-nav-btn" onclick="showAdminSection('communication')" style="padding: 12px; border: 1px solid #ddd; background: white; color: #333; border-radius: 5px; cursor: pointer; text-align: left; width: 100%;">
                                 💬 Family Messages
                             </button>
-                            <button class="admin-nav-btn" onclick="showAdminSection('ai-assistant')">
+                            <button class="admin-nav-btn" onclick="showAdminSection('ai-assistant')" style="padding: 12px; border: 1px solid #ddd; background: white; color: #333; border-radius: 5px; cursor: pointer; text-align: left; width: 100%;">
                                 🤖 AI Bedroom Pal
                             </button>
-                            <button class="admin-nav-btn" onclick="showAdminSection('settings')">
+                            <button class="admin-nav-btn" onclick="showAdminSection('settings')" style="padding: 12px; border: 1px solid #ddd; background: white; color: #333; border-radius: 5px; cursor: pointer; text-align: left; width: 100%;">
                                 ⚙️ Settings
                             </button>
                         </div>
                     </div>
 
-                    <div class="admin-content">
+                    <div class="admin-content" style="flex: 1; background: white; padding: 20px; border-radius: 8px; border: 1px solid #ddd;">
                         <!-- Family Overview Section -->
                         <div id="admin-overview" class="admin-section active">
                             <h3>🏠 Family Overview Dashboard</h3>
