@@ -194,35 +194,167 @@
                 
                 <!-- Profile Tabs Navigation -->
                 <div class="profile-tabs">
-                    <button class="tab-btn active" onclick="showProfileTab('basics')">
-                        📏 Sizes & Basics
-                    </button>
-                    <button class="tab-btn" onclick="showProfileTab('accessories')">
-                        👒 Accessories
-                    </button>
-                    <button class="tab-btn" onclick="showProfileTab('clothing')">
-                        👕 Clothing Style
-                    </button>
-                    <button class="tab-btn" onclick="showProfileTab('interests')">
-                        🎯 Interests & Fun
+                    <button class="tab-btn active" onclick="showProfileTab('clothing')">
+                        👕 Clothing & Accessories
                     </button>
                     <button class="tab-btn" onclick="showProfileTab('school')">
-                        📚 School & Learning
+                        📚 School & Education
                     </button>
-                    <button class="tab-btn" onclick="showProfileTab('wardrobe')">
-                        👔 Wardrobe Manager
+                    <button class="tab-btn" onclick="showProfileTab('hygiene')">
+                        🧼 Hygiene & Personal Care
                     </button>
-                    <button class="tab-btn" onclick="showProfileTab('care')">
-                        🎮 Personal Care
+                    <button class="tab-btn" onclick="showProfileTab('health')">
+                        🏥 Physical & Mental Health
+                    </button>
+                    <button class="tab-btn" onclick="showProfileTab('family')">
+                        👨‍👩‍👧‍👦 Family & Social
+                    </button>
+                    <button class="tab-btn" onclick="showProfileTab('support')">
+                        🏠 Support & Household
+                    </button>
+                    <button class="tab-btn" onclick="showProfileTab('wishlist')">
+                        🎁 Wishlist & Replacements
                     </button>
                 </div>
 
                 <div class="questionnaire">
-                    <!-- BASICS TAB -->
-                    <div class="profile-tab-content active" id="tab-basics">
-                        <!-- Basic Info Section -->
+                    <!-- TAB 1: CLOTHING & ACCESSORIES -->
+                    <div class="profile-tab-content active" id="tab-clothing">
                         <section class="question-section">
-                        <h3>📏 Size Information</h3>
+                        <h3>👕 Clothing & Accessories</h3>
+                        <p class="section-description">Track clothing sizes, preferences, seasonal needs, and style notes.</p>
+                        
+                        <!-- Shirt Sizes -->
+                        <div class="question-item">
+                            <h4>👔 Shirts, Tops & Sweaters</h4>
+                            <div class="size-grid">
+                                <div class="size-item">
+                                    <label>Shirt Size:</label>
+                                    <select id="shirt-size">
+                                        <option value="">Select size</option>
+                                        <optgroup label="Toddler Sizes">
+                                            <option value="2T">2T</option>
+                                            <option value="3T">3T</option>
+                                            <option value="4T">4T</option>
+                                            <option value="5T">5T</option>
+                                        </optgroup>
+                                        <optgroup label="Kids Sizes">
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="10">10</option>
+                                            <option value="12">12</option>
+                                            <option value="14">14</option>
+                                            <option value="16">16</option>
+                                        </optgroup>
+                                        <optgroup label="Youth/Adult Sizes">
+                                            <option value="XS">Extra Small (XS)</option>
+                                            <option value="S">Small (S)</option>
+                                            <option value="M">Medium (M)</option>
+                                            <option value="L">Large (L)</option>
+                                            <option value="XL">Extra Large (XL)</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                                <div class="size-item">
+                                    <label>Fit Preference:</label>
+                                    <select id="shirt-fit">
+                                        <option value="">Choose fit</option>
+                                        <option value="tight-fitted">Tight/fitted</option>
+                                        <option value="just-right">Just right</option>
+                                        <option value="loose-comfortable">Loose & comfortable</option>
+                                        <option value="oversized">Oversized/baggy</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Pants Sizes -->
+                        <div class="question-item">
+                            <h4>👖 Pants & Bottoms</h4>
+                            <div class="size-grid">
+                                <div class="size-item">
+                                    <label>Pants Size:</label>
+                                    <select id="pants-size">
+                                        <option value="">Select size</option>
+                                        <optgroup label="Toddler Sizes">
+                                            <option value="2T">2T</option>
+                                            <option value="3T">3T</option>
+                                            <option value="4T">4T</option>
+                                            <option value="5T">5T</option>
+                                        </optgroup>
+                                        <optgroup label="Kids Sizes">
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="10">10</option>
+                                            <option value="12">12</option>
+                                            <option value="14">14</option>
+                                            <option value="16">16</option>
+                                        </optgroup>
+                                        <optgroup label="Youth/Adult Sizes">
+                                            <option value="XS">Extra Small (XS)</option>
+                                            <option value="S">Small (S)</option>
+                                            <option value="M">Medium (M)</option>
+                                            <option value="L">Large (L)</option>
+                                            <option value="XL">Extra Large (XL)</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                                <div class="size-item">
+                                    <label>Fit Preference:</label>
+                                    <select id="pants-fit">
+                                        <option value="">Choose fit</option>
+                                        <option value="tight-fitted">Tight/fitted</option>
+                                        <option value="just-right">Just right</option>
+                                        <option value="loose-comfortable">Loose & comfortable</option>
+                                        <option value="baggy">Baggy</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Underwear & Socks -->
+                        <div class="question-item">
+                            <h4>🩱 Underwear & Socks</h4>
+                            <div class="size-grid">
+                                <div class="size-item">
+                                    <label>Underwear Size:</label>
+                                    <select id="underwear-size">
+                                        <option value="">Select size</option>
+                                        <option value="2T-3T">2T-3T</option>
+                                        <option value="4T">4T</option>
+                                        <option value="4-5">4-5</option>
+                                        <option value="6">6</option>
+                                        <option value="7-8">7-8</option>
+                                        <option value="10-12">10-12</option>
+                                        <option value="14-16">14-16</option>
+                                        <option value="XS">XS</option>
+                                        <option value="S">Small</option>
+                                        <option value="M">Medium</option>
+                                        <option value="L">Large</option>
+                                    </select>
+                                </div>
+                                <div class="size-item">
+                                    <label>Sock Size:</label>
+                                    <select id="sock-size">
+                                        <option value="">Select size</option>
+                                        <option value="2T-4T">2T-4T</option>
+                                        <option value="4-5.5">4-5.5</option>
+                                        <option value="6-8.5">6-8.5</option>
+                                        <option value="9-11">9-11</option>
+                                        <option value="Youth L">Youth Large</option>
+                                        <option value="Adult S">Adult Small</option>
+                                        <option value="Adult M">Adult Medium</option>
+                                        <option value="Adult L">Adult Large</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
                         <div class="size-grid">
                             <div class="size-item">
                                 <label>Shirt Size:</label>
