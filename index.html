@@ -5057,6 +5057,72 @@
         // Debug script to test if JavaScript is working
         console.log('JavaScript is loading...');
         
+        // Page navigation functions
+        function showPage(pageId) {
+            console.log('Showing page:', pageId);
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.style.display = 'none';
+            });
+            // Show selected page
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.style.display = 'block';
+            }
+        }
+        
+        function showLanding() {
+            showPage('landing-page');
+        }
+        
+        function showKidLogin() {
+            showPage('kid-login');
+        }
+        
+        function showAdultLogin() {
+            showPage('adult-login');
+        }
+        
+        function showAdultView() {
+            showPage('adult-view');
+        }
+        
+        function showAdminDashboard() {
+            console.log('showAdminDashboard called');
+            showPage('admin-dashboard');
+            showAdminSection('overview');
+        }
+        
+        function showAdminSection(sectionName) {
+            console.log('Showing admin section:', sectionName);
+            
+            // Remove active class from all nav buttons
+            document.querySelectorAll('.admin-nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+                btn.style.background = 'white';
+                btn.style.color = '#333';
+            });
+            
+            // Hide all admin sections
+            document.querySelectorAll('.admin-section').forEach(section => {
+                section.style.display = 'none';
+            });
+            
+            // Show selected section
+            const targetSection = document.getElementById('admin-' + sectionName);
+            if (targetSection) {
+                targetSection.style.display = 'block';
+            }
+            
+            // Activate clicked button
+            const activeBtn = document.querySelector(`[onclick="showAdminSection('${sectionName}')"]`);
+            if (activeBtn) {
+                activeBtn.classList.add('active');
+                activeBtn.style.background = '#007bff';
+                activeBtn.style.color = 'white';
+            }
+        }
+        
         // Test function
         function debugTest() {
             console.log('Debug test function called');
