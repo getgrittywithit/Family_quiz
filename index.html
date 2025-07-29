@@ -215,6 +215,9 @@
                     <button class="tab-btn" onclick="showProfileTab('wishlist')">
                         🎁 Wishlist & Replacements
                     </button>
+                    <button class="tab-btn" onclick="showProfileTab('chores')">
+                        🧹 Chores & Life Skills
+                    </button>
                 </div>
 
                 <div class="questionnaire">
@@ -1738,6 +1741,225 @@
                     
                     <!-- SCHOOL TAB -->
                     <div class="profile-tab-content" id="tab-school">
+                    
+                    <!-- School Information & Contacts -->
+                    <section class="question-section school-info">
+                        <h3>🏫 School Information & Contacts</h3>
+                        
+                        <div class="question-item">
+                            <label>School name:</label>
+                            <input type="text" id="school-name" placeholder="Enter your school name">
+                        </div>
+                        
+                        <div class="question-item">
+                            <label>Grade level:</label>
+                            <select id="grade-level">
+                                <option value="">Select grade</option>
+                                <option value="pre-k">Pre-K</option>
+                                <option value="kindergarten">Kindergarten</option>
+                                <option value="1st">1st Grade</option>
+                                <option value="2nd">2nd Grade</option>
+                                <option value="3rd">3rd Grade</option>
+                                <option value="4th">4th Grade</option>
+                                <option value="5th">5th Grade</option>
+                                <option value="6th">6th Grade</option>
+                                <option value="7th">7th Grade</option>
+                                <option value="8th">8th Grade</option>
+                                <option value="9th">9th Grade</option>
+                                <option value="10th">10th Grade</option>
+                                <option value="11th">11th Grade</option>
+                                <option value="12th">12th Grade</option>
+                            </select>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label>Homeroom/Main teacher:</label>
+                            <input type="text" id="main-teacher" placeholder="Teacher's name">
+                            <div class="sub-field">
+                                <label>Teacher email:</label>
+                                <input type="email" id="teacher-email" placeholder="teacher@school.edu">
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label>Other important teachers/staff:</label>
+                            <div class="teacher-contacts">
+                                <div class="teacher-entry">
+                                    <input type="text" placeholder="Subject/Role" class="teacher-subject">
+                                    <input type="text" placeholder="Teacher name" class="teacher-name">
+                                    <input type="email" placeholder="Email" class="teacher-email-other">
+                                </div>
+                                <button type="button" class="add-teacher-btn" onclick="addTeacherContact()">+ Add Another Teacher</button>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label>School counselor/social worker:</label>
+                            <input type="text" id="counselor-name" placeholder="Name">
+                            <div class="sub-field">
+                                <label>Contact info:</label>
+                                <input type="text" id="counselor-contact" placeholder="Email or phone">
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Educational Plans & Accommodations -->
+                    <section class="question-section educational-plans">
+                        <h3>📋 Educational Plans & Accommodations</h3>
+                        <p class="privacy-note">This section is private - only parents can see this information.</p>
+                        
+                        <div class="question-item">
+                            <label class="main-question">Do you have any of these educational plans?</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="iep"> 📜 IEP (Individualized Education Program)</label>
+                                <label><input type="checkbox" value="504-plan"> 📄 504 Plan</label>
+                                <label><input type="checkbox" value="gifted-program"> 🌟 Gifted & Talented Program</label>
+                                <label><input type="checkbox" value="ell-services"> 🌍 ELL (English Language Learner) Services</label>
+                                <label><input type="checkbox" value="speech-therapy"> 🗣️ Speech Therapy</label>
+                                <label><input type="checkbox" value="occupational-therapy"> 🤲 Occupational Therapy</label>
+                                <label><input type="checkbox" value="reading-intervention"> 📚 Reading Intervention</label>
+                                <label><input type="checkbox" value="math-intervention"> 🔢 Math Intervention</label>
+                                <label><input type="checkbox" value="no-plans"> ✅ No special plans or services</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label class="main-question">My learning accommodations include:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="extra-time"> ⏰ Extra time on tests/assignments</label>
+                                <label><input type="checkbox" value="quiet-space"> 🤫 Quiet testing environment</label>
+                                <label><input type="checkbox" value="read-aloud"> 🔊 Tests/directions read aloud</label>
+                                <label><input type="checkbox" value="reduced-assignments"> 📝 Reduced assignment length</label>
+                                <label><input type="checkbox" value="breaks"> 🛑 Frequent breaks</label>
+                                <label><input type="checkbox" value="visual-aids"> 👀 Visual aids/graphic organizers</label>
+                                <label><input type="checkbox" value="seating"> 💺 Preferred seating arrangement</label>
+                                <label><input type="checkbox" value="movement"> 🚶 Movement breaks</label>
+                                <label><input type="checkbox" value="assistive-tech"> 💻 Assistive technology</label>
+                                <label><input type="checkbox" value="no-accommodations"> ✅ No accommodations needed</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <div class="extra-info">
+                                <label>Important details about my educational needs:</label>
+                                <textarea id="educational-details" placeholder="Like: My IEP meeting is coming up in March. I'm working on reading comprehension goals. I need reminders to use my assistive technology. My 504 plan includes extended time for all tests..."></textarea>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Technology & Device Management -->
+                    <section class="question-section tech-devices">
+                        <h3>💻 Technology & Device Management</h3>
+                        
+                        <div class="question-item">
+                            <label class="main-question">School devices I use:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="school-laptop"> 💻 School-issued laptop</label>
+                                <label><input type="checkbox" value="school-tablet"> 📱 School-issued tablet/iPad</label>
+                                <label><input type="checkbox" value="school-chromebook"> 🖥️ Chromebook</label>
+                                <label><input type="checkbox" value="calculator"> 🔢 Graphing calculator</label>
+                                <label><input type="checkbox" value="assistive-device"> 🎧 Assistive listening device</label>
+                                <label><input type="checkbox" value="no-devices"> ❌ No school devices assigned</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label>Device ID numbers/serial numbers:</label>
+                            <textarea id="device-numbers" placeholder="List any device ID numbers, serial numbers, or asset tags for tracking"></textarea>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label class="main-question">Technology issues I'm having:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="login-problems"> 🔐 Can't log into school accounts</label>
+                                <label><input type="checkbox" value="wifi-issues"> 📶 WiFi connection problems</label>
+                                <label><input type="checkbox" value="slow-device"> 🐌 Device runs very slowly</label>
+                                <label><input type="checkbox" value="broken-device"> 💔 Device is damaged/broken</label>
+                                <label><input type="checkbox" value="missing-software"> 📦 Missing required software/apps</label>
+                                <label><input type="checkbox" value="password-forgot"> 🔑 Forgot passwords</label>
+                                <label><input type="checkbox" value="printing-problems"> 🖨️ Can't print assignments</label>
+                                <label><input type="checkbox" value="no-issues"> ✅ No technology issues</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label class="main-question">Online platforms I use for school:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="google-classroom"> 📚 Google Classroom</label>
+                                <label><input type="checkbox" value="canvas"> 🎨 Canvas</label>
+                                <label><input type="checkbox" value="schoology"> 🏫 Schoology</label>
+                                <label><input type="checkbox" value="seesaw"> 👀 Seesaw</label>
+                                <label><input type="checkbox" value="khan-academy"> 🎓 Khan Academy</label>
+                                <label><input type="checkbox" value="zoom"> 💻 Zoom for classes</label>
+                                <label><input type="checkbox" value="other-platforms"> 🌐 Other platforms</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <div class="extra-info">
+                                <label>Additional tech notes:</label>
+                                <textarea id="tech-notes" placeholder="Like: I need help remembering my Google password. My school laptop screen is cracked. I can't access Khan Academy from home..."></textarea>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Learning Goals & Progress -->
+                    <section class="question-section learning-goals">
+                        <h3>🎯 Learning Goals & Progress</h3>
+                        
+                        <div class="question-item">
+                            <label class="main-question">My strongest subjects are:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="math"> 🔢 Math</label>
+                                <label><input type="checkbox" value="reading"> 📚 Reading/Language Arts</label>
+                                <label><input type="checkbox" value="science"> 🔬 Science</label>
+                                <label><input type="checkbox" value="social-studies"> 🌍 Social Studies/History</label>
+                                <label><input type="checkbox" value="art"> 🎨 Art</label>
+                                <label><input type="checkbox" value="music"> 🎵 Music</label>
+                                <label><input type="checkbox" value="pe"> 🏃 Physical Education</label>
+                                <label><input type="checkbox" value="foreign-language"> 🗣️ Foreign Language</label>
+                                <label><input type="checkbox" value="technology"> 💻 Technology/Computer Skills</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label class="main-question">Subjects I want to improve in:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="math-improve"> 🔢 Math</label>
+                                <label><input type="checkbox" value="reading-improve"> 📚 Reading/Language Arts</label>
+                                <label><input type="checkbox" value="writing-improve"> ✍️ Writing</label>
+                                <label><input type="checkbox" value="science-improve"> 🔬 Science</label>
+                                <label><input type="checkbox" value="social-studies-improve"> 🌍 Social Studies/History</label>
+                                <label><input type="checkbox" value="organization-improve"> 📋 Organization/Study Skills</label>
+                                <label><input type="checkbox" value="test-taking-improve"> 📝 Test-taking skills</label>
+                                <label><input type="checkbox" value="homework-improve"> 📚 Homework completion</label>
+                                <label><input type="checkbox" value="participation-improve"> 🙋 Class participation</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label class="main-question">My learning goals this year:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="grade-level"> 📈 Reach grade level in all subjects</label>
+                                <label><input type="checkbox" value="homework-routine"> 📅 Develop better homework routine</label>
+                                <label><input type="checkbox" value="organization-skills"> 🗂️ Improve organization skills</label>
+                                <label><input type="checkbox" value="reading-level"> 📖 Increase reading level</label>
+                                <label><input type="checkbox" value="math-facts"> 🔢 Master math facts</label>
+                                <label><input type="checkbox" value="writing-skills"> ✍️ Improve writing skills</label>
+                                <label><input type="checkbox" value="social-skills"> 👥 Work better with classmates</label>
+                                <label><input type="checkbox" value="self-advocacy"> 🗣️ Speak up for my needs</label>
+                                <label><input type="checkbox" value="independence"> 🎯 Become more independent</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <div class="extra-info">
+                                <label>My personal learning goals:</label>
+                                <textarea id="personal-goals" placeholder="Like: I want to read chapter books on my own. I want to understand fractions better. I want to be brave enough to ask questions in class. I want to finish my homework without being reminded..."></textarea>
+                            </div>
+                        </div>
+                    </section>
+                    
                     <!-- School Support Needs -->
                     <section class="question-section school-support">
                         <h3>📚 School Support & Advocacy</h3>
@@ -1921,6 +2143,160 @@
                     
                     <!-- PERSONAL CARE TAB -->
                     <div class="profile-tab-content" id="tab-care">
+                    
+                    <!-- Personal Care Basics & Preferences -->
+                    <section class="question-section care-basics">
+                        <h3>🧼 Personal Care Basics & Preferences</h3>
+                        
+                        <div class="question-item">
+                            <label class="main-question">My current personal care routine includes:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="brush-teeth-morning"> 🦷 Brushing teeth in the morning</label>
+                                <label><input type="checkbox" value="brush-teeth-night"> 🌙 Brushing teeth at night</label>
+                                <label><input type="checkbox" value="floss"> 🦷 Flossing (sometimes/regularly)</label>
+                                <label><input type="checkbox" value="shower-daily"> 🚿 Daily shower/bath</label>
+                                <label><input type="checkbox" value="wash-hair"> 💇 Washing hair regularly</label>
+                                <label><input type="checkbox" value="deodorant"> 🌿 Using deodorant</label>
+                                <label><input type="checkbox" value="face-wash"> 💧 Washing face daily</label>
+                                <label><input type="checkbox" value="hand-washing"> 🧼 Regular hand washing</label>
+                                <label><input type="checkbox" value="nail-care"> 💅 Keeping nails clean/trimmed</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label class="main-question">Personal care products I like/prefer:</label>
+                            <div class="product-preferences">
+                                <div class="product-category">
+                                    <h5>🦷 Toothpaste & Oral Care</h5>
+                                    <div class="checkbox-group">
+                                        <label><input type="checkbox" value="mint-toothpaste"> 🌿 Mint flavored</label>
+                                        <label><input type="checkbox" value="fruity-toothpaste"> 🍓 Fruity flavored</label>
+                                        <label><input type="checkbox" value="mild-toothpaste"> 🤍 Mild/sensitive formula</label>
+                                        <label><input type="checkbox" value="electric-toothbrush"> ⚡ Electric toothbrush</label>
+                                        <label><input type="checkbox" value="manual-toothbrush"> 🪥 Manual toothbrush</label>
+                                        <label><input type="checkbox" value="mouthwash"> 💙 Mouthwash (mild)</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="product-category">
+                                    <h5>🧴 Bath & Body Products</h5>
+                                    <div class="checkbox-group">
+                                        <label><input type="checkbox" value="gentle-soap"> 🤍 Gentle/sensitive skin soap</label>
+                                        <label><input type="checkbox" value="scented-soap"> 🌸 Lightly scented soap</label>
+                                        <label><input type="checkbox" value="unscented-soap"> 🚫 Unscented products only</label>
+                                        <label><input type="checkbox" value="bubble-bath"> 🛁 Bubble bath</label>
+                                        <label><input type="checkbox" value="tear-free-shampoo"> 👶 Tear-free shampoo</label>
+                                        <label><input type="checkbox" value="regular-shampoo"> 🧴 Regular shampoo</label>
+                                        <label><input type="checkbox" value="conditioner"> 💇 Conditioner (for tangles)</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="product-category">
+                                    <h5>🌿 Deodorant & Fragrance</h5>
+                                    <div class="checkbox-group">
+                                        <label><input type="checkbox" value="roll-on-deodorant"> 🌀 Roll-on deodorant</label>
+                                        <label><input type="checkbox" value="stick-deodorant"> 📏 Stick deodorant</label>
+                                        <label><input type="checkbox" value="spray-deodorant"> 💨 Spray deodorant</label>
+                                        <label><input type="checkbox" value="unscented-deodorant"> 🤍 Unscented deodorant</label>
+                                        <label><input type="checkbox" value="light-scent"> 🌸 Light, pleasant scent</label>
+                                        <label><input type="checkbox" value="no-deodorant-yet"> ❌ Not using deodorant yet</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label class="main-question">My personal care routine timing:</label>
+                            <div class="routine-timing">
+                                <div class="time-block">
+                                    <h5>🌅 Morning Routine</h5>
+                                    <div class="checkbox-group">
+                                        <label><input type="checkbox" value="morning-shower"> 🚿 Shower in the morning</label>
+                                        <label><input type="checkbox" value="morning-face-wash"> 💧 Wash face</label>
+                                        <label><input type="checkbox" value="morning-teeth"> 🦷 Brush teeth</label>
+                                        <label><input type="checkbox" value="morning-deodorant"> 🌿 Apply deodorant</label>
+                                        <label><input type="checkbox" value="morning-hair"> 💇 Do hair</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="time-block">
+                                    <h5>🌙 Evening Routine</h5>
+                                    <div class="checkbox-group">
+                                        <label><input type="checkbox" value="evening-bath"> 🛁 Bath/shower at night</label>
+                                        <label><input type="checkbox" value="evening-face-wash"> 💧 Wash face before bed</label>
+                                        <label><input type="checkbox" value="evening-teeth"> 🦷 Brush teeth before bed</label>
+                                        <label><input type="checkbox" value="evening-floss"> 🦷 Floss at night</label>
+                                        <label><input type="checkbox" value="evening-pajamas"> 👕 Change into clean pajamas</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label class="main-question">Areas where I need help or reminders:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="remember-shower"> 🚿 Remembering to shower regularly</label>
+                                <label><input type="checkbox" value="remember-deodorant"> 🌿 Remembering to use deodorant</label>
+                                <label><input type="checkbox" value="remember-teeth"> 🦷 Remembering to brush teeth</label>
+                                <label><input type="checkbox" value="hair-washing"> 💇 Knowing when to wash hair</label>
+                                <label><input type="checkbox" value="nail-trimming"> 💅 Trimming nails when needed</label>
+                                <label><input type="checkbox" value="clean-clothes"> 👕 Knowing when clothes need washing</label>
+                                <label><input type="checkbox" value="face-care"> 💧 Taking care of my face (acne, dryness)</label>
+                                <label><input type="checkbox" value="body-odor-awareness"> 👃 Knowing when I need to shower</label>
+                                <label><input type="checkbox" value="product-selection"> 🧴 Choosing the right products</label>
+                                <label><input type="checkbox" value="routine-independence"> 🎯 Doing my routine without reminders</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <div class="extra-info">
+                                <label>Personal care notes (private - parents only):</label>
+                                <textarea id="care-notes" placeholder="Like: I forget to use deodorant and sometimes smell. I need help knowing when to wash my hair. I'm embarrassed about body changes and need support. I hate the feeling of certain soaps..."></textarea>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Body Changes & Development Support -->
+                    <section class="question-section development-support">
+                        <h3>🌱 Body Changes & Development Support</h3>
+                        <p class="privacy-note">This section is completely private - only parents can see this information.</p>
+                        
+                        <div class="question-item">
+                            <label class="main-question">I might need support with these topics:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="body-changes"> 🌱 Understanding body changes</label>
+                                <label><input type="checkbox" value="hygiene-importance"> 🧼 Why hygiene is more important now</label>
+                                <label><input type="checkbox" value="deodorant-need"> 🌿 When and why to use deodorant</label>
+                                <label><input type="checkbox" value="shower-frequency"> 🚿 How often to shower</label>
+                                <label><input type="checkbox" value="private-body-care"> 🔒 Private body care routines</label>
+                                <label><input type="checkbox" value="acne-skin-care"> 💧 Taking care of changing skin</label>
+                                <label><input type="checkbox" value="hair-changes"> 💇 Managing hair changes</label>
+                                <label><input type="checkbox" value="emotional-support"> 💙 Emotional support with changes</label>
+                                <label><input type="checkbox" value="product-education"> 🧴 Learning about new products I might need</label>
+                                <label><input type="checkbox" value="no-support-needed"> ✅ I'm comfortable with my current understanding</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label class="main-question">How I prefer to learn about these topics:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="one-on-one-talk"> 👨‍👩‍👧‍👦 Private conversation with parent</label>
+                                <label><input type="checkbox" value="books-resources"> 📚 Books or educational resources</label>
+                                <label><input type="checkbox" value="doctor-discussion"> 👩‍⚕️ Discussion with doctor/nurse</label>
+                                <label><input type="checkbox" value="gradual-learning"> 🎯 Learn gradually over time</label>
+                                <label><input type="checkbox" value="peer-group"> 👥 Learning with friends/siblings</label>
+                                <label><input type="checkbox" value="not-ready"> ⏰ I'm not ready to talk about this yet</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <div class="extra-info">
+                                <label>Questions or concerns I have (completely private):</label>
+                                <textarea id="development-concerns" placeholder="This is a safe space to ask any questions or share any concerns about body changes, hygiene, or growing up. Only your parents will see this..."></textarea>
+                            </div>
+                        </div>
+                    </section>
+                    
                     <!-- Personal Care Level-Up System -->
                     <section class="question-section personal-care-system">
                         <h3>🎮 Personal Care Level-Up System</h3>
@@ -2369,6 +2745,1730 @@
                         </div>
                     </section>
                     </div> <!-- End Personal Care Tab -->
+                    
+                    <!-- PHYSICAL & MENTAL HEALTH TAB -->
+                    <div class="profile-tab-content" id="tab-health">
+                    
+                    <!-- Medical Information & Providers -->
+                    <section class="question-section medical-info">
+                        <h3>🏥 Medical Information & Healthcare Providers</h3>
+                        <p class="privacy-note">This section is private - only parents can see this information.</p>
+                        
+                        <div class="question-item">
+                            <label>Primary care doctor/pediatrician:</label>
+                            <input type="text" id="primary-doctor" placeholder="Dr. Smith at Children's Medical Center">
+                            <div class="sub-field">
+                                <label>Phone number:</label>
+                                <input type="tel" id="doctor-phone" placeholder="(555) 123-4567">
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label class="main-question">Other healthcare providers we see:</label>
+                            <div class="provider-list">
+                                <div class="provider-entry">
+                                    <select class="provider-type">
+                                        <option value="">Select provider type</option>
+                                        <option value="dentist">🦷 Dentist</option>
+                                        <option value="orthodontist">🦷 Orthodontist</option>
+                                        <option value="eye-doctor">👀 Eye doctor/Optometrist</option>
+                                        <option value="therapist">🧠 Therapist/Counselor</option>
+                                        <option value="psychiatrist">💊 Psychiatrist</option>
+                                        <option value="specialist">🩺 Medical specialist (cardiology, etc.)</option>
+                                        <option value="dermatologist">🧴 Dermatologist</option>
+                                        <option value="allergist">🤧 Allergist</option>
+                                        <option value="other">🏥 Other</option>
+                                    </select>
+                                    <input type="text" placeholder="Provider name & location">
+                                    <input type="tel" placeholder="Phone">
+                                </div>
+                                <button type="button" class="add-provider-btn" onclick="addHealthProvider()">+ Add Another Provider</button>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label>Preferred hospital/emergency care:</label>
+                            <input type="text" id="preferred-hospital" placeholder="Children's Hospital Emergency Department">
+                        </div>
+                        
+                        <div class="question-item">
+                            <label>Insurance information:</label>
+                            <input type="text" id="insurance-info" placeholder="BlueCross BlueShield - Member ID: 123456789">
+                        </div>
+                    </section>
+                    
+                    <!-- Current Health Status & Medications -->
+                    <section class="question-section current-health">
+                        <h3>💊 Current Health Status & Medications</h3>
+                        <p class="privacy-note">This information is private and only visible to parents.</p>
+                        
+                        <div class="question-item">
+                            <label class="main-question">Current medications (daily/regular):</label>
+                            <div class="medication-list">
+                                <div class="medication-entry">
+                                    <input type="text" placeholder="Medication name" class="med-name">
+                                    <input type="text" placeholder="Dosage" class="med-dosage">
+                                    <select class="med-frequency">
+                                        <option value="">How often?</option>
+                                        <option value="daily">Daily</option>
+                                        <option value="twice-daily">Twice daily</option>
+                                        <option value="three-daily">Three times daily</option>
+                                        <option value="weekly">Weekly</option>
+                                        <option value="as-needed">As needed</option>
+                                    </select>
+                                    <input type="text" placeholder="What it's for" class="med-purpose">
+                                </div>
+                                <button type="button" class="add-medication-btn" onclick="addMedication()">+ Add Another Medication</button>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label class="main-question">Current health conditions being managed:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="asthma"> 🫁 Asthma</label>
+                                <label><input type="checkbox" value="allergies"> 🤧 Allergies (food/environmental)</label>
+                                <label><input type="checkbox" value="adhd"> 🧠 ADHD/ADD</label>
+                                <label><input type="checkbox" value="anxiety"> 😰 Anxiety</label>
+                                <label><input type="checkbox" value="depression"> 😔 Depression</label>
+                                <label><input type="checkbox" value="diabetes"> 🩸 Diabetes</label>
+                                <label><input type="checkbox" value="seizures"> ⚡ Seizure disorder</label>
+                                <label><input type="checkbox" value="heart-condition"> ❤️ Heart condition</label>
+                                <label><input type="checkbox" value="vision-issues"> 👓 Vision problems</label>
+                                <label><input type="checkbox" value="hearing-issues"> 👂 Hearing problems</label>
+                                <label><input type="checkbox" value="skin-conditions"> 🧴 Skin conditions (eczema, etc.)</label>
+                                <label><input type="checkbox" value="digestive-issues"> 🍽️ Digestive issues</label>
+                                <label><input type="checkbox" value="learning-disabilities"> 📚 Learning disabilities</label>
+                                <label><input type="checkbox" value="autism-spectrum"> 🌈 Autism spectrum</label>
+                                <label><input type="checkbox" value="other-condition"> 🏥 Other condition</label>
+                                <label><input type="checkbox" value="no-conditions"> ✅ No ongoing health conditions</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <div class="extra-info">
+                                <label>Additional health details:</label>
+                                <textarea id="health-details" placeholder="Like: Takes albuterol inhaler for asthma attacks. Severe peanut allergy - carries EpiPen. ADHD medication needs to be taken with food. Anxiety increases during test season..."></textarea>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Allergies & Dietary Restrictions -->
+                    <section class="question-section allergies-diet">
+                        <h3>🚨 Allergies & Dietary Restrictions</h3>
+                        <p class="alert-note">⚠️ This information is critical for safety and is visible to parents and emergency contacts.</p>
+                        
+                        <div class="question-item">
+                            <label class="main-question">Food allergies (check all that apply):</label>
+                            <div class="checkbox-group allergy-list">
+                                <label class="severe-allergy"><input type="checkbox" value="peanuts"> 🥜 Peanuts</label>
+                                <label class="severe-allergy"><input type="checkbox" value="tree-nuts"> 🌰 Tree nuts</label>
+                                <label><input type="checkbox" value="milk"> 🥛 Milk/Dairy</label>
+                                <label><input type="checkbox" value="eggs"> 🥚 Eggs</label>
+                                <label><input type="checkbox" value="wheat"> 🌾 Wheat/Gluten</label>
+                                <label><input type="checkbox" value="soy"> 🫘 Soy</label>
+                                <label><input type="checkbox" value="fish"> 🐟 Fish</label>
+                                <label><input type="checkbox" value="shellfish"> 🦐 Shellfish</label>
+                                <label><input type="checkbox" value="sesame"> 🫘 Sesame</label>
+                                <label><input type="checkbox" value="other-food"> 🍎 Other food allergies</label>
+                                <label><input type="checkbox" value="no-food-allergies"> ✅ No food allergies</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label class="main-question">Environmental/other allergies:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="pollen"> 🌸 Pollen/Seasonal allergies</label>
+                                <label><input type="checkbox" value="dust-mites"> 🏠 Dust mites</label>
+                                <label><input type="checkbox" value="pet-dander"> 🐕 Pet dander</label>
+                                <label><input type="checkbox" value="mold"> 🍄 Mold</label>
+                                <label><input type="checkbox" value="latex"> 🧤 Latex</label>
+                                <label><input type="checkbox" value="medications"> 💊 Specific medications</label>
+                                <label><input type="checkbox" value="insect-stings"> 🐝 Insect stings</label>
+                                <label><input type="checkbox" value="fragrances"> 🌺 Fragrances/perfumes</label>
+                                <label><input type="checkbox" value="no-environmental"> ✅ No environmental allergies</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label class="main-question">Dietary restrictions/preferences:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="vegetarian"> 🥬 Vegetarian</label>
+                                <label><input type="checkbox" value="vegan"> 🌱 Vegan</label>
+                                <label><input type="checkbox" value="kosher"> ✡️ Kosher</label>
+                                <label><input type="checkbox" value="halal"> ☪️ Halal</label>
+                                <label><input type="checkbox" value="gluten-free"> 🌾 Gluten-free (medical)</label>
+                                <label><input type="checkbox" value="dairy-free"> 🥛 Dairy-free (medical)</label>
+                                <label><input type="checkbox" value="low-sugar"> 🍭 Low sugar diet</label>
+                                <label><input type="checkbox" value="other-dietary"> 🍽️ Other dietary needs</label>
+                                <label><input type="checkbox" value="no-restrictions"> ✅ No dietary restrictions</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <div class="extra-info">
+                                <label>Emergency allergy information:</label>
+                                <textarea id="emergency-allergy-info" placeholder="Like: Carries EpiPen for severe peanut allergy. Must avoid cross-contamination. Benedryl helps with mild reactions. Contact 911 immediately if exposed to peanuts. Inhaler is in backpack for asthma attacks..."></textarea>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Mental Health & Emotional Well-being -->
+                    <section class="question-section mental-health">
+                        <h3>🧠 Mental Health & Emotional Well-being</h3>
+                        <p class="privacy-note">This section is private and only visible to parents. Your emotional health is important!</p>
+                        
+                        <div class="question-item">
+                            <label class="main-question">How I've been feeling lately:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="happy-most-days"> 😊 Happy most days</label>
+                                <label><input type="checkbox" value="sad-sometimes"> 😢 Sad sometimes</label>
+                                <label><input type="checkbox" value="worried-anxious"> 😰 Worried or anxious</label>
+                                <label><input type="checkbox" value="angry-frustrated"> 😤 Angry or frustrated</label>
+                                <label><input type="checkbox" value="lonely"> 😔 Lonely</label>
+                                <label><input type="checkbox" value="stressed"> 😫 Stressed or overwhelmed</label>
+                                <label><input type="checkbox" value="confused"> 🤔 Confused about things</label>
+                                <label><input type="checkbox" value="excited"> 🤗 Excited about things</label>
+                                <label><input type="checkbox" value="bored"> 😐 Bored a lot</label>
+                                <label><input type="checkbox" value="mood-changes"> 🎭 My moods change a lot</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label class="main-question">Things that help me feel better:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="talking-to-family"> 👨‍👩‍👧‍👦 Talking to family</label>
+                                <label><input type="checkbox" value="talking-to-friends"> 👥 Talking to friends</label>
+                                <label><input type="checkbox" value="alone-time"> 🏠 Having alone time</label>
+                                <label><input type="checkbox" value="physical-activity"> 🏃 Physical activity/exercise</label>
+                                <label><input type="checkbox" value="creative-activities"> 🎨 Creative activities (art, music, writing)</label>
+                                <label><input type="checkbox" value="nature-outdoors"> 🌳 Being in nature/outdoors</label>
+                                <label><input type="checkbox" value="reading"> 📚 Reading</label>
+                                <label><input type="checkbox" value="games-hobbies"> 🎮 Games or hobbies</label>
+                                <label><input type="checkbox" value="pets"> 🐕 Playing with pets</label>
+                                <label><input type="checkbox" value="music"> 🎵 Listening to music</label>
+                                <label><input type="checkbox" value="helping-others"> 🤝 Helping others</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label class="main-question">I worry about:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="school-performance"> 📚 My performance at school</label>
+                                <label><input type="checkbox" value="friendships"> 👥 Making/keeping friends</label>
+                                <label><input type="checkbox" value="family-relationships"> 👨‍👩‍👧‍👦 Family relationships</label>
+                                <label><input type="checkbox" value="future-plans"> 🔮 The future/growing up</label>
+                                <label><input type="checkbox" value="body-changes"> 🌱 Changes in my body</label>
+                                <label><input type="checkbox" value="disappointing-others"> 😟 Disappointing others</label>
+                                <label><input type="checkbox" value="being-different"> 🎭 Being different from others</label>
+                                <label><input type="checkbox" value="world-events"> 🌍 Things happening in the world</label>
+                                <label><input type="checkbox" value="safety"> 🛡️ Safety/security</label>
+                                <label><input type="checkbox" value="not-worried"> ✅ I don't worry about much</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label class="main-question">Mental health support I might need:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="counseling"> 🗣️ Individual counseling/therapy</label>
+                                <label><input type="checkbox" value="family-therapy"> 👨‍👩‍👧‍👦 Family therapy</label>
+                                <label><input type="checkbox" value="group-therapy"> 👥 Group therapy/support groups</label>
+                                <label><input type="checkbox" value="medication-evaluation"> 💊 Medication evaluation</label>
+                                <label><input type="checkbox" value="stress-management"> 😌 Stress management techniques</label>
+                                <label><input type="checkbox" value="anxiety-support"> 😰 Anxiety coping strategies</label>
+                                <label><input type="checkbox" value="mood-support"> 🎭 Help with mood regulation</label>
+                                <label><input type="checkbox" value="social-skills"> 👥 Social skills support</label>
+                                <label><input type="checkbox" value="crisis-support"> 🚨 Crisis intervention support</label>
+                                <label><input type="checkbox" value="no-support-needed"> ✅ I feel like I'm doing okay</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <div class="extra-info">
+                                <label>Private thoughts/feelings I want to share with parents:</label>
+                                <textarea id="mental-health-notes" placeholder="This is a safe, private space to share anything on your mind. Your parents want to help and support you..."></textarea>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Physical Activity & Exercise -->
+                    <section class="question-section physical-activity">
+                        <h3>💪 Physical Activity & Exercise</h3>
+                        
+                        <div class="question-item">
+                            <label class="main-question">Physical activities I enjoy:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="team-sports"> ⚽ Team sports (soccer, basketball, etc.)</label>
+                                <label><input type="checkbox" value="individual-sports"> 🏃 Individual sports (running, swimming, etc.)</label>
+                                <label><input type="checkbox" value="dance"> 💃 Dancing</label>
+                                <label><input type="checkbox" value="martial-arts"> 🥋 Martial arts</label>
+                                <label><input type="checkbox" value="gymnastics"> 🤸 Gymnastics</label>
+                                <label><input type="checkbox" value="biking"> 🚴 Biking</label>
+                                <label><input type="checkbox" value="walking-hiking"> 🥾 Walking/hiking</label>
+                                <label><input type="checkbox" value="playground"> 🛝 Playing at playground</label>
+                                <label><input type="checkbox" value="yard-games"> 🏠 Playing in the yard</label>
+                                <label><input type="checkbox" value="not-active"> 😅 I don't really like physical activities</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label class="main-question">Sports/activities I participate in:</label>
+                            <div class="activity-list">
+                                <div class="activity-entry">
+                                    <input type="text" placeholder="Activity/Sport name" class="activity-name">
+                                    <select class="activity-frequency">
+                                        <option value="">How often?</option>
+                                        <option value="daily">Daily</option>
+                                        <option value="several-weekly">Several times a week</option>
+                                        <option value="weekly">Weekly</option>
+                                        <option value="monthly">Monthly</option>
+                                        <option value="seasonal">Seasonal</option>
+                                    </select>
+                                    <select class="activity-level">
+                                        <option value="">Level</option>
+                                        <option value="recreational">Just for fun</option>
+                                        <option value="school-team">School team</option>
+                                        <option value="club-team">Club team</option>
+                                        <option value="competitive">Competitive</option>
+                                    </select>
+                                </div>
+                                <button type="button" class="add-activity-btn" onclick="addPhysicalActivity()">+ Add Another Activity</button>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label class="main-question">Physical activity goals:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="more-active"> 💪 Be more physically active</label>
+                                <label><input type="checkbox" value="try-new-sports"> 🆕 Try new sports/activities</label>
+                                <label><input type="checkbox" value="join-team"> 👥 Join a team or club</label>
+                                <label><input type="checkbox" value="improve-skills"> 📈 Improve in current activities</label>
+                                <label><input type="checkbox" value="family-activities"> 👨‍👩‍👧‍👦 Do more active things with family</label>
+                                <label><input type="checkbox" value="outdoor-time"> 🌳 Spend more time outdoors</label>
+                                <label><input type="checkbox" value="strength-fitness"> 💪 Get stronger/more fit</label>
+                                <label><input type="checkbox" value="find-fun-exercise"> 😊 Find exercise that I actually enjoy</label>
+                                <label><input type="checkbox" value="happy-current"> ✅ I'm happy with my current activity level</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <div class="extra-info">
+                                <label>Physical activity notes:</label>
+                                <textarea id="activity-notes" placeholder="Like: I want to try soccer but I'm nervous about joining a team. I love dancing but we don't have classes nearby. I used to swim but stopped - maybe I want to start again..."></textarea>
+                            </div>
+                        </div>
+                    </section>
+                    </div> <!-- End Physical & Mental Health Tab -->
+                    
+                    <!-- FAMILY & SOCIAL DYNAMICS TAB -->
+                    <div class="profile-tab-content" id="tab-family">
+                    
+                    <!-- Family Relationships & Dynamics -->
+                    <section class="question-section family-relationships">
+                        <h3>👨‍👩‍👧‍👦 Family Relationships & Dynamics</h3>
+                        
+                        <div class="question-item">
+                            <label class="main-question">People in my immediate family:</label>
+                            <div class="family-members">
+                                <div class="family-member-entry">
+                                    <select class="family-role">
+                                        <option value="">Select relationship</option>
+                                        <option value="mom">👩 Mom</option>
+                                        <option value="dad">👨 Dad</option>
+                                        <option value="stepmom">👩 Stepmom</option>
+                                        <option value="stepdad">👨 Stepdad</option>
+                                        <option value="brother">👦 Brother</option>
+                                        <option value="sister">👧 Sister</option>
+                                        <option value="stepbrother">👦 Stepbrother</option>
+                                        <option value="stepsister">👧 Stepsister</option>
+                                        <option value="guardian">👥 Guardian</option>
+                                        <option value="other">👤 Other family member</option>
+                                    </select>
+                                    <input type="text" placeholder="Name" class="family-name">
+                                    <input type="number" placeholder="Age" class="family-age" min="0" max="120">
+                                </div>
+                                <button type="button" class="add-family-btn" onclick="addFamilyMember()">+ Add Family Member</button>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label class="main-question">My relationship with family members:</label>
+                            <div class="relationship-quality">
+                                <div class="relationship-item">
+                                    <h5>👩 Mom/Primary caregiver</h5>
+                                    <div class="checkbox-group">
+                                        <label><input type="checkbox" value="mom-very-close"> 💝 Very close - we tell each other everything</label>
+                                        <label><input type="checkbox" value="mom-close"> 💙 Close - we get along well</label>
+                                        <label><input type="checkbox" value="mom-okay"> 😐 Okay - sometimes good, sometimes not</label>
+                                        <label><input type="checkbox" value="mom-difficult"> 😔 Difficult - we argue or don't understand each other</label>
+                                        <label><input type="checkbox" value="mom-complicated"> 🤔 It's complicated</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="relationship-item">
+                                    <h5>👨 Dad/Other caregiver</h5>
+                                    <div class="checkbox-group">
+                                        <label><input type="checkbox" value="dad-very-close"> 💝 Very close - we tell each other everything</label>
+                                        <label><input type="checkbox" value="dad-close"> 💙 Close - we get along well</label>
+                                        <label><input type="checkbox" value="dad-okay"> 😐 Okay - sometimes good, sometimes not</label>
+                                        <label><input type="checkbox" value="dad-difficult"> 😔 Difficult - we argue or don't understand each other</label>
+                                        <label><input type="checkbox" value="dad-complicated"> 🤔 It's complicated</label>
+                                        <label><input type="checkbox" value="dad-not-involved"> ❌ Not involved in my life</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="relationship-item">
+                                    <h5>👦👧 Siblings</h5>
+                                    <div class="checkbox-group">
+                                        <label><input type="checkbox" value="siblings-best-friends"> 💝 We're best friends</label>
+                                        <label><input type="checkbox" value="siblings-get-along"> 💙 We get along most of the time</label>
+                                        <label><input type="checkbox" value="siblings-normal-fights"> 😐 Normal sibling fighting</label>
+                                        <label><input type="checkbox" value="siblings-lots-fighting"> 😤 We fight a lot</label>
+                                        <label><input type="checkbox" value="siblings-different-ages"> 👶👦 Hard because we're different ages</label>
+                                        <label><input type="checkbox" value="siblings-protective"> 🛡️ I'm protective of my siblings</label>
+                                        <label><input type="checkbox" value="siblings-annoying"> 😮‍💨 They annoy me sometimes</label>
+                                        <label><input type="checkbox" value="no-siblings"> 👤 I'm an only child</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label class="main-question">Family activities I enjoy:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="family-game-night"> 🎲 Family game nights</label>
+                                <label><input type="checkbox" value="family-movie-night"> 🎬 Movie nights together</label>
+                                <label><input type="checkbox" value="family-meals"> 🍽️ Eating meals together</label>
+                                <label><input type="checkbox" value="family-outings"> 🚗 Family outings/trips</label>
+                                <label><input type="checkbox" value="family-sports"> ⚽ Playing sports together</label>
+                                <label><input type="checkbox" value="family-projects"> 🔨 Working on projects together</label>
+                                <label><input type="checkbox" value="family-cooking"> 👩‍🍳 Cooking/baking together</label>
+                                <label><input type="checkbox" value="family-outdoors"> 🌳 Outdoor activities</label>
+                                <label><input type="checkbox" value="family-traditions"> 🎄 Holiday traditions</label>
+                                <label><input type="checkbox" value="one-on-one-time"> 👤 One-on-one time with parents</label>
+                                <label><input type="checkbox" value="family-learning"> 📚 Learning new things together</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <div class="extra-info">
+                                <label>Family relationship notes (private - parents only):</label>
+                                <textarea id="family-relationship-notes" placeholder="Like: I wish we could spend more one-on-one time. Sometimes I feel left out when my siblings get more attention. I love our family traditions but sometimes they feel stressful. I want to be closer to my dad but don't know how..."></textarea>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Extended Family & Important Relationships -->
+                    <section class="question-section extended-family">
+                        <h3>👴👵 Extended Family & Important Relationships</h3>
+                        
+                        <div class="question-item">
+                            <label class="main-question">Important extended family members:</label>
+                            <div class="extended-family-list">
+                                <div class="extended-member-entry">
+                                    <select class="extended-role">
+                                        <option value="">Select relationship</option>
+                                        <option value="grandma">👵 Grandma</option>
+                                        <option value="grandpa">👴 Grandpa</option>
+                                        <option value="aunt">👩 Aunt</option>
+                                        <option value="uncle">👨 Uncle</option>
+                                        <option value="cousin">👤 Cousin</option>
+                                        <option value="family-friend">👥 Family friend (like family)</option>
+                                        <option value="other-relative">👤 Other relative</option>
+                                    </select>
+                                    <input type="text" placeholder="Name" class="extended-name">
+                                    <select class="connection-strength">
+                                        <option value="">How close?</option>
+                                        <option value="very-close">💝 Very close</option>
+                                        <option value="close">💙 Close</option>
+                                        <option value="somewhat-close">😊 Somewhat close</option>
+                                        <option value="not-very-close">😐 Not very close</option>
+                                        <option value="rarely-see">🤷 Rarely see them</option>
+                                    </select>
+                                </div>
+                                <button type="button" class="add-extended-family-btn" onclick="addExtendedFamily()">+ Add Extended Family Member</button>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label class="main-question">How I like to connect with extended family:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="in-person-visits"> 🏠 In-person visits</label>
+                                <label><input type="checkbox" value="video-calls"> 💻 Video calls (FaceTime, Zoom)</label>
+                                <label><input type="checkbox" value="phone-calls"> 📞 Phone calls</label>
+                                <label><input type="checkbox" value="text-messages"> 📱 Text messages</label>
+                                <label><input type="checkbox" value="letters-cards"> 💌 Letters/cards in the mail</label>
+                                <label><input type="checkbox" value="social-media"> 📲 Social media</label>
+                                <label><input type="checkbox" value="family-events"> 🎉 Family gatherings/events</label>
+                                <label><input type="checkbox" value="special-occasions"> 🎂 Special occasions only</label>
+                                <label><input type="checkbox" value="prefer-not-connect"> 😐 I prefer not to connect much</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label class="main-question">Extended family traditions I enjoy:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="holiday-gatherings"> 🎄 Holiday gatherings</label>
+                                <label><input type="checkbox" value="birthday-celebrations"> 🎂 Birthday celebrations</label>
+                                <label><input type="checkbox" value="family-reunions"> 👨‍👩‍👧‍👦 Family reunions</label>
+                                <label><input type="checkbox" value="vacation-trips"> ✈️ Family vacation trips</label>
+                                <label><input type="checkbox" value="cultural-traditions"> 🌍 Cultural/religious traditions</label>
+                                <label><input type="checkbox" value="cooking-traditions"> 🍽️ Special family recipes/cooking</label>
+                                <label><input type="checkbox" value="storytelling"> 📚 Family storytelling</label>
+                                <label><input type="checkbox" value="photo-sharing"> 📸 Sharing photos/memories</label>
+                                <label><input type="checkbox" value="no-traditions"> 😐 We don't really have traditions</label>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Friendships & Social Relationships -->
+                    <section class="question-section friendships-social">
+                        <h3>👥 Friendships & Social Relationships</h3>
+                        
+                        <div class="question-item">
+                            <label class="main-question">My friendships:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="lots-friends"> 👥 I have lots of friends</label>
+                                <label><input type="checkbox" value="few-close-friends"> 💙 I have a few really close friends</label>
+                                <label><input type="checkbox" value="one-best-friend"> 💝 I have one best friend</label>
+                                <label><input type="checkbox" value="school-friends"> 🏫 Most of my friends are from school</label>
+                                <label><input type="checkbox" value="neighborhood-friends"> 🏘️ I have friends in my neighborhood</label>
+                                <label><input type="checkbox" value="activity-friends"> ⚽ Friends from activities/sports</label>
+                                <label><input type="checkbox" value="online-friends"> 💻 Some friends I know online</label>
+                                <label><input type="checkbox" value="family-friends"> 👨‍👩‍👧‍👦 Friends through family</label>
+                                <label><input type="checkbox" value="making-friends-hard"> 😔 Making friends is hard for me</label>
+                                <label><input type="checkbox" value="prefer-alone"> 🏠 I prefer being alone most of the time</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label class="main-question">What I enjoy doing with friends:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="playing-games"> 🎮 Playing video games</label>
+                                <label><input type="checkbox" value="sports-together"> ⚽ Playing sports/being active</label>
+                                <label><input type="checkbox" value="creative-activities"> 🎨 Creative activities (art, music, crafts)</label>
+                                <label><input type="checkbox" value="talking-hanging-out"> 💬 Just talking and hanging out</label>
+                                <label><input type="checkbox" value="watching-movies"> 🎬 Watching movies/shows</label>
+                                <label><input type="checkbox" value="going-places"> 🚗 Going places together</label>
+                                <label><input type="checkbox" value="outdoor-activities"> 🌳 Outdoor activities</label>
+                                <label><input type="checkbox" value="learning-together"> 📚 Learning/studying together</label>
+                                <label><input type="checkbox" value="helping-each-other"> 🤝 Helping each other with problems</label>
+                                <label><input type="checkbox" value="sharing-interests"> 💝 Sharing our interests/hobbies</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label class="main-question">Social challenges I face:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="making-new-friends"> 😰 Making new friends</label>
+                                <label><input type="checkbox" value="keeping-friendships"> 😔 Keeping friendships</label>
+                                <label><input type="checkbox" value="social-anxiety"> 😨 Feeling anxious in social situations</label>
+                                <label><input type="checkbox" value="understanding-social-cues"> 🤔 Understanding social cues</label>
+                                <label><input type="checkbox" value="peer-pressure"> 😟 Dealing with peer pressure</label>
+                                <label><input type="checkbox" value="conflict-resolution"> 😤 Handling conflicts with friends</label>
+                                <label><input type="checkbox" value="feeling-left-out"> 😢 Sometimes feeling left out</label>
+                                <label><input type="checkbox" value="being-different"> 🎭 Feeling different from others</label>
+                                <label><input type="checkbox" value="bullying-concerns"> 😞 Bullying or mean behavior</label>
+                                <label><input type="checkbox" value="no-social-challenges"> ✅ I don't have many social challenges</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label class="main-question">Social skills I want to improve:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="conversation-skills"> 💬 Starting and maintaining conversations</label>
+                                <label><input type="checkbox" value="listening-skills"> 👂 Being a better listener</label>
+                                <label><input type="checkbox" value="empathy-skills"> 💙 Understanding others' feelings</label>
+                                <label><input type="checkbox" value="conflict-skills"> 🤝 Resolving disagreements peacefully</label>
+                                <label><input type="checkbox" value="confidence-skills"> 💪 Being more confident in groups</label>
+                                <label><input type="checkbox" value="inclusion-skills"> 🤗 Including others/being inclusive</label>
+                                <label><input type="checkbox" value="boundary-skills"> 🛡️ Setting healthy boundaries</label>
+                                <label><input type="checkbox" value="leadership-skills"> 👑 Leadership skills</label>
+                                <label><input type="checkbox" value="teamwork-skills"> 👥 Working better in teams</label>
+                                <label><input type="checkbox" value="happy-social-skills"> ✅ I'm happy with my social skills</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <div class="extra-info">
+                                <label>Social/friendship notes (private - parents only):</label>
+                                <textarea id="social-notes" placeholder="Like: I'm worried about a friendship that's been difficult. I want to make more friends but don't know how. I feel left out at school sometimes. I'm being teased and need help handling it..."></textarea>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Communication & Emotional Expression -->
+                    <section class="question-section communication-emotional">
+                        <h3>💬 Communication & Emotional Expression</h3>
+                        
+                        <div class="question-item">
+                            <label class="main-question">How I prefer to communicate:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="talking-face-to-face"> 👥 Talking face-to-face</label>
+                                <label><input type="checkbox" value="texting-messaging"> 📱 Texting/messaging</label>
+                                <label><input type="checkbox" value="writing-notes"> ✍️ Writing notes or letters</label>
+                                <label><input type="checkbox" value="drawing-art"> 🎨 Drawing or creating art</label>
+                                <label><input type="checkbox" value="through-activities"> 🎮 Through shared activities</label>
+                                <label><input type="checkbox" value="one-on-one"> 👤 One-on-one conversations</label>
+                                <label><input type="checkbox" value="group-discussions"> 👥 Group discussions</label>
+                                <label><input type="checkbox" value="need-processing-time"> ⏰ I need time to process before talking</label>
+                                <label><input type="checkbox" value="nonverbal-communication"> 🤗 Through hugs, actions, not words</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label class="main-question">How I express emotions:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="talk-about-feelings"> 💬 I talk about my feelings easily</label>
+                                <label><input type="checkbox" value="keep-feelings-inside"> 🤐 I keep feelings to myself</label>
+                                <label><input type="checkbox" value="show-through-actions"> 🎭 I show feelings through actions</label>
+                                <label><input type="checkbox" value="get-overwhelmed"> 😵‍💫 I get overwhelmed by big emotions</label>
+                                <label><input type="checkbox" value="need-comfort-space"> 🏠 I need a quiet space when upset</label>
+                                <label><input type="checkbox" value="physical-expressions"> 💪 I express emotions physically (running, etc.)</label>
+                                <label><input type="checkbox" value="creative-expressions"> 🎨 I express emotions through creativity</label>
+                                <label><input type="checkbox" value="need-help-identifying"> 🤔 I need help identifying my emotions</label>
+                                <label><input type="checkbox" value="emotions-change-quickly"> 🎭 My emotions change quickly</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label class="main-question">What helps me when I'm upset:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="talking-to-someone"> 💬 Talking to someone I trust</label>
+                                <label><input type="checkbox" value="being-alone"> 🏠 Having alone time</label>
+                                <label><input type="checkbox" value="physical-comfort"> 🤗 Hugs or physical comfort</label>
+                                <label><input type="checkbox" value="distraction-activities"> 🎮 Fun activities to distract me</label>
+                                <label><input type="checkbox" value="problem-solving"> 🧩 Working on solving the problem</label>
+                                <label><input type="checkbox" value="creative-outlets"> 🎨 Creative outlets (art, music, writing)</label>
+                                <label><input type="checkbox" value="physical-activity"> 🏃 Physical activity/exercise</label>
+                                <label><input type="checkbox" value="comfort-items"> 🧸 Comfort items (stuffed animals, blankets)</label>
+                                <label><input type="checkbox" value="routine-structure"> 📅 Getting back to normal routine</label>
+                                <label><input type="checkbox" value="time-and-space"> ⏰ Just time and space to process</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <div class="extra-info">
+                                <label>Communication & emotional support notes:</label>
+                                <textarea id="communication-notes" placeholder="Like: I have trouble expressing when I'm upset and just shut down. I need warnings before big changes. I communicate better through writing than talking. I get overwhelmed in loud or busy environments..."></textarea>
+                            </div>
+                        </div>
+                    </section>
+                    </div> <!-- End Family & Social Dynamics Tab -->
+                    
+                    <!-- SUPPORT & HOUSEHOLD NEEDS TAB -->
+                    <div class="profile-tab-content" id="tab-support">
+                    
+                    <!-- Chores & Household Responsibilities -->
+                    <section class="question-section chores-responsibilities">
+                        <h3>🏠 Chores & Household Responsibilities</h3>
+                        
+                        <div class="question-item">
+                            <label class="main-question">Current chores and responsibilities I have:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="clean-room"> 🛏️ Keep my room clean</label>
+                                <label><input type="checkbox" value="make-bed"> 🛏️ Make my bed</label>
+                                <label><input type="checkbox" value="dishes"> 🍽️ Help with dishes</label>
+                                <label><input type="checkbox" value="laundry"> 👕 Help with laundry</label>
+                                <label><input type="checkbox" value="trash"> 🗑️ Take out trash</label>
+                                <label><input type="checkbox" value="pet-care"> 🐕 Take care of pets</label>
+                                <label><input type="checkbox" value="yard-work"> 🌱 Help with yard work</label>
+                                <label><input type="checkbox" value="vacuum-sweep"> 🧹 Vacuum/sweep floors</label>
+                                <label><input type="checkbox" value="organize-toys"> 🧸 Put away toys/belongings</label>
+                                <label><input type="checkbox" value="help-siblings"> 👶 Help with younger siblings</label>
+                                <label><input type="checkbox" value="meal-prep"> 🍳 Help prepare meals</label>
+                                <label><input type="checkbox" value="grocery-help"> 🛒 Help with grocery shopping</label>
+                                <label><input type="checkbox" value="no-chores"> ❌ I don't have regular chores</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label class="main-question">How I feel about my current chores:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="love-helping"> 💝 I love helping around the house</label>
+                                <label><input type="checkbox" value="okay-with-chores"> 😊 I'm okay with my chores</label>
+                                <label><input type="checkbox" value="too-many-chores"> 😰 I have too many chores</label>
+                                <label><input type="checkbox" value="too-few-chores"> 🤷 I could do more to help</label>
+                                <label><input type="checkbox" value="some-too-hard"> 😔 Some chores are too hard for me</label>
+                                <label><input type="checkbox" value="need-reminders"> 🔔 I need lots of reminders</label>
+                                <label><input type="checkbox" value="forget-chores"> 😅 I often forget to do them</label>
+                                <label><input type="checkbox" value="chores-are-fair"> ✅ My chores feel fair</label>
+                                <label><input type="checkbox" value="want-allowance"> 💰 I wish I got paid for chores</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label class="main-question">New responsibilities I'd like to try:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="want-cooking"> 🍳 Learning to cook simple meals</label>
+                                <label><input type="checkbox" value="want-laundry"> 👕 Doing my own laundry</label>
+                                <label><input type="checkbox" value="want-cleaning"> 🧹 More cleaning responsibilities</label>
+                                <label><input type="checkbox" value="want-pet-training"> 🐕 Training/caring for pets</label>
+                                <label><input type="checkbox" value="want-gardening"> 🌱 Gardening/plant care</label>
+                                <label><input type="checkbox" value="want-organizing"> 📦 Organizing family spaces</label>
+                                <label><input type="checkbox" value="want-budgeting"> 💰 Learning about money/budgeting</label>
+                                <label><input type="checkbox" value="want-car-care"> 🚗 Helping with car maintenance</label>
+                                <label><input type="checkbox" value="want-meal-planning"> 📝 Help plan family meals</label>
+                                <label><input type="checkbox" value="happy-current"> ✅ I'm happy with my current level</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <div class="extra-info">
+                                <label>Chores & responsibility notes:</label>
+                                <textarea id="chores-notes" placeholder="Like: I want to learn to cook but need someone to teach me. I forget to do my chores and need better reminders. I feel like my siblings don't do as much as me. I'd like to earn some money for helping..."></textarea>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Sleep Environment & Bedtime Needs -->
+                    <section class="question-section sleep-environment">
+                        <h3>😴 Sleep Environment & Bedtime Needs</h3>
+                        
+                        <div class="question-item">
+                            <label class="main-question">My current sleep situation:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="own-room"> 🛏️ I have my own room</label>
+                                <label><input type="checkbox" value="share-room"> 👥 I share a room with siblings</label>
+                                <label><input type="checkbox" value="own-bed"> 🛏️ I have my own bed</label>
+                                <label><input type="checkbox" value="bunk-bed"> 🏗️ I sleep in a bunk bed</label>
+                                <label><input type="checkbox" value="comfortable-bed"> 😊 My bed is comfortable</label>
+                                <label><input type="checkbox" value="uncomfortable-bed"> 😔 My bed is uncomfortable</label>
+                                <label><input type="checkbox" value="enough-space"> ✅ I have enough space</label>
+                                <label><input type="checkbox" value="not-enough-space"> 📦 My room/space feels crowded</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label class="main-question">What I need for good sleep:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="very-quiet"> 🤫 Very quiet environment</label>
+                                <label><input type="checkbox" value="some-noise-okay"> 🔊 Some background noise is okay</label>
+                                <label><input type="checkbox" value="white-noise"> 🌊 White noise or fan</label>
+                                <label><input type="checkbox" value="very-dark"> 🌚 Very dark room</label>
+                                <label><input type="checkbox" value="some-light-okay"> 💡 Some light is okay</label>
+                                <label><input type="checkbox" value="night-light"> 🔅 Need a night light</label>
+                                <label><input type="checkbox" value="cool-temperature"> ❄️ Cool temperature</label>
+                                <label><input type="checkbox" value="warm-temperature"> 🔥 Warm temperature</label>
+                                <label><input type="checkbox" value="comfort-items"> 🧸 Comfort items (stuffed animals, blankets)</label>
+                                <label><input type="checkbox" value="door-closed"> 🚪 Door closed</label>
+                                <label><input type="checkbox" value="door-open"> 🚪 Door open/cracked</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label class="main-question">My bedtime routine includes:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="brush-teeth-bedtime"> 🦷 Brushing teeth</label>
+                                <label><input type="checkbox" value="bath-shower-evening"> 🛁 Bath/shower</label>
+                                <label><input type="checkbox" value="pajamas"> 👕 Changing into pajamas</label>
+                                <label><input type="checkbox" value="reading-bedtime"> 📚 Reading or being read to</label>
+                                <label><input type="checkbox" value="prayers-meditation"> 🙏 Prayers or quiet time</label>
+                                <label><input type="checkbox" value="music-bedtime"> 🎵 Listening to music</label>
+                                <label><input type="checkbox" value="family-time"> 👨‍👩‍👧‍👦 Special time with family</label>
+                                <label><input type="checkbox" value="journal-bedtime"> ✍️ Writing in journal</label>
+                                <label><input type="checkbox" value="prepare-tomorrow"> 📅 Getting ready for tomorrow</label>
+                                <label><input type="checkbox" value="no-routine"> 😅 I don't really have a routine</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label class="main-question">Sleep challenges I have:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="trouble-falling-asleep"> 😴 Trouble falling asleep</label>
+                                <label><input type="checkbox" value="wake-up-night"> 🌙 Wake up during the night</label>
+                                <label><input type="checkbox" value="nightmares"> 😰 Nightmares or bad dreams</label>
+                                <label><input type="checkbox" value="afraid-dark"> 🌚 Afraid of the dark</label>
+                                <label><input type="checkbox" value="worry-bedtime"> 😟 Worry or think too much at bedtime</label>
+                                <label><input type="checkbox" value="too-early-bedtime"> ⏰ My bedtime feels too early</label>
+                                <label><input type="checkbox" value="too-late-bedtime"> ⏰ My bedtime is too late</label>
+                                <label><input type="checkbox" value="hard-wake-up"> 😵‍💫 Hard time waking up in the morning</label>
+                                <label><input type="checkbox" value="tired-during-day"> 😴 Feel tired during the day</label>
+                                <label><input type="checkbox" value="no-sleep-problems"> ✅ I don't have sleep problems</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <div class="extra-info">
+                                <label>Sleep & bedtime notes:</label>
+                                <textarea id="sleep-notes" placeholder="Like: I have trouble falling asleep because I worry about things. I need my stuffed animal to sleep. My room is too loud because of my sibling. I stay up too late on my phone. I have bad dreams sometimes..."></textarea>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Personal Space & Privacy Needs -->
+                    <section class="question-section personal-space-privacy">
+                        <h3>🏠 Personal Space & Privacy Needs</h3>
+                        
+                        <div class="question-item">
+                            <label class="main-question">My personal space needs:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="need-alone-time"> 🏠 I need regular alone time</label>
+                                <label><input type="checkbox" value="need-quiet-space"> 🤫 I need a quiet space to retreat to</label>
+                                <label><input type="checkbox" value="need-privacy"> 🔒 I need privacy for personal things</label>
+                                <label><input type="checkbox" value="like-people-around"> 👥 I like having people around me</label>
+                                <label><input type="checkbox" value="okay-sharing-space"> 😊 I'm okay sharing space with others</label>
+                                <label><input type="checkbox" value="need-boundaries"> 🚧 I need clear boundaries about my things</label>
+                                <label><input type="checkbox" value="struggle-boundaries"> 😔 Others don't respect my boundaries</label>
+                                <label><input type="checkbox" value="want-more-independence"> 🎯 I want more independence/freedom</label>
+                                <label><input type="checkbox" value="comfortable-current"> ✅ I'm comfortable with my current privacy</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label class="main-question">When I need space, I:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="go-to-room"> 🛏️ Go to my room</label>
+                                <label><input type="checkbox" value="find-quiet-spot"> 🤫 Find a quiet spot in the house</label>
+                                <label><input type="checkbox" value="go-outside"> 🌳 Go outside</label>
+                                <label><input type="checkbox" value="tell-family"> 💬 Tell my family I need space</label>
+                                <label><input type="checkbox" value="get-overwhelmed"> 😵‍💫 Get overwhelmed and don't know what to do</label>
+                                <label><input type="checkbox" value="ask-for-help"> 🤝 Ask for help finding space</label>
+                                <label><input type="checkbox" value="use-activities"> 🎮 Use activities to have mental space</label>
+                                <label><input type="checkbox" value="struggle-space"> 😔 Have trouble finding space when I need it</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label class="main-question">Privacy concerns I have:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="siblings-in-room"> 👥 Siblings going through my things</label>
+                                <label><input type="checkbox" value="parents-checking"> 👨‍👩‍👧‍👦 Parents checking my phone/computer</label>
+                                <label><input type="checkbox" value="diary-privacy"> 📔 Keeping diary/journal private</label>
+                                <label><input type="checkbox" value="friend-conversations"> 💬 Private conversations with friends</label>
+                                <label><input type="checkbox" value="body-privacy"> 🔒 Privacy for changing clothes/personal care</label>
+                                <label><input type="checkbox" value="online-privacy"> 💻 Privacy for online activities</label>
+                                <label><input type="checkbox" value="emotional-privacy"> 💙 Space to process emotions privately</label>
+                                <label><input type="checkbox" value="creative-privacy"> 🎨 Private space for creative projects</label>
+                                <label><input type="checkbox" value="no-privacy-concerns"> ✅ I don't have privacy concerns</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <div class="extra-info">
+                                <label>Personal space & privacy notes:</label>
+                                <textarea id="privacy-notes" placeholder="Like: I need more alone time to recharge. My siblings don't respect my boundaries. I want privacy for talking to friends. I feel overwhelmed when there's too much noise/activity..."></textarea>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Support Systems & Resources -->
+                    <section class="question-section support-systems">
+                        <h3>🤝 Support Systems & Resources</h3>
+                        
+                        <div class="question-item">
+                            <label class="main-question">People I can turn to for support:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="mom-support"> 👩 Mom</label>
+                                <label><input type="checkbox" value="dad-support"> 👨 Dad</label>
+                                <label><input type="checkbox" value="siblings-support"> 👦👧 Siblings</label>
+                                <label><input type="checkbox" value="grandparents-support"> 👴👵 Grandparents</label>
+                                <label><input type="checkbox" value="other-family-support"> 👨‍👩‍👧‍👦 Other family members</label>
+                                <label><input type="checkbox" value="friends-support"> 👥 Friends</label>
+                                <label><input type="checkbox" value="teachers-support"> 👩‍🏫 Teachers</label>
+                                <label><input type="checkbox" value="counselor-support"> 🗣️ School counselor</label>
+                                <label><input type="checkbox" value="coach-support"> ⚽ Coach or activity leader</label>
+                                <label><input type="checkbox" value="therapist-support"> 💙 Therapist/counselor</label>
+                                <label><input type="checkbox" value="religious-support"> 🙏 Religious community</label>
+                                <label><input type="checkbox" value="feel-alone"> 😔 I feel like I don't have support</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label class="main-question">Types of support I need:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="emotional-support"> 💙 Emotional support/someone to listen</label>
+                                <label><input type="checkbox" value="practical-help"> 🤝 Practical help with tasks</label>
+                                <label><input type="checkbox" value="academic-support"> 📚 Help with school/learning</label>
+                                <label><input type="checkbox" value="social-support"> 👥 Help with friendships/social skills</label>
+                                <label><input type="checkbox" value="life-skills-support"> 🎯 Learning life skills</label>
+                                <label><input type="checkbox" value="health-support"> 🏥 Health/medical support</label>
+                                <label><input type="checkbox" value="crisis-support"> 🚨 Someone to call in crisis</label>
+                                <label><input type="checkbox" value="advocacy-support"> 🗣️ Someone to advocate for me</label>
+                                <label><input type="checkbox" value="financial-support"> 💰 Financial support/resources</label>
+                                <label><input type="checkbox" value="transportation-support"> 🚗 Transportation help</label>
+                                <label><input type="checkbox" value="feel-supported"> ✅ I feel well-supported</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label class="main-question">Resources that would help me:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="tutoring"> 📚 Tutoring or academic help</label>
+                                <label><input type="checkbox" value="counseling"> 💙 Counseling/therapy</label>
+                                <label><input type="checkbox" value="support-groups"> 👥 Support groups with other kids</label>
+                                <label><input type="checkbox" value="mentorship"> 🌟 Mentorship program</label>
+                                <label><input type="checkbox" value="activity-programs"> ⚽ After-school programs/activities</label>
+                                <label><input type="checkbox" value="skill-classes"> 🎨 Classes to learn new skills</label>
+                                <label><input type="checkbox" value="career-exploration"> 💼 Career exploration opportunities</label>
+                                <label><input type="checkbox" value="community-service"> 🤝 Community service opportunities</label>
+                                <label><input type="checkbox" value="technology-access"> 💻 Better technology access</label>
+                                <label><input type="checkbox" value="transportation"> 🚌 Transportation to activities</label>
+                                <label><input type="checkbox" value="financial-help"> 💰 Financial assistance for activities</label>
+                                <label><input type="checkbox" value="satisfied-resources"> ✅ I'm satisfied with available resources</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <div class="extra-info">
+                                <label>Support & resource notes:</label>
+                                <textarea id="support-notes" placeholder="Like: I need someone to talk to about friend problems. I want to join activities but we can't afford them. I need help with organization skills. I wish I had a mentor or older person to talk to..."></textarea>
+                            </div>
+                        </div>
+                    </section>
+                    </div> <!-- End Support & Household Needs Tab -->
+                    
+                    <!-- WISHLIST & REPLACEMENT TRACKING TAB -->
+                    <div class="profile-tab-content" id="tab-wishlist">
+                    
+                    <!-- Current Wishlist & Gift Ideas -->
+                    <section class="question-section current-wishlist">
+                        <h3>🎁 Current Wishlist & Gift Ideas</h3>
+                        
+                        <div class="question-item">
+                            <label class="main-question">Things I really want right now:</label>
+                            <div class="wishlist-categories">
+                                <div class="wishlist-category">
+                                    <h5>🧸 Toys & Games</h5>
+                                    <div class="wishlist-items">
+                                        <div class="wishlist-item-entry">
+                                            <input type="text" placeholder="Item name" class="wishlist-item-name">
+                                            <select class="wishlist-priority">
+                                                <option value="">How much do you want it?</option>
+                                                <option value="really-want">💝 Really, really want!</option>
+                                                <option value="want">😊 Would like to have</option>
+                                                <option value="maybe">🤷 Maybe/if there's money</option>
+                                            </select>
+                                            <input type="text" placeholder="Why you want it" class="wishlist-reason">
+                                        </div>
+                                        <button type="button" class="add-wishlist-item" onclick="addWishlistItem('toys')">+ Add Toy/Game</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="wishlist-category">
+                                    <h5>👕 Clothing & Accessories</h5>
+                                    <div class="wishlist-items">
+                                        <div class="wishlist-item-entry">
+                                            <input type="text" placeholder="Item name" class="wishlist-item-name">
+                                            <select class="wishlist-priority">
+                                                <option value="">How much do you want it?</option>
+                                                <option value="really-want">💝 Really, really want!</option>
+                                                <option value="want">😊 Would like to have</option>
+                                                <option value="maybe">🤷 Maybe/if there's money</option>
+                                            </select>
+                                            <input type="text" placeholder="Why you want it" class="wishlist-reason">
+                                        </div>
+                                        <button type="button" class="add-wishlist-item" onclick="addWishlistItem('clothing')">+ Add Clothing Item</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="wishlist-category">
+                                    <h5>📚 Books & Media</h5>
+                                    <div class="wishlist-items">
+                                        <div class="wishlist-item-entry">
+                                            <input type="text" placeholder="Item name" class="wishlist-item-name">
+                                            <select class="wishlist-priority">
+                                                <option value="">How much do you want it?</option>
+                                                <option value="really-want">💝 Really, really want!</option>
+                                                <option value="want">😊 Would like to have</option>
+                                                <option value="maybe">🤷 Maybe/if there's money</option>
+                                            </select>
+                                            <input type="text" placeholder="Why you want it" class="wishlist-reason">
+                                        </div>
+                                        <button type="button" class="add-wishlist-item" onclick="addWishlistItem('books')">+ Add Book/Media</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="wishlist-category">
+                                    <h5>🎨 Hobbies & Activities</h5>
+                                    <div class="wishlist-items">
+                                        <div class="wishlist-item-entry">
+                                            <input type="text" placeholder="Item name" class="wishlist-item-name">
+                                            <select class="wishlist-priority">
+                                                <option value="">How much do you want it?</option>
+                                                <option value="really-want">💝 Really, really want!</option>
+                                                <option value="want">😊 Would like to have</option>
+                                                <option value="maybe">🤷 Maybe/if there's money</option>
+                                            </select>
+                                            <input type="text" placeholder="Why you want it" class="wishlist-reason">
+                                        </div>
+                                        <button type="button" class="add-wishlist-item" onclick="addWishlistItem('hobbies')">+ Add Hobby Item</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="wishlist-category">
+                                    <h5>💻 Technology</h5>
+                                    <div class="wishlist-items">
+                                        <div class="wishlist-item-entry">
+                                            <input type="text" placeholder="Item name" class="wishlist-item-name">
+                                            <select class="wishlist-priority">
+                                                <option value="">How much do you want it?</option>
+                                                <option value="really-want">💝 Really, really want!</option>
+                                                <option value="want">😊 Would like to have</option>
+                                                <option value="maybe">🤷 Maybe/if there's money</option>
+                                            </select>
+                                            <input type="text" placeholder="Why you want it" class="wishlist-reason">
+                                        </div>
+                                        <button type="button" class="add-wishlist-item" onclick="addWishlistItem('technology')">+ Add Tech Item</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label class="main-question">Types of gifts I like best:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="practical-gifts"> 🎯 Practical things I can use</label>
+                                <label><input type="checkbox" value="fun-gifts"> 🎮 Fun toys and games</label>
+                                <label><input type="checkbox" value="creative-gifts"> 🎨 Art supplies and creative materials</label>
+                                <label><input type="checkbox" value="experience-gifts"> 🎢 Experiences (trips, activities, lessons)</label>
+                                <label><input type="checkbox" value="surprise-gifts"> 🎁 Surprise gifts I didn't ask for</label>
+                                <label><input type="checkbox" value="handmade-gifts"> 💝 Handmade/personal gifts</label>
+                                <label><input type="checkbox" value="money-gifts"> 💰 Money to spend how I want</label>
+                                <label><input type="checkbox" value="charity-gifts"> 🤝 Donations to causes I care about</label>
+                                <label><input type="checkbox" value="educational-gifts"> 📚 Educational/learning gifts</label>
+                                <label><input type="checkbox" value="collections"> 🏆 Things that add to my collections</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <div class="extra-info">
+                                <label>Gift ideas & wishlist notes:</label>
+                                <textarea id="wishlist-notes" placeholder="Like: I'm saving up for a new bike. I love anything with cats on it. I want to learn guitar so guitar lessons would be amazing. I collect Pokemon cards. I really want to go to an escape room with the family..."></textarea>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Items That Need Replacing -->
+                    <section class="question-section replacement-needs">
+                        <h3>🔄 Items That Need Replacing</h3>
+                        
+                        <div class="question-item">
+                            <label class="main-question">Things that are broken, too small, or worn out:</label>
+                            <div class="replacement-categories">
+                                <div class="replacement-category">
+                                    <h5>👕 Clothing</h5>
+                                    <div class="checkbox-group replacement-items">
+                                        <label><input type="checkbox" value="replace-shoes"> 👟 Shoes (outgrown/worn out)</label>
+                                        <label><input type="checkbox" value="replace-coats"> 🧥 Coats/jackets (too small)</label>
+                                        <label><input type="checkbox" value="replace-jeans"> 👖 Jeans/pants (too small/torn)</label>
+                                        <label><input type="checkbox" value="replace-shirts"> 👕 Shirts/tops (too small/worn)</label>
+                                        <label><input type="checkbox" value="replace-underwear"> 🩲 Underwear (too small/worn)</label>
+                                        <label><input type="checkbox" value="replace-socks"> 🧦 Socks (holes/lost partners)</label>
+                                        <label><input type="checkbox" value="replace-pajamas"> 👕 Pajamas (too small)</label>
+                                        <label><input type="checkbox" value="replace-backpack"> 🎒 Backpack (broken/worn out)</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="replacement-category">
+                                    <h5>📚 School & Learning</h5>
+                                    <div class="checkbox-group replacement-items">
+                                        <label><input type="checkbox" value="replace-school-supplies"> ✏️ School supplies (used up/broken)</label>
+                                        <label><input type="checkbox" value="replace-books"> 📚 Books (damaged/outgrown)</label>
+                                        <label><input type="checkbox" value="replace-calculator"> 🔢 Calculator (broken)</label>
+                                        <label><input type="checkbox" value="replace-folders"> 📁 Folders/binders (worn out)</label>
+                                        <label><input type="checkbox" value="replace-headphones"> 🎧 Headphones (broken)</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="replacement-category">
+                                    <h5>🛏️ Bedroom & Personal Items</h5>
+                                    <div class="checkbox-group replacement-items">
+                                        <label><input type="checkbox" value="replace-bedding"> 🛏️ Bedding (too small/worn)</label>
+                                        <label><input type="checkbox" value="replace-pillows"> 🛏️ Pillows (flat/uncomfortable)</label>
+                                        <label><input type="checkbox" value="replace-stuffed-animals"> 🧸 Stuffed animals (damaged)</label>
+                                        <label><input type="checkbox" value="replace-lamp"> 💡 Desk/reading lamp (broken)</label>
+                                        <label><input type="checkbox" value="replace-storage"> 📦 Storage boxes/organizers</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="replacement-category">
+                                    <h5>🎮 Toys & Electronics</h5>
+                                    <div class="checkbox-group replacement-items">
+                                        <label><input type="checkbox" value="replace-toys"> 🧸 Favorite toys (broken)</label>
+                                        <label><input type="checkbox" value="replace-games"> 🎮 Games/apps (lost/broken)</label>
+                                        <label><input type="checkbox" value="replace-chargers"> 🔌 Chargers (lost/broken)</label>
+                                        <label><input type="checkbox" value="replace-device"> 📱 Device (phone/tablet - broken)</label>
+                                        <label><input type="checkbox" value="replace-bike"> 🚲 Bike (too small/broken)</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label class="main-question">Urgency level for replacements:</label>
+                            <div class="urgency-items">
+                                <div class="urgency-level">
+                                    <h5>🚨 Need RIGHT NOW</h5>
+                                    <textarea placeholder="List items you need immediately (like winter coat, shoes for school, etc.)"></textarea>
+                                </div>
+                                <div class="urgency-level">
+                                    <h5>⏰ Need Soon</h5>
+                                    <textarea placeholder="List items you'll need in the next few months"></textarea>
+                                </div>
+                                <div class="urgency-level">
+                                    <h5>🤷 Would Be Nice</h5>
+                                    <textarea placeholder="List items that would be nice to replace but aren't urgent"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <div class="extra-info">
+                                <label>Replacement notes:</label>
+                                <textarea id="replacement-notes" placeholder="Like: My winter boots have a hole and my feet get wet. My backpack zipper is broken and my stuff falls out. I've outgrown my favorite jeans but I'm sad to get rid of them..."></textarea>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Special Occasions & Events -->
+                    <section class="question-section special-occasions">
+                        <h3>🎉 Special Occasions & Events</h3>
+                        
+                        <div class="question-item">
+                            <label class="main-question">Upcoming events I need things for:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="birthday-coming"> 🎂 My birthday is coming up</label>
+                                <label><input type="checkbox" value="holiday-gifts"> 🎄 Holiday gift giving/receiving</label>
+                                <label><input type="checkbox" value="graduation"> 🎓 Graduation or moving up ceremony</label>
+                                <label><input type="checkbox" value="school-dance"> 💃 School dance or formal event</label>
+                                <label><input type="checkbox" value="sports-season"> ⚽ Sports season starting</label>
+                                <label><input type="checkbox" value="summer-camp"> 🏕️ Summer camp or activities</label>
+                                <label><input type="checkbox" value="family-trip"> ✈️ Family vacation/trip</label>
+                                <label><input type="checkbox" value="school-year"> 📚 New school year starting</label>
+                                <label><input type="checkbox" value="activity-starting"> 🎭 New activity/hobby starting</label>
+                                <label><input type="checkbox" value="no-events"> 😊 No special events coming up</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label class="main-question">What I want for my birthday this year:</label>
+                            <div class="birthday-planning">
+                                <div class="birthday-section">
+                                    <h5>🎁 Gift Ideas</h5>
+                                    <textarea placeholder="List specific things you want for your birthday"></textarea>
+                                </div>
+                                <div class="birthday-section">
+                                    <h5>🎉 Party Ideas</h5>
+                                    <div class="checkbox-group">
+                                        <label><input type="checkbox" value="big-party"> 🎈 Big party with lots of friends</label>
+                                        <label><input type="checkbox" value="small-party"> 👥 Small party with best friends</label>
+                                        <label><input type="checkbox" value="family-party"> 👨‍👩‍👧‍👦 Just family celebration</label>
+                                        <label><input type="checkbox" value="activity-party"> 🎢 Activity party (bowling, movies, etc.)</label>
+                                        <label><input type="checkbox" value="sleepover"> 🛏️ Sleepover party</label>
+                                        <label><input type="checkbox" value="no-party"> 😊 I don't want a party</label>
+                                    </div>
+                                </div>
+                                <div class="birthday-section">
+                                    <h5>🍰 Celebration Preferences</h5>
+                                    <textarea placeholder="How do you want to celebrate? (cake flavor, decorations, activities)"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label class="main-question">Holiday traditions I care about:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="christmas-gifts"> 🎄 Christmas gift giving</label>
+                                <label><input type="checkbox" value="halloween-costume"> 🎃 Halloween costumes</label>
+                                <label><input type="checkbox" value="valentine-cards"> 💝 Valentine's Day cards/gifts</label>
+                                <label><input type="checkbox" value="easter-celebration"> 🐰 Easter celebrations</label>
+                                <label><input type="checkbox" value="thanksgiving-gratitude"> 🦃 Thanksgiving traditions</label>
+                                <label><input type="checkbox" value="cultural-holidays"> 🌍 Cultural/religious holidays</label>
+                                <label><input type="checkbox" value="family-traditions"> 👨‍👩‍👧‍👦 Special family traditions</label>
+                                <label><input type="checkbox" value="not-important"> 🤷 Holidays aren't very important to me</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <div class="extra-info">
+                                <label>Special occasions & events notes:</label>
+                                <textarea id="occasions-notes" placeholder="Like: I want a Pokemon-themed birthday party. I need a costume for the school play. I want to give homemade gifts this Christmas. I'm nervous about graduation and want something special to wear..."></textarea>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Gift Giving & Helping Others -->
+                    <section class="question-section gift-giving">
+                        <h3>💝 Gift Giving & Helping Others</h3>
+                        
+                        <div class="question-item">
+                            <label class="main-question">People I want to give gifts to:</label>
+                            <div class="gift-recipients">
+                                <div class="recipient-entry">
+                                    <input type="text" placeholder="Person's name" class="recipient-name">
+                                    <select class="gift-occasion">
+                                        <option value="">When?</option>
+                                        <option value="birthday">🎂 Their birthday</option>
+                                        <option value="christmas">🎄 Christmas</option>
+                                        <option value="mothers-day">👩 Mother's Day</option>
+                                        <option value="fathers-day">👨 Father's Day</option>
+                                        <option value="valentines">💝 Valentine's Day</option>
+                                        <option value="just-because">💙 Just because</option>
+                                        <option value="appreciation">🤝 To say thank you</option>
+                                    </select>
+                                    <input type="text" placeholder="Gift idea" class="gift-idea">
+                                </div>
+                                <button type="button" class="add-gift-recipient" onclick="addGiftRecipient()">+ Add Person</button>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label class="main-question">How I like to give gifts:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="handmade-gifts"> 🎨 Making gifts myself</label>
+                                <label><input type="checkbox" value="bought-gifts"> 🛒 Buying gifts from stores</label>
+                                <label><input type="checkbox" value="experience-gifts"> 🎢 Giving experiences (activities together)</label>
+                                <label><input type="checkbox" value="service-gifts"> 🤝 Helping with chores/tasks</label>
+                                <label><input type="checkbox" value="surprise-gifts"> 🎁 Surprise gifts</label>
+                                <label><input type="checkbox" value="planned-gifts"> 📅 Planned gifts they know about</label>
+                                <label><input type="checkbox" value="group-gifts"> 👥 Group gifts with family</label>
+                                <label><input type="checkbox" value="dont-like-giving"> 😅 I don't really like giving gifts</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label class="main-question">Ways I want to help others:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="help-family"> 👨‍👩‍👧‍👦 Help family members more</label>
+                                <label><input type="checkbox" value="help-friends"> 👥 Help friends with problems</label>
+                                <label><input type="checkbox" value="volunteer"> 🤝 Volunteer in the community</label>
+                                <label><input type="checkbox" value="donate-toys"> 🧸 Donate toys I've outgrown</label>
+                                <label><input type="checkbox" value="donate-clothes"> 👕 Donate clothes that don't fit</label>
+                                <label><input type="checkbox" value="charity-work"> 💙 Work with charities</label>
+                                <label><input type="checkbox" value="help-animals"> 🐕 Help animals (shelter, pets)</label>
+                                <label><input type="checkbox" value="help-environment"> 🌍 Help the environment</label>
+                                <label><input type="checkbox" value="help-elderly"> 👴👵 Help elderly people</label>
+                                <label><input type="checkbox" value="not-sure-how"> 🤔 I want to help but don't know how</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <div class="extra-info">
+                                <label>Gift giving & helping others notes:</label>
+                                <textarea id="giving-notes" placeholder="Like: I want to make my mom a special Mother's Day gift. I have toys I'd like to donate to kids who need them. I want to help at the animal shelter. I need help figuring out what to get my friend for their birthday..."></textarea>
+                            </div>
+                        </div>
+                    </section>
+                    </div> <!-- End Wishlist & Replacement Tracking Tab -->
+                    
+                    <!-- CHORES & LIFE SKILLS TAB -->
+                    <div class="profile-tab-content" id="tab-chores">
+                    
+                    <!-- Current Daily Chores -->
+                    <section class="question-section daily-chores">
+                        <h3>🗓️ Current Daily Chores</h3>
+                        
+                        <div class="question-item">
+                            <label class="main-question">My daily chores and responsibilities:</label>
+                            <div class="daily-chore-list">
+                                <div class="chore-entry">
+                                    <select class="chore-type">
+                                        <option value="">Select chore type</option>
+                                        <option value="bedroom">🛏️ Bedroom maintenance</option>
+                                        <option value="bathroom">🚿 Bathroom tasks</option>
+                                        <option value="kitchen">🍽️ Kitchen help</option>
+                                        <option value="living-areas">🛋️ Living area tidying</option>
+                                        <option value="pets">🐕 Pet care</option>
+                                        <option value="outdoor">🌱 Outdoor/yard work</option>
+                                        <option value="laundry">👕 Laundry assistance</option>
+                                        <option value="organization">📦 Organization tasks</option>
+                                        <option value="other">🏠 Other household task</option>
+                                    </select>
+                                    <input type="text" placeholder="Specific chore description" class="chore-description">
+                                    <select class="chore-frequency">
+                                        <option value="">How often?</option>
+                                        <option value="daily">Daily</option>
+                                        <option value="every-other-day">Every other day</option>
+                                        <option value="weekdays">Weekdays only</option>
+                                        <option value="weekends">Weekends only</option>
+                                        <option value="as-needed">As needed</option>
+                                    </select>
+                                    <select class="chore-difficulty">
+                                        <option value="">Difficulty level</option>
+                                        <option value="easy">😊 Easy for me</option>
+                                        <option value="learning">🤔 Still learning</option>
+                                        <option value="challenging">😅 Challenging</option>
+                                        <option value="need-help">🤝 Need help</option>
+                                    </select>
+                                </div>
+                                <button type="button" class="add-chore-btn" onclick="addDailyChore()">+ Add Daily Chore</button>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label class="main-question">How I feel about my daily chores:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="enjoy-helping"> 💝 I enjoy helping with daily tasks</label>
+                                <label><input type="checkbox" value="routine-comfortable"> 😊 I'm comfortable with my routine</label>
+                                <label><input type="checkbox" value="too-many-daily"> 😰 I have too many daily chores</label>
+                                <label><input type="checkbox" value="want-more-daily"> 🙋 I'd like more daily responsibilities</label>
+                                <label><input type="checkbox" value="forget-daily"> 😅 I often forget my daily chores</label>
+                                <label><input type="checkbox" value="need-reminders-daily"> 🔔 I need reminders for daily tasks</label>
+                                <label><input type="checkbox" value="prefer-routine"> 📅 I prefer the same routine every day</label>
+                                <label><input type="checkbox" value="like-variety"> 🔄 I like variety in my daily tasks</label>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Weekly Assigned Areas -->
+                    <section class="question-section weekly-areas">
+                        <h3>📅 Weekly Assigned Areas</h3>
+                        
+                        <div class="question-item">
+                            <label class="main-question">Areas of the house I'm responsible for each week:</label>
+                            <div class="weekly-area-assignments">
+                                <div class="area-assignment">
+                                    <h5>🍽️ Kitchen Zone</h5>
+                                    <div class="checkbox-group">
+                                        <label><input type="checkbox" value="kitchen-dishes"> Dishes (loading/unloading dishwasher)</label>
+                                        <label><input type="checkbox" value="kitchen-counters"> Wiping counters and surfaces</label>
+                                        <label><input type="checkbox" value="kitchen-floors"> Sweeping/mopping kitchen floor</label>
+                                        <label><input type="checkbox" value="kitchen-appliances"> Cleaning small appliances</label>
+                                        <label><input type="checkbox" value="kitchen-pantry"> Organizing pantry/cabinets</label>
+                                        <label><input type="checkbox" value="kitchen-trash"> Taking out kitchen trash</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="area-assignment">
+                                    <h5>🚿 Bathroom Zone</h5>
+                                    <div class="checkbox-group">
+                                        <label><input type="checkbox" value="bathroom-sink"> Cleaning sink and mirror</label>
+                                        <label><input type="checkbox" value="bathroom-toilet"> Cleaning toilet</label>
+                                        <label><input type="checkbox" value="bathroom-tub"> Cleaning tub/shower</label>
+                                        <label><input type="checkbox" value="bathroom-floors"> Mopping bathroom floors</label>
+                                        <label><input type="checkbox" value="bathroom-supplies"> Restocking supplies</label>
+                                        <label><input type="checkbox" value="bathroom-trash"> Emptying bathroom trash</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="area-assignment">
+                                    <h5>👕 Laundry Zone</h5>
+                                    <div class="checkbox-group">
+                                        <label><input type="checkbox" value="laundry-sorting"> Sorting dirty clothes</label>
+                                        <label><input type="checkbox" value="laundry-washing"> Loading washing machine</label>
+                                        <label><input type="checkbox" value="laundry-drying"> Moving clothes to dryer</label>
+                                        <label><input type="checkbox" value="laundry-folding"> Folding clean clothes</label>
+                                        <label><input type="checkbox" value="laundry-putting-away"> Putting clothes away</label>
+                                        <label><input type="checkbox" value="laundry-supplies"> Organizing laundry supplies</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="area-assignment">
+                                    <h5>🛋️ Living Areas Zone</h5>
+                                    <div class="checkbox-group">
+                                        <label><input type="checkbox" value="living-tidying"> General tidying and organizing</label>
+                                        <label><input type="checkbox" value="living-dusting"> Dusting furniture and surfaces</label>
+                                        <label><input type="checkbox" value="living-vacuuming"> Vacuuming carpets/rugs</label>
+                                        <label><input type="checkbox" value="living-floors"> Sweeping/mopping hard floors</label>
+                                        <label><input type="checkbox" value="living-toys"> Organizing toys and games</label>
+                                        <label><input type="checkbox" value="living-electronics"> Organizing electronics/remotes</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="area-assignment">
+                                    <h5>🌱 Outdoor/Yard Zone</h5>
+                                    <div class="checkbox-group">
+                                        <label><input type="checkbox" value="outdoor-trash"> Taking out trash/recycling</label>
+                                        <label><input type="checkbox" value="outdoor-sweeping"> Sweeping porches/walkways</label>
+                                        <label><input type="checkbox" value="outdoor-plants"> Watering plants/garden</label>
+                                        <label><input type="checkbox" value="outdoor-toys"> Organizing outdoor toys</label>
+                                        <label><input type="checkbox" value="outdoor-pets"> Pet area maintenance</label>
+                                        <label><input type="checkbox" value="outdoor-seasonal"> Seasonal yard tasks</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label class="main-question">My preferred area to manage:</label>
+                            <select id="preferred-zone">
+                                <option value="">Which area do you like working in most?</option>
+                                <option value="kitchen">🍽️ Kitchen - I like cooking/food tasks</option>
+                                <option value="bathroom">🚿 Bathroom - I'm good at detailed cleaning</option>
+                                <option value="laundry">👕 Laundry - I enjoy organizing clothes</option>
+                                <option value="living">🛋️ Living areas - I like making spaces look nice</option>
+                                <option value="outdoor">🌱 Outdoor - I prefer being outside</option>
+                                <option value="bedrooms">🛏️ Bedrooms - I'm good at organizing personal spaces</option>
+                                <option value="no-preference">🤷 I don't have a preference</option>
+                            </select>
+                        </div>
+                    </section>
+                    
+                    <!-- Monthly Projects & Deep Cleaning -->
+                    <section class="question-section monthly-projects">
+                        <h3>🗓️ Monthly Deep-Clean & Project Roles</h3>
+                        
+                        <div class="question-item">
+                            <label class="main-question">Monthly or seasonal projects I help with:</label>
+                            <div class="monthly-project-list">
+                                <div class="project-category">
+                                    <h5>🧹 Deep Cleaning Projects</h5>
+                                    <div class="checkbox-group">
+                                        <label><input type="checkbox" value="deep-windows"> 🪟 Washing windows</label>
+                                        <label><input type="checkbox" value="deep-baseboards"> 🧽 Cleaning baseboards</label>
+                                        <label><input type="checkbox" value="deep-closets"> 👗 Organizing closets</label>
+                                        <label><input type="checkbox" value="deep-garage"> 🚗 Garage organization</label>
+                                        <label><input type="checkbox" value="deep-basement"> 🏠 Basement cleaning</label>
+                                        <label><input type="checkbox" value="deep-appliances"> 🔌 Deep cleaning appliances</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="project-category">
+                                    <h5>🔄 Seasonal Projects</h5>
+                                    <div class="checkbox-group">
+                                        <label><input type="checkbox" value="seasonal-clothes"> 👕 Seasonal clothing swap</label>
+                                        <label><input type="checkbox" value="seasonal-decorations"> 🎄 Holiday decorating/storage</label>
+                                        <label><input type="checkbox" value="seasonal-yard"> 🌸 Spring/fall yard cleanup</label>
+                                        <label><input type="checkbox" value="seasonal-donation"> 📦 Donation sorting drives</label>
+                                        <label><input type="checkbox" value="seasonal-deep-clean"> 🧹 Seasonal deep clean days</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="project-category">
+                                    <h5>🏗️ Family Projects</h5>
+                                    <div class="checkbox-group">
+                                        <label><input type="checkbox" value="project-painting"> 🎨 Painting/decorating rooms</label>
+                                        <label><input type="checkbox" value="project-organizing"> 📦 Major organization projects</label>
+                                        <label><input type="checkbox" value="project-repairs"> 🔧 Simple home repairs</label>
+                                        <label><input type="checkbox" value="project-gardening"> 🌱 Garden setup/maintenance</label>
+                                        <label><input type="checkbox" value="project-events"> 🎉 Event setup/cleanup</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label class="main-question">My role in family projects:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="project-leader"> 👑 I like to lead projects</label>
+                                <label><input type="checkbox" value="project-helper"> 🤝 I'm a good helper/follower</label>
+                                <label><input type="checkbox" value="project-organizer"> 📋 I'm good at organizing supplies</label>
+                                <label><input type="checkbox" value="project-finisher"> ✅ I'm good at finishing details</label>
+                                <label><input type="checkbox" value="project-creative"> 🎨 I add creative ideas</label>
+                                <label><input type="checkbox" value="project-motivator"> 💪 I help keep everyone motivated</label>
+                                <label><input type="checkbox" value="project-reluctant"> 😅 I don't love big projects</label>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Life Skill Development -->
+                    <section class="question-section life-skills">
+                        <h3>🎯 Life Skill Development & Mastery Levels</h3>
+                        
+                        <div class="question-item">
+                            <label class="main-question">Skills I've mastered (can do independently):</label>
+                            <div class="skill-categories">
+                                <div class="skill-category">
+                                    <h5>🧹 Cleaning Skills</h5>
+                                    <div class="checkbox-group mastered-skills">
+                                        <label><input type="checkbox" value="mastered-sweep"> 🧹 Sweeping floors</label>
+                                        <label><input type="checkbox" value="mastered-vacuum"> 🌪️ Vacuuming</label>
+                                        <label><input type="checkbox" value="mastered-dust"> 🧽 Dusting furniture</label>
+                                        <label><input type="checkbox" value="mastered-dishes"> 🍽️ Washing dishes</label>
+                                        <label><input type="checkbox" value="mastered-bathroom"> 🚿 Cleaning bathroom</label>
+                                        <label><input type="checkbox" value="mastered-windows"> 🪟 Washing windows</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="skill-category">
+                                    <h5>👕 Laundry Skills</h5>
+                                    <div class="checkbox-group mastered-skills">
+                                        <label><input type="checkbox" value="mastered-sort-laundry"> 🔄 Sorting dirty clothes</label>
+                                        <label><input type="checkbox" value="mastered-load-washer"> 🧺 Loading washing machine</label>
+                                        <label><input type="checkbox" value="mastered-load-dryer"> 🌪️ Using dryer properly</label>
+                                        <label><input type="checkbox" value="mastered-fold-clothes"> 👔 Folding clothes neatly</label>
+                                        <label><input type="checkbox" value="mastered-hang-clothes"> 👗 Hanging clothes properly</label>
+                                        <label><input type="checkbox" value="mastered-iron"> 🔥 Basic ironing</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="skill-category">
+                                    <h5>🍳 Kitchen Skills</h5>
+                                    <div class="checkbox-group mastered-skills">
+                                        <label><input type="checkbox" value="mastered-basic-cooking"> 🍳 Basic cooking (eggs, sandwiches)</label>
+                                        <label><input type="checkbox" value="mastered-microwave"> 📱 Safe microwave use</label>
+                                        <label><input type="checkbox" value="mastered-dishwasher"> 🍽️ Loading/unloading dishwasher</label>
+                                        <label><input type="checkbox" value="mastered-food-safety"> 🛡️ Basic food safety</label>
+                                        <label><input type="checkbox" value="mastered-meal-prep"> 🥪 Simple meal preparation</label>
+                                        <label><input type="checkbox" value="mastered-kitchen-clean"> 🧽 Cleaning up after cooking</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="skill-category">
+                                    <h5>📦 Organization Skills</h5>
+                                    <div class="checkbox-group mastered-skills">
+                                        <label><input type="checkbox" value="mastered-sort-items"> 🔄 Sorting and categorizing</label>
+                                        <label><input type="checkbox" value="mastered-organize-spaces"> 📚 Organizing shelves/drawers</label>
+                                        <label><input type="checkbox" value="mastered-donation-prep"> 📦 Preparing donation items</label>
+                                        <label><input type="checkbox" value="mastered-inventory"> 📋 Taking inventory of supplies</label>
+                                        <label><input type="checkbox" value="mastered-labeling"> 🏷️ Labeling and organizing systems</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label class="main-question">Skills I'm currently learning:</label>
+                            <div class="learning-skills">
+                                <div class="learning-skill-entry">
+                                    <input type="text" placeholder="Skill I'm learning" class="learning-skill-name">
+                                    <select class="learning-progress">
+                                        <option value="">How's it going?</option>
+                                        <option value="just-started">🌱 Just started learning</option>
+                                        <option value="getting-better">📈 Getting better with practice</option>
+                                        <option value="almost-ready">🎯 Almost ready to do alone</option>
+                                        <option value="need-help">🤝 Still need lots of help</option>
+                                    </select>
+                                    <input type="text" placeholder="What help do I need?" class="learning-help-needed">
+                                </div>
+                                <button type="button" class="add-learning-skill" onclick="addLearningSkill()">+ Add Learning Skill</button>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label class="main-question">Skills I want to learn next:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="want-advanced-cooking"> 🍳 More advanced cooking</label>
+                                <label><input type="checkbox" value="want-baking"> 🧁 Baking and desserts</label>
+                                <label><input type="checkbox" value="want-sewing"> 🧵 Basic sewing/mending</label>
+                                <label><input type="checkbox" value="want-car-care"> 🚗 Car washing/basic maintenance</label>
+                                <label><input type="checkbox" value="want-yard-work"> 🌱 Gardening/yard work</label>
+                                <label><input type="checkbox" value="want-budgeting"> 💰 Money management/budgeting</label>
+                                <label><input type="checkbox" value="want-time-management"> ⏰ Better time management</label>
+                                <label><input type="checkbox" value="want-project-management"> 📋 Leading family projects</label>
+                                <label><input type="checkbox" value="want-teaching"> 👩‍🏫 Teaching skills to siblings</label>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Rotating Manager Roles -->
+                    <section class="question-section manager-roles">
+                        <h3>👑 Rotating Job Titles & Manager Roles</h3>
+                        
+                        <div class="question-item">
+                            <label class="main-question">Current "manager" role or job title:</label>
+                            <select id="current-manager-role">
+                                <option value="">Select your current role</option>
+                                <option value="kitchen-manager">👩‍🍳 Kitchen Manager</option>
+                                <option value="laundry-supervisor">👕 Laundry Supervisor</option>
+                                <option value="bathroom-coordinator">🚿 Bathroom Coordinator</option>
+                                <option value="living-space-director">🛋️ Living Space Director</option>
+                                <option value="outdoor-specialist">🌱 Outdoor Specialist</option>
+                                <option value="organization-chief">📦 Organization Chief</option>
+                                <option value="pet-care-manager">🐕 Pet Care Manager</option>
+                                <option value="supply-coordinator">📋 Supply Coordinator</option>
+                                <option value="quality-inspector">🔍 Quality Inspector</option>
+                                <option value="training-specialist">👩‍🏫 Training Specialist</option>
+                                <option value="no-current-role">🤷 No current manager role</option>
+                            </select>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label class="main-question">What my manager role includes:</label>
+                            <div class="manager-responsibilities">
+                                <div class="responsibility-type">
+                                    <h5>📋 Planning & Organization</h5>
+                                    <div class="checkbox-group">
+                                        <label><input type="checkbox" value="plan-weekly-tasks"> 📅 Planning weekly tasks for my area</label>
+                                        <label><input type="checkbox" value="create-supply-lists"> 📝 Creating supply/shopping lists</label>
+                                        <label><input type="checkbox" value="schedule-deep-clean"> 🗓️ Scheduling deep cleaning</label>
+                                        <label><input type="checkbox" value="track-progress"> 📊 Tracking team progress</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="responsibility-type">
+                                    <h5>👥 Team Leadership</h5>
+                                    <div class="checkbox-group">
+                                        <label><input type="checkbox" value="assign-tasks"> 🎯 Assigning tasks to family members</label>
+                                        <label><input type="checkbox" value="teach-skills"> 👩‍🏫 Teaching new skills</label>
+                                        <label><input type="checkbox" value="quality-check"> ✅ Quality checking completed work</label>
+                                        <label><input type="checkbox" value="motivate-team"> 💪 Motivating and encouraging others</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="responsibility-type">
+                                    <h5>🔧 Problem Solving</h5>
+                                    <div class="checkbox-group">
+                                        <label><input type="checkbox" value="solve-issues"> 🧩 Solving problems in my area</label>
+                                        <label><input type="checkbox" value="improve-systems"> 📈 Improving how we do things</label>
+                                        <label><input type="checkbox" value="report-needs"> 📢 Reporting supply needs to parents</label>
+                                        <label><input type="checkbox" value="troubleshoot"> 🔍 Troubleshooting when things go wrong</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label class="main-question">Manager roles I'd like to try:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="want-kitchen-manager"> 👩‍🍳 Kitchen Manager</label>
+                                <label><input type="checkbox" value="want-laundry-supervisor"> 👕 Laundry Supervisor</label>
+                                <label><input type="checkbox" value="want-bathroom-coordinator"> 🚿 Bathroom Coordinator</label>
+                                <label><input type="checkbox" value="want-living-director"> 🛋️ Living Space Director</label>
+                                <label><input type="checkbox" value="want-outdoor-specialist"> 🌱 Outdoor Specialist</label>
+                                <label><input type="checkbox" value="want-organization-chief"> 📦 Organization Chief</label>
+                                <label><input type="checkbox" value="want-pet-manager"> 🐕 Pet Care Manager</label>
+                                <label><input type="checkbox" value="want-supply-coordinator"> 📋 Supply Coordinator</label>
+                                <label><input type="checkbox" value="want-quality-inspector"> 🔍 Quality Inspector</label>
+                                <label><input type="checkbox" value="want-training-specialist"> 👩‍🏫 Training Specialist</label>
+                                <label><input type="checkbox" value="prefer-no-management"> 🤷 I prefer not to manage others</label>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Success Support Needs -->
+                    <section class="question-section success-support">
+                        <h3>🤝 What I Need for Success</h3>
+                        
+                        <div class="question-item">
+                            <label class="main-question">Things that help me succeed with chores:</label>
+                            <div class="success-categories">
+                                <div class="success-category">
+                                    <h5>📊 Visual Supports</h5>
+                                    <div class="checkbox-group">
+                                        <label><input type="checkbox" value="need-visual-checklist"> ✅ Visual checklists</label>
+                                        <label><input type="checkbox" value="need-step-by-step"> 📋 Step-by-step picture guides</label>
+                                        <label><input type="checkbox" value="need-color-coding"> 🌈 Color-coded organization</label>
+                                        <label><input type="checkbox" value="need-labels"> 🏷️ Labels on everything</label>
+                                        <label><input type="checkbox" value="need-timers"> ⏰ Visual timers</label>
+                                        <label><input type="checkbox" value="need-charts"> 📊 Progress tracking charts</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="success-category">
+                                    <h5>👥 Social Supports</h5>
+                                    <div class="checkbox-group">
+                                        <label><input type="checkbox" value="need-buddy-system"> 👫 Buddy system/partner</label>
+                                        <label><input type="checkbox" value="need-family-teamwork"> 👨‍👩‍👧‍👦 Family teamwork approach</label>
+                                        <label><input type="checkbox" value="need-encouragement"> 💪 Lots of encouragement</label>
+                                        <label><input type="checkbox" value="need-check-ins"> 👀 Regular check-ins</label>
+                                        <label><input type="checkbox" value="need-modeling"> 👩‍🏫 Someone to show me first</label>
+                                        <label><input type="checkbox" value="need-independence"> 🎯 I prefer working alone</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="success-category">
+                                    <h5>🔔 Reminder Systems</h5>
+                                    <div class="checkbox-group">
+                                        <label><input type="checkbox" value="need-verbal-reminders"> 🗣️ Verbal reminders</label>
+                                        <label><input type="checkbox" value="need-phone-alerts"> 📱 Phone/device alerts</label>
+                                        <label><input type="checkbox" value="need-visual-reminders"> 👀 Visual reminder notes</label>
+                                        <label><input type="checkbox" value="need-routine-consistency"> 📅 Same time every day</label>
+                                        <label><input type="checkbox" value="need-gentle-nudges"> 🤗 Gentle nudges, not nagging</label>
+                                        <label><input type="checkbox" value="need-natural-consequences"> ⚖️ Natural consequences help me remember</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="success-category">
+                                    <h5>🎁 Motivation & Rewards</h5>
+                                    <div class="checkbox-group">
+                                        <label><input type="checkbox" value="motivated-by-praise"> 🌟 Praise and recognition</label>
+                                        <label><input type="checkbox" value="motivated-by-completion"> ✅ Satisfaction of completion</label>
+                                        <label><input type="checkbox" value="motivated-by-rewards"> 🎁 Small rewards/privileges</label>
+                                        <label><input type="checkbox" value="motivated-by-helping"> 💝 Knowing I'm helping family</label>
+                                        <label><input type="checkbox" value="motivated-by-competition"> 🏆 Friendly competition</label>
+                                        <label><input type="checkbox" value="motivated-by-music"> 🎵 Music while working</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label class="main-question">Challenges that make chores harder for me:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" value="challenge-forgetting"> 🤯 I forget what I'm supposed to do</label>
+                                <label><input type="checkbox" value="challenge-overwhelmed"> 😵‍💫 Big tasks feel overwhelming</label>
+                                <label><input type="checkbox" value="challenge-perfectionism"> 😰 I worry about doing it perfectly</label>
+                                <label><input type="checkbox" value="challenge-distractions"> 🎯 I get distracted easily</label>
+                                <label><input type="checkbox" value="challenge-time-management"> ⏰ I struggle with time management</label>
+                                <label><input type="checkbox" value="challenge-physical-limits"> 💪 Some tasks are physically hard</label>
+                                <label><input type="checkbox" value="challenge-boring"> 😴 Some chores are boring</label>
+                                <label><input type="checkbox" value="challenge-interruptions"> 🚫 I get interrupted by siblings</label>
+                                <label><input type="checkbox" value="challenge-tools"> 🔧 I don't have the right tools</label>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Wardrobe & Equipment Needs -->
+                    <section class="question-section wardrobe-equipment">
+                        <h3>👗 Wardrobe & Equipment Needs for Chores</h3>
+                        
+                        <div class="question-item">
+                            <label class="main-question">Work clothes and protective gear I need:</label>
+                            <div class="wardrobe-categories">
+                                <div class="wardrobe-category">
+                                    <h5>🧤 Protective Gear</h5>
+                                    <div class="checkbox-group">
+                                        <label><input type="checkbox" value="need-rubber-gloves"> 🧤 Rubber cleaning gloves</label>
+                                        <label><input type="checkbox" value="need-garden-gloves"> 🌱 Garden gloves</label>
+                                        <label><input type="checkbox" value="need-safety-glasses"> 👓 Safety glasses</label>
+                                        <label><input type="checkbox" value="need-dust-mask"> 😷 Dust mask</label>
+                                        <label><input type="checkbox" value="need-knee-pads"> 🦵 Knee pads for floor work</label>
+                                        <label><input type="checkbox" value="need-apron"> 👗 Apron for messy tasks</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="wardrobe-category">
+                                    <h5>👕 Work Clothing</h5>
+                                    <div class="checkbox-group">
+                                        <label><input type="checkbox" value="need-old-clothes"> 👔 Old clothes for messy work</label>
+                                        <label><input type="checkbox" value="need-coveralls"> 🥽 Coveralls or jumpsuits</label>
+                                        <label><input type="checkbox" value="need-work-shirts"> 👕 Designated work shirts</label>
+                                        <label><input type="checkbox" value="need-work-pants"> 👖 Durable work pants</label>
+                                        <label><input type="checkbox" value="need-smocks"> 👗 Art smocks for creative projects</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="wardrobe-category">
+                                    <h5>👟 Footwear</h5>
+                                    <div class="checkbox-group">
+                                        <label><input type="checkbox" value="need-work-shoes"> 👟 Closed-toe work shoes</label>
+                                        <label><input type="checkbox" value="need-rain-boots"> 🥾 Rain boots/water shoes</label>
+                                        <label><input type="checkbox" value="need-garden-shoes"> 🌱 Garden clogs/outdoor shoes</label>
+                                        <label><input type="checkbox" value="need-non-slip-shoes"> 👟 Non-slip shoes for wet areas</label>
+                                        <label><input type="checkbox" value="need-indoor-slippers"> 👡 Indoor work slippers</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="wardrobe-category">
+                                    <h5>🎒 Storage & Organization</h5>
+                                    <div class="checkbox-group">
+                                        <label><input type="checkbox" value="need-cleaning-caddy"> 🧽 Personal cleaning supply caddy</label>
+                                        <label><input type="checkbox" value="need-tool-belt"> 🔧 Tool belt or utility belt</label>
+                                        <label><input type="checkbox" value="need-work-bag"> 👜 Work bag for supplies</label>
+                                        <label><input type="checkbox" value="need-storage-bin"> 📦 Personal storage bin for gear</label>
+                                        <label><input type="checkbox" value="need-hooks"> 🪝 Hooks for hanging work clothes</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label class="main-question">Wardrobe items I have vs. need:</label>
+                            <div class="wardrobe-inventory">
+                                <div class="inventory-section">
+                                    <h5>✅ Items I Already Have</h5>
+                                    <textarea placeholder="List work clothes and protective gear you already own"></textarea>
+                                </div>
+                                <div class="inventory-section">
+                                    <h5>🛒 Items I Need to Get</h5>
+                                    <textarea placeholder="List work clothes and protective gear you need to acquire"></textarea>
+                                </div>
+                                <div class="inventory-section">
+                                    <h5>🔄 Items That Need Replacing</h5>
+                                    <textarea placeholder="List work clothes and protective gear that are worn out or too small"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <div class="extra-info">
+                                <label>Chores & life skills notes:</label>
+                                <textarea id="chores-life-skills-notes" placeholder="Like: I want to learn to cook but need an apron and non-slip shoes. I love organizing but need my own cleaning supplies. I'm ready for more responsibility but need better reminders. I want to help with yard work but need garden gloves that fit..."></textarea>
+                            </div>
+                        </div>
+                    </section>
+                    </div> <!-- End Chores & Life Skills Tab -->
                     
                     <!-- Save Section (outside tabs, always visible) -->
                     <div class="save-section">
