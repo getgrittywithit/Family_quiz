@@ -197,6 +197,9 @@
                     <button class="tab-btn active" onclick="showProfileTab('basics')">
                         📏 Sizes & Basics
                     </button>
+                    <button class="tab-btn" onclick="showProfileTab('accessories')">
+                        👒 Accessories
+                    </button>
                     <button class="tab-btn" onclick="showProfileTab('clothing')">
                         👕 Clothing Style
                     </button>
@@ -485,6 +488,205 @@
                         </div>
                     </section>
                     </div> <!-- End Basics Tab -->
+                    
+                    <!-- ACCESSORIES TAB -->
+                    <div class="profile-tab-content" id="tab-accessories">
+                    <!-- Hat Preferences -->
+                    <section class="question-section">
+                        <h3>👒 Hat Preferences</h3>
+                        
+                        <div class="question-item">
+                            <label class="main-question">Do you like wearing hats?</label>
+                            <select id="hat-general-preference-new" class="main-answer">
+                                <option value="">Choose one</option>
+                                <option value="love-hats">Yes! I love wearing hats</option>
+                                <option value="sometimes-hats">Sometimes, depends on the hat</option>
+                                <option value="rarely-hats">Rarely, only for sun/cold protection</option>
+                                <option value="never-hats">No, I don't like hats at all</option>
+                            </select>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label>Head circumference (if known):</label>
+                            <div class="size-input-group">
+                                <input type="number" id="head-circumference-new" placeholder="21" step="0.5" min="12" max="30">
+                                <span class="size-unit">inches</span>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label>Hat size (if known):</label>
+                            <div class="size-input-group">
+                                <select id="hat-size-new" class="size-select">
+                                    <option value="">Select if known</option>
+                                    <optgroup label="Kids Sizes">
+                                        <option value="Baby (12-14\")">Baby (12-14")</option>
+                                        <option value="Toddler (15-17\")">Toddler (15-17")</option>
+                                        <option value="Child S (18-19\")">Child S (18-19")</option>
+                                        <option value="Child M (19-20\")">Child M (19-20")</option>
+                                        <option value="Child L (20-21\")">Child L (20-21")</option>
+                                    </optgroup>
+                                    <optgroup label="Youth/Adult Sizes">
+                                        <option value="Youth (21-22\")">Youth (21-22")</option>
+                                        <option value="Adult XS (21.5\")">Adult XS (21.5")</option>
+                                        <option value="Adult S (22\")">Adult S (22")</option>
+                                        <option value="Adult M (22.5\")">Adult M (22.5")</option>
+                                        <option value="Adult L (23\")">Adult L (23")</option>
+                                        <option value="Adult XL (23.5\")">Adult XL (23.5")</option>
+                                        <option value="Adult XXL (24+\")">Adult XXL (24+")</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label>How do you like hats to fit?</label>
+                            <select id="hat-fit-preference-new">
+                                <option value="">Choose fit preference</option>
+                                <option value="snug-secure">Snug and secure</option>
+                                <option value="comfortably-fitted">Comfortably fitted</option>
+                                <option value="loose-relaxed">Loose and relaxed</option>
+                                <option value="adjustable-preferred">I prefer adjustable hats</option>
+                            </select>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label>What types of hats do you like? (Check all that apply)</label>
+                            <div class="checkbox-group hat-types-new">
+                                <label><input type="checkbox" value="baseball-caps"> ⚾ Baseball caps</label>
+                                <label><input type="checkbox" value="beanies"> 🧢 Beanies/knit hats</label>
+                                <label><input type="checkbox" value="sun-hats"> ☀️ Sun hats with brims</label>
+                                <label><input type="checkbox" value="bucket-hats"> 🪣 Bucket hats</label>
+                                <label><input type="checkbox" value="winter-hats"> ❄️ Winter hats (warm/fleece lined)</label>
+                                <label><input type="checkbox" value="fancy-hats"> 🎩 Fancy/dress-up hats</label>
+                                <label><input type="checkbox" value="character-hats"> 🦸 Character/themed hats</label>
+                                <label><input type="checkbox" value="trucker-hats"> 🚛 Trucker/mesh hats</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label>Hat issues I have: (Check any that apply)</label>
+                            <div class="checkbox-group hat-issues-new">
+                                <label><input type="checkbox" value="too-tight"> Hat feels too tight/gives headaches</label>
+                                <label><input type="checkbox" value="slides-off"> Hats slide off my head</label>
+                                <label><input type="checkbox" value="messes-hair"> Don't like how hats mess up my hair</label>
+                                <label><input type="checkbox" value="too-hot"> Hats make my head too hot/sweaty</label>
+                                <label><input type="checkbox" value="itchy-material"> Don't like itchy/scratchy hat materials</label>
+                                <label><input type="checkbox" value="blocks-vision"> Don't like brims that block vision</label>
+                            </div>
+                        </div>
+
+                        <div class="question-item">
+                            <div class="extra-info">
+                                <label>Additional hat notes:</label>
+                                <textarea id="hat-extra-notes-new" placeholder="Like: I love my pink baseball cap but only wear winter hats when it's really cold. I don't like hats with strings or ties..."></textarea>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Belt Preferences -->
+                    <section class="question-section">
+                        <h3>👕 Belt & Waist Accessories</h3>
+                        
+                        <div class="question-item">
+                            <label class="main-question">Do you wear belts?</label>
+                            <select id="belt-preference" class="main-answer">
+                                <option value="">Choose one</option>
+                                <option value="love-belts">Yes, I love wearing belts</option>
+                                <option value="sometimes-belts">Sometimes, when needed</option>
+                                <option value="rarely-belts">Rarely, only for special occasions</option>
+                                <option value="never-belts">No, I don't like belts</option>
+                            </select>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label>What size belt do you need?</label>
+                            <div class="size-input-group">
+                                <input type="text" id="belt-size" placeholder="Like: Small, 24 inches, adjustable">
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label>What types of belts do you like? (Check all that apply)</label>
+                            <div class="checkbox-group belt-types">
+                                <label><input type="checkbox" value="leather-belts"> 🐄 Leather belts</label>
+                                <label><input type="checkbox" value="fabric-belts"> 🧵 Fabric/canvas belts</label>
+                                <label><input type="checkbox" value="chain-belts"> ⛓️ Chain belts</label>
+                                <label><input type="checkbox" value="elastic-belts"> 🎾 Elastic/stretchy belts</label>
+                                <label><input type="checkbox" value="character-belts"> 🦸 Character/themed belts</label>
+                                <label><input type="checkbox" value="decorative-belts"> ✨ Decorative/fancy belts</label>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Jewelry Preferences -->
+                    <section class="question-section">
+                        <h3>💍 Jewelry & Accessories</h3>
+                        
+                        <div class="question-item">
+                            <label class="main-question">Do you like wearing jewelry?</label>
+                            <select id="jewelry-preference" class="main-answer">
+                                <option value="">Choose one</option>
+                                <option value="love-jewelry">Yes! I love jewelry</option>
+                                <option value="sometimes-jewelry">Sometimes, simple pieces</option>
+                                <option value="special-occasions">Only for special occasions</option>
+                                <option value="never-jewelry">No, I don't like jewelry</option>
+                            </select>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label>What types of jewelry do you like? (Check all that apply)</label>
+                            <div class="checkbox-group jewelry-types">
+                                <label><input type="checkbox" value="necklaces"> 📿 Necklaces</label>
+                                <label><input type="checkbox" value="bracelets"> 💎 Bracelets</label>
+                                <label><input type="checkbox" value="rings"> 💍 Rings</label>
+                                <label><input type="checkbox" value="earrings"> 👂 Earrings</label>
+                                <label><input type="checkbox" value="watches"> ⌚ Watches</label>
+                                <label><input type="checkbox" value="anklets"> 🦶 Anklets</label>
+                                <label><input type="checkbox" value="hair-accessories"> 🎀 Hair clips/scrunchies</label>
+                                <label><input type="checkbox" value="friendship-jewelry"> 🤝 Friendship bracelets/necklaces</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label>Jewelry preferences:</label>
+                            <div class="checkbox-group jewelry-prefs">
+                                <label><input type="checkbox" value="real-metals"> I prefer real metals (gold, silver)</label>
+                                <label><input type="checkbox" value="costume-jewelry"> Costume jewelry is fine</label>
+                                <label><input type="checkbox" value="no-allergies"> I have no metal allergies</label>
+                                <label><input type="checkbox" value="sensitive-skin"> I have sensitive skin (need hypoallergenic)</label>
+                                <label><input type="checkbox" value="simple-styles"> I like simple, minimal styles</label>
+                                <label><input type="checkbox" value="bold-statement"> I like bold, statement pieces</label>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Other Accessories -->
+                    <section class="question-section">
+                        <h3>🎒 Other Accessories</h3>
+                        
+                        <div class="question-item">
+                            <label>What other accessories do you use or like? (Check all that apply)</label>
+                            <div class="checkbox-group other-accessories">
+                                <label><input type="checkbox" value="sunglasses"> 🕶️ Sunglasses</label>
+                                <label><input type="checkbox" value="regular-glasses"> 👓 Prescription glasses</label>
+                                <label><input type="checkbox" value="bags-purses"> 👜 Bags/purses</label>
+                                <label><input type="checkbox" value="backpacks"> 🎒 Backpacks</label>
+                                <label><input type="checkbox" value="scarves"> 🧣 Scarves</label>
+                                <label><input type="checkbox" value="gloves"> 🧤 Gloves</label>
+                                <label><input type="checkbox" value="phone-cases"> 📱 Phone cases/accessories</label>
+                                <label><input type="checkbox" value="keychains"> 🔑 Keychains</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question-item">
+                            <div class="extra-info">
+                                <label>Additional accessory notes:</label>
+                                <textarea id="accessory-extra-notes" placeholder="Like: I collect vintage pins for my jean jacket. I need a new backpack for school. I love colorful scrunchies but not tight ones..."></textarea>
+                            </div>
+                        </div>
+                    </section>
+                    </div> <!-- End Accessories Tab -->
                     
                     <!-- CLOTHING TAB -->
                     <div class="profile-tab-content" id="tab-clothing">
